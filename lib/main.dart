@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-// void main() {
-//   runApp(const ScreenAuth());
-// }
+import 'screens/authent.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: const ScreenAuth(),
+    ),
+  );
+}
 
 
 
