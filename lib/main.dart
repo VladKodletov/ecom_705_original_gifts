@@ -6,6 +6,7 @@ void main() {
   runApp(
     MaterialApp(
       home: const ScreenAuth(),
+      theme: ThemeData,
     ),
   );
 }
