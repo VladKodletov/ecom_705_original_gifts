@@ -10,12 +10,11 @@ class ScreenAuth extends StatefulWidget {
 class _ScreenAuthState extends State<ScreenAuth> {
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('App Shop'),
+        title: const Text('App Shop'),
       ),
-      body: HeaderPage(),
+      body: const HeaderPage(),
     );
   }
 }
@@ -26,18 +25,25 @@ class HeaderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Column(
-        children: [
+        children: const [
           SizedBox(
-            height: 100,
+            height: 60,
           ),
           Text(
-            '705 original gifts',
+            '705',
             style: TextStyle(fontSize: 24),
           ),
           SizedBox(
-            height: 100,
+            height: 15,
+          ),
+          Text(
+            'original gifts',
+            style: TextStyle(fontSize: 18),
+          ),
+          SizedBox(
+            height: 130,
           ),
           AuthInputForm(),
         ],
@@ -63,12 +69,12 @@ class _AuthInputFormState extends State<AuthInputForm> {
               prefixIcon: const Icon(
                 Icons.mail_outline,
               ),
-              label: Text('Email'),
+              label: const Text('Email'),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
               )),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         TextField(
@@ -76,33 +82,36 @@ class _AuthInputFormState extends State<AuthInputForm> {
             prefixIcon: const Icon(
               Icons.lock,
             ),
-            label: Text('Password'),
+            label: const Text('Password'),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
-        Text('Forgot Password?'),
-        SizedBox(
+        const Text('Forgot Password?'),
+        const SizedBox(
           height: 12,
         ),
         ElevatedButton(
           onPressed: () {},
-          child: Text('Sign In'),
+          child: const Text('Sign In'),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Didn't have any account?"),
+            const Text("Didn't have any account?"),
+            const SizedBox(
+              width: 4,
+            ),
             ElevatedButton(
               onPressed: () {},
-              child: Text('Sign Up'),
+              child: const Text('Sign Up'),
             ),
           ],
         )

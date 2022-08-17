@@ -8,7 +8,7 @@ void main() {
       debugShowCheckedModeBanner: false,
       home: const ScreenAuth(),
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF0ACF83),
         ),
       ),
