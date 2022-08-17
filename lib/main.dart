@@ -5,8 +5,13 @@ import 'screens/authent.dart';
 void main() {
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: const ScreenAuth(),
-      theme: ThemeData,
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xFF0ACF83),
+        ),
+      ),
     ),
   );
 }
