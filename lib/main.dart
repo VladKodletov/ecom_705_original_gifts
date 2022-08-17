@@ -8,10 +8,13 @@ void main() {
       debugShowCheckedModeBanner: false,
       home: const ScreenAuth(),
       theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF0ACF83),
-        ),
-      ),
+        
+
+          //   appBarTheme: const AppBarTheme(
+          //     backgroundColor: Color(0xFF0ACF83),
+          //   ),
+          // ),
+          ),
     ),
   );
 }

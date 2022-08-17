@@ -11,9 +11,10 @@ class _ScreenAuthState extends State<ScreenAuth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('App Shop'),
-      ),
+      backgroundColor: Colors.teal[600],
+      // appBar: AppBar(
+      //   title: const Text('App Shop'),
+      // ),
       body: const HeaderPage(),
     );
   }
@@ -27,20 +28,21 @@ class HeaderPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Column(
-        children: const [
+        children: [
           SizedBox(
-            height: 60,
+            height: 120,
           ),
           Text(
             '705',
-            style: TextStyle(fontSize: 24),
+            style: TextStyle(
+                fontSize: 52, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           SizedBox(
-            height: 15,
+            height: 30,
           ),
           Text(
             'original gifts',
-            style: TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 24, color: Colors.white),
           ),
           SizedBox(
             height: 130,
@@ -66,6 +68,8 @@ class _AuthInputFormState extends State<AuthInputForm> {
       children: [
         TextField(
           decoration: InputDecoration(
+              fillColor: Colors.white,
+              filled: true,
               prefixIcon: const Icon(
                 Icons.mail_outline,
               ),
@@ -79,6 +83,8 @@ class _AuthInputFormState extends State<AuthInputForm> {
         ),
         TextField(
           decoration: InputDecoration(
+            fillColor: Colors.white,
+            filled: true,
             prefixIcon: const Icon(
               Icons.lock,
             ),
@@ -91,11 +97,17 @@ class _AuthInputFormState extends State<AuthInputForm> {
         const SizedBox(
           height: 12,
         ),
-        const Text('Forgot Password?'),
+        const Text(
+          'Forgot Password?',
+          style: TextStyle(color: Colors.white),
+        ),
         const SizedBox(
           height: 12,
         ),
         ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Color(0xFF0ACF83),
+          ),
           onPressed: () {},
           child: const Text('Sign In'),
         ),
@@ -105,16 +117,21 @@ class _AuthInputFormState extends State<AuthInputForm> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Didn't have any account?"),
-            const SizedBox(
-              width: 4,
-            ),
-            ElevatedButton(
+            const Text("Didn't have any account?",
+                style: TextStyle(color: Colors.white)),
+            const SizedBox(),
+            TextButton(
               onPressed: () {},
-              child: const Text('Sign Up'),
+              child: const Text(
+                'Sign Up here',
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  color: Color(0xFF0ACF83),
+                ),
+              ),
             ),
           ],
-        )
+        ),
       ],
     );
   }
