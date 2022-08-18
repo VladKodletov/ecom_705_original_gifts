@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'reg_authent.dart';
+import 'authent.dart';
 
-class ScreenAuth extends StatefulWidget {
-  const ScreenAuth({Key? key}) : super(key: key);
+class RegScreenAuth extends StatefulWidget {
+  const RegScreenAuth({Key? key}) : super(key: key);
 
   @override
-  State<ScreenAuth> createState() => _ScreenAuthState();
+  State<RegScreenAuth> createState() => _RegScreenAuthState();
 }
 
-class _ScreenAuthState extends State<ScreenAuth> {
+class _RegScreenAuthState extends State<RegScreenAuth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,13 +17,13 @@ class _ScreenAuthState extends State<ScreenAuth> {
       // appBar: AppBar(
       //   title: const Text('App Shop'),
       // ),
-      body: const HeaderPage(),
+      body: const RegHeaderPage(),
     );
   }
 }
 
-class HeaderPage extends StatelessWidget {
-  const HeaderPage({Key? key}) : super(key: key);
+class RegHeaderPage extends StatelessWidget {
+  const RegHeaderPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,21 +51,21 @@ class HeaderPage extends StatelessWidget {
           SizedBox(
             height: 80,
           ),
-          AuthInputForm(),
+          RegAuthInputForm(),
         ],
       ),
     );
   }
 }
 
-class AuthInputForm extends StatefulWidget {
-  const AuthInputForm({Key? key}) : super(key: key);
+class RegAuthInputForm extends StatefulWidget {
+  const RegAuthInputForm({Key? key}) : super(key: key);
 
   @override
-  State<AuthInputForm> createState() => _AuthInputFormState();
+  State<RegAuthInputForm> createState() => _RegAuthInputFormState();
 }
 
-class _AuthInputFormState extends State<AuthInputForm> {
+class _RegAuthInputFormState extends State<RegAuthInputForm> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -99,19 +99,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
           ),
         ),
         const SizedBox(
-          height: 8,
-        ),
-        TextButton(
-          onPressed: () {},
-          child: const Text(
-            'Forgot Password',
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 8,
+          height: 16,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -122,7 +110,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
                 primary: const Color(0xFF0ACF83),
               ),
               onPressed: () {},
-              child: const Text('Sign In', style: TextStyle(fontSize: 18),),
+              child: const Text('Sign Up', style: TextStyle(fontSize: 20),),
             ),
           ],
         ),
@@ -132,13 +120,13 @@ class _AuthInputFormState extends State<AuthInputForm> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Didn't have any account?",
+            const Text("If you have an account?",
                 style: TextStyle(color: Colors.white)),
             const SizedBox(),
             TextButton(
-              onPressed: () => const RegScreenAuth(),
+              onPressed: () => const ScreenAuth(),
               child: const Text(
-                'Sign Up here',
+                'Sign In here',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                   color: Color(0xFF0ACF83),

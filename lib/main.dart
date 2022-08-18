@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'screens/authent.dart';
+import 'screens/reg_authent.dart';
 
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const ScreenAuth(),
+      // home: const RegScreenAuth(),
       theme: ThemeData(
-        
 
-          //   appBarTheme: const AppBarTheme(
-          //     backgroundColor: Color(0xFF0ACF83),
-          //   ),
-          // ),
           ),
     ),
   );
