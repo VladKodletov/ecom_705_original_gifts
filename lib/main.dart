@@ -7,8 +7,8 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const ScreenAuth(),
-      // home: const RegScreenAuth(),
+      // home: const ScreenAuth(),
+      home: const RegScreenAuth(),
       theme: ThemeData(
 
           ),
