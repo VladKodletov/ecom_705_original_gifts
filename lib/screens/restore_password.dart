@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'authent.dart';
 
-class RegScreenAuth extends StatefulWidget {
-  const RegScreenAuth({Key? key}) : super(key: key);
+class RestorePassword extends StatefulWidget {
+  const RestorePassword({Key? key}) : super(key: key);
 
   @override
-  State<RegScreenAuth> createState() => _RegScreenAuthState();
+  State<RestorePassword> createState() => _RestorePasswordState();
 }
 
-class _RegScreenAuthState extends State<RegScreenAuth> {
+class _RestorePasswordState extends State<RestorePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,13 +17,13 @@ class _RegScreenAuthState extends State<RegScreenAuth> {
       // appBar: AppBar(
       //   title: const Text('App Shop'),
       // ),
-      body: const RegHeaderPage(),
+      body: const RestPassPage(),
     );
   }
 }
 
-class RegHeaderPage extends StatelessWidget {
-  const RegHeaderPage({Key? key}) : super(key: key);
+class RestPassPage extends StatelessWidget {
+  const RestPassPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,21 +51,21 @@ class RegHeaderPage extends StatelessWidget {
           SizedBox(
             height: 80,
           ),
-          RegAuthInputForm(),
+          InputEmailForm(),
         ],
       ),
     );
   }
 }
 
-class RegAuthInputForm extends StatefulWidget {
-  const RegAuthInputForm({Key? key}) : super(key: key);
+class InputEmailForm extends StatefulWidget {
+  const InputEmailForm({Key? key}) : super(key: key);
 
   @override
-  State<RegAuthInputForm> createState() => _RegAuthInputFormState();
+  State<InputEmailForm> createState() => _InputEmailFormState();
 }
 
-class _RegAuthInputFormState extends State<RegAuthInputForm> {
+class _InputEmailFormState extends State<InputEmailForm> {
   @override
   Widget build(BuildContext context) {
     return Column(

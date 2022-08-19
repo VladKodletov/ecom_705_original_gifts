@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'screens/authent.dart';
 import 'screens/reg_authent.dart';
+import 'screens/restore_password.dart';
 
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: const ScreenAuth(),
-      home: const RegScreenAuth(),
+      // home: const RegScreenAuth(),
+      home: const RestorePassword(),
+      
       theme: ThemeData(
 
           ),
