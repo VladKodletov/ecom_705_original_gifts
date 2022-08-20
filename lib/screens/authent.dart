@@ -10,6 +10,13 @@ class ScreenAuth extends StatefulWidget {
 }
 
 class _ScreenAuthState extends State<ScreenAuth> {
+void _auth () {}
+
+void _forgotPassword () {}
+
+void _register () {}
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

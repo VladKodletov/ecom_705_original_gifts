@@ -8,9 +8,9 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: const ScreenAuth(),
+      home: const ScreenAuth(),
       // home: const RegScreenAuth(),
-      home: const RestorePassword(),
+      // home: const RestorePassword(),
       
       theme: ThemeData(
 
