@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'reg_authent.dart';
+import 'restore_password.dart';
 
 class ScreenAuth extends StatefulWidget {
   const ScreenAuth({Key? key}) : super(key: key);
@@ -10,20 +11,14 @@ class ScreenAuth extends StatefulWidget {
 }
 
 class _ScreenAuthState extends State<ScreenAuth> {
-void _auth () {}
-
-void _forgotPassword () {}
-
-void _register () {}
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[600],
-      // appBar: AppBar(
-      //   title: const Text('App Shop'),
-      // ),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0ACF83),
+        title: const Text('App Shop'),
+      ),
       body: const HeaderPage(),
     );
   }
@@ -39,21 +34,27 @@ class HeaderPage extends StatelessWidget {
       child: ListView(
         children: const [
           SizedBox(
-            height: 120,
+            height: 80,
           ),
           Text(
             '705',
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 52, fontWeight: FontWeight.bold, color: Colors.white),
+              fontSize: 52,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
           SizedBox(
-            height: 30,
+            height: 15,
           ),
           Text(
             'original gifts',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24, color: Colors.white),
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
           ),
           SizedBox(
             height: 80,
@@ -73,6 +74,22 @@ class AuthInputForm extends StatefulWidget {
 }
 
 class _AuthInputFormState extends State<AuthInputForm> {
+  void _auth() {}
+
+  void _forgotPassword() {
+    Navigator.of(context).pushNamed('/restore_password');
+  }
+
+  void _register() {
+    Navigator.of(context).pushNamed('/reg_screen');
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -109,7 +126,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
           height: 8,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: _forgotPassword,
           child: const Text(
             'Forgot Password',
             style: TextStyle(
@@ -128,8 +145,11 @@ class _AuthInputFormState extends State<AuthInputForm> {
                 fixedSize: Size.fromHeight(55),
                 primary: const Color(0xFF0ACF83),
               ),
-              onPressed: () {},
-              child: const Text('Sign In', style: TextStyle(fontSize: 18),),
+              onPressed: _auth,
+              child: const Text(
+                'Sign In',
+                style: TextStyle(fontSize: 18),
+              ),
             ),
           ],
         ),
@@ -143,7 +163,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
                 style: TextStyle(color: Colors.white)),
             const SizedBox(),
             TextButton(
-              onPressed: () => const RegScreenAuth(),
+              onPressed: _register,
               child: const Text(
                 'Sign Up here',
                 style: TextStyle(

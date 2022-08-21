@@ -8,13 +8,17 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const ScreenAuth(),
+      routes: {
+        '/': (context) => ScreenAuth(),
+        '/reg_screen': (context) => RegScreenAuth(),
+        '/restore_password': (context) => RestorePassword(),
+      },
+      initialRoute: '/',
+      // home: const ScreenAuth(),
       // home: const RegScreenAuth(),
       // home: const RestorePassword(),
-      
-      theme: ThemeData(
 
-          ),
+      theme: ThemeData(),
     ),
   );
 }

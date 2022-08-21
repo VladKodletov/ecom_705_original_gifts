@@ -14,9 +14,10 @@ class _RestorePasswordState extends State<RestorePassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[600],
-      // appBar: AppBar(
-      //   title: const Text('App Shop'),
-      // ),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0ACF83),
+        title: const Text('App Shop'),
+      ),
       body: const RestPassPage(),
     );
   }
@@ -38,7 +39,10 @@ class RestPassPage extends StatelessWidget {
             '705',
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 52, fontWeight: FontWeight.bold, color: Colors.white),
+              fontSize: 52,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
           SizedBox(
             height: 30,
@@ -85,7 +89,6 @@ class _InputEmailFormState extends State<InputEmailForm> {
         const SizedBox(
           height: 16,
         ),
-        
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -95,14 +98,16 @@ class _InputEmailFormState extends State<InputEmailForm> {
                 primary: const Color(0xFF0ACF83),
               ),
               onPressed: () {},
-              child: const Text('Restore password', style: TextStyle(fontSize: 20),),
+              child: const Text(
+                'Restore password',
+                style: TextStyle(fontSize: 20),
+              ),
             ),
           ],
         ),
         const SizedBox(
           height: 12,
         ),
-        
       ],
     );
   }

@@ -14,9 +14,10 @@ class _RegScreenAuthState extends State<RegScreenAuth> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[600],
-      // appBar: AppBar(
-      //   title: const Text('App Shop'),
-      // ),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0ACF83),
+        title: const Text('App Shop'),
+      ),
       body: const RegHeaderPage(),
     );
   }
@@ -32,7 +33,7 @@ class RegHeaderPage extends StatelessWidget {
       child: ListView(
         children: const [
           SizedBox(
-            height: 120,
+            height: 80,
           ),
           Text(
             '705',
