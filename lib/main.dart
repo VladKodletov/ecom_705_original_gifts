@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screens/authent.dart';
+import 'screens/mainscreen.dart';
 import 'screens/reg_authent.dart';
 import 'screens/restore_password.dart';
 
@@ -12,6 +13,7 @@ void main() {
         '/': (context) => ScreenAuth(),
         '/reg_screen': (context) => RegScreenAuth(),
         '/restore_password': (context) => RestorePassword(),
+        '/mainscreen': (context) => MainPage(),
       },
       initialRoute: '/',
       // home: const ScreenAuth(),

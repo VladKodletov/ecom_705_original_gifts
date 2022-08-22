@@ -42,12 +42,15 @@ class RegHeaderPage extends StatelessWidget {
                 fontSize: 52, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           SizedBox(
-            height: 30,
+            height: 15,
           ),
           Text(
             'original gifts',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24, color: Colors.white),
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
           ),
           SizedBox(
             height: 80,
@@ -111,7 +114,10 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
                 primary: const Color(0xFF0ACF83),
               ),
               onPressed: () {},
-              child: const Text('Sign Up', style: TextStyle(fontSize: 20),),
+              child: const Text(
+                'Sign Up',
+                style: TextStyle(fontSize: 20),
+              ),
             ),
           ],
         ),

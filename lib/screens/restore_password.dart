@@ -45,12 +45,12 @@ class RestPassPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 15,
           ),
           Text(
             'original gifts',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24, color: Colors.white),
+            style: TextStyle(fontSize: 18, color: Colors.white),
           ),
           SizedBox(
             height: 80,

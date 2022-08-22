@@ -74,14 +74,16 @@ class AuthInputForm extends StatefulWidget {
 }
 
 class _AuthInputFormState extends State<AuthInputForm> {
-  void _auth() {}
-
-  void _forgotPassword() {
+    void _forgotPassword() {
     Navigator.of(context).pushNamed('/restore_password');
   }
 
   void _register() {
     Navigator.of(context).pushNamed('/reg_screen');
+  }
+
+   void _mainScreen() {
+    Navigator.of(context).pushNamed('/mainscreen');
   }
 
   @override
@@ -145,7 +147,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
                 fixedSize: Size.fromHeight(55),
                 primary: const Color(0xFF0ACF83),
               ),
-              onPressed: _auth,
+              onPressed: _mainScreen,
               child: const Text(
                 'Sign In',
                 style: TextStyle(fontSize: 18),
