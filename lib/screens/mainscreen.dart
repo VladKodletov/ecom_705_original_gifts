@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'profile.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +19,18 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('Главная')),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0ACF83),
+        actions: [
+          Icon(Icons.search),
+        ],
+      ),
+      body: Center(
+        child: Text(
+          'Главная',
+          style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+        ),
+      ),
     );
   }
 }
@@ -27,34 +40,69 @@ class _MainPageState extends State<MainPage> {
   final screensNavigation = [
     MainScreen(),
     CatalogScreen(),
-    ProfileScreen(),
     ShoppingCart(),
+    ProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screensNavigation[index],
-      bottomNavigationBar: NavigationBar(
-          selectedIndex: index,
-          onDestinationSelected: ((index) => index),
-          destinations: [
-            NavigationDestination(
-              icon: Icon(Icons.home),
-              label: 'Главная',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.format_indent_increase),
-              label: 'Каталог',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.shopping_bag),
-              label: 'Корзина',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.account_circle),
-              label: 'Профиль',
-            ),
-          ]),
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+            backgroundColor: Color.fromARGB(255, 151, 247, 210),
+            labelTextStyle: MaterialStateProperty.all(
+              TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            )),
+        child: NavigationBar(
+            height: 60,
+            // animationDuration: Duration(seconds: 2),
+            selectedIndex: index,
+            onDestinationSelected: (index) =>
+                setState(() => this.index = index),
+            // ignore: prefer_const_literals_to_create_immutables
+            destinations: [
+              NavigationDestination(
+                icon: Icon(
+                  Icons.home_outlined,
+                ),
+                selectedIcon: Icon(Icons.home, size: 32),
+                label: 'Главная',
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  Icons.format_indent_increase_outlined,
+                ),
+                selectedIcon: Icon(
+                  Icons.format_indent_increase,
+                  size: 32,
+                ),
+                label: 'Каталог',
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  Icons.shopping_bag_outlined,
+                ),
+                selectedIcon: Icon(
+                  Icons.shopping_bag,
+                  size: 32,
+                ),
+                label: 'Корзина',
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  Icons.account_circle_outlined,
+                ),
+                selectedIcon: Icon(
+                  Icons.account_circle,
+                  size: 32,
+                ),
+                label: 'Профиль',
+              ),
+            ]),
+      ),
     );
   }
 }

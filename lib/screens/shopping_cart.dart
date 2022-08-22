@@ -6,7 +6,15 @@ class ShoppingCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('Корзина'),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0ACF83),
+      ),
+      body: Center(
+        child: Text(
+          'Корзина',
+          style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+        ),
+      ),
     );
   }
 }

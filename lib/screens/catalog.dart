@@ -6,7 +6,21 @@ class CatalogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('Каталог'),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0ACF83),
+        actions: [
+          Icon(Icons.search),
+        ],
+      ),
+      body: Center(
+        child: Text(
+          'Каталог',
+          style: TextStyle(
+            fontSize: 45,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 }

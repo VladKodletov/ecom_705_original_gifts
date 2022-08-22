@@ -74,6 +74,8 @@ class AuthInputForm extends StatefulWidget {
 }
 
 class _AuthInputFormState extends State<AuthInputForm> {
+
+
     void _forgotPassword() {
     Navigator.of(context).pushNamed('/restore_password');
   }

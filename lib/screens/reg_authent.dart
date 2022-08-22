@@ -10,6 +10,8 @@ class RegScreenAuth extends StatefulWidget {
 }
 
 class _RegScreenAuthState extends State<RegScreenAuth> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,10 +49,7 @@ class RegHeaderPage extends StatelessWidget {
           Text(
             'original gifts',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.white,
-            ),
+            style: TextStyle(fontSize: 18, color: Colors.white,),
           ),
           SizedBox(
             height: 80,
@@ -70,6 +69,10 @@ class RegAuthInputForm extends StatefulWidget {
 }
 
 class _RegAuthInputFormState extends State<RegAuthInputForm> {
+void _authent() {
+    Navigator.of(context).pushNamed('/');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -114,10 +117,7 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
                 primary: const Color(0xFF0ACF83),
               ),
               onPressed: () {},
-              child: const Text(
-                'Sign Up',
-                style: TextStyle(fontSize: 20),
-              ),
+              child: const Text('Sign Up', style: TextStyle(fontSize: 20),),
             ),
           ],
         ),
@@ -131,7 +131,7 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
                 style: TextStyle(color: Colors.white)),
             const SizedBox(),
             TextButton(
-              onPressed: () => const ScreenAuth(),
+              onPressed: _authent,
               child: const Text(
                 'Sign In here',
                 style: TextStyle(
