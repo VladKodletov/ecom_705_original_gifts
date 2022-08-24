@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
+
 import 'profile.dart';
 import 'package:flutter/material.dart';
 
@@ -25,11 +27,46 @@ class MainScreen extends StatelessWidget {
           Icon(Icons.search),
         ],
       ),
-      body: Center(
-        child: Text(
-          'Главная',
-          style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-        ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 300,
+          ),
+          Container(
+            padding: EdgeInsets.only(
+              top: 50,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.grey,
+            ),
+            child: Column(
+              children: [
+                ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Text('ghbdtn'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                    Text('пока'),
+                  ],
+                ),
+                ListView(),
+                ListView(),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
