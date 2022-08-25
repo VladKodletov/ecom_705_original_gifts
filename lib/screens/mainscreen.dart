@@ -27,47 +27,7 @@ class MainScreen extends StatelessWidget {
           Icon(Icons.search),
         ],
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 300,
-          ),
-          Container(
-            padding: EdgeInsets.only(
-              top: 50,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.grey,
-            ),
-            child: Column(
-              children: [
-                ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Text('ghbdtn'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                    Text('пока'),
-                  ],
-                ),
-                ListView(),
-                ListView(),
-              ],
-            ),
-          ),
-        ],
-      ),
+      body: 
     );
   }
 }
