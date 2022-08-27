@@ -27,12 +27,26 @@ class MainScreen extends StatelessWidget {
           Icon(Icons.search),
         ],
       ),
-      body: Expanded(child: ListView(
-         children: [
-          Text('data'),
-          Text('data'),
-         ],
-      ))
+      body: Column(
+        children: [
+          Text('for search widget'),
+          Column(
+            children: [
+              Row(),
+              ListView(),
+              Row(
+                children: [
+                  Text('Featured Products'),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text('See all'),
+                  )
+                ],
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
