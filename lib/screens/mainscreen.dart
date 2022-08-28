@@ -23,18 +23,78 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF0ACF83),
-        actions: [
+        actions: const [
           Icon(Icons.search),
         ],
       ),
       body: Column(
         children: [
-          Text('for search widget'),
+          SizedBox(
+            height: 60,
+          ),
+          Text('place for search widget'),
+          SizedBox(
+            height: 150,
+          ),
           Column(
             children: [
               Row(),
-              ListView(),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: const [
+                    Text(
+                      'data',
+                      style: TextStyle(fontSize: 55),
+                    ),
+                    SizedBox(width: 25,),
+                    Text(
+                      'data',
+                      style: TextStyle(fontSize: 55),
+                    ),
+                    SizedBox(width: 25,),
+                    Text(
+                      'data',
+                      style: TextStyle(fontSize: 55),
+                    ),
+                    SizedBox(width: 25,),
+                    Text(
+                      'data',
+                      style: TextStyle(fontSize: 55),
+                    ),
+                    SizedBox(width: 25,),
+                    Text(
+                      'data',
+                      style: TextStyle(fontSize: 55),
+                    ),
+                    SizedBox(width: 25,),
+                    Text(
+                      'data',
+                      style: TextStyle(fontSize: 55),
+                    ),
+                    SizedBox(width: 25,),
+                    Text(
+                      'data',
+                      style: TextStyle(fontSize: 55),
+                    ),
+                    SizedBox(width: 25,),
+                    Text(
+                      'data',
+                      style: TextStyle(fontSize: 55),
+                    ),
+                    SizedBox(width: 25,),
+                    Text(
+                      'data',
+                      style: TextStyle(fontSize: 55),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 50,
+              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text('Featured Products'),
                   ElevatedButton(
