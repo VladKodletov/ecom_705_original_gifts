@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
-
 import 'profile.dart';
 import 'package:flutter/material.dart';
 
@@ -38,54 +36,56 @@ class MainScreen extends StatelessWidget {
           ),
           Column(
             children: [
-              Row(),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: const [
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 55),
+                    _CategoryText(
+                      nameCategory: 'Wood gift',
                     ),
-                    SizedBox(width: 25,),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 55),
+                    Padding(
+                      padding: EdgeInsetsDirectional.only(end: 13),
                     ),
-                    SizedBox(width: 25,),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 55),
+                    _CategoryText(
+                      nameCategory: 'Personal gift',
                     ),
-                    SizedBox(width: 25,),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 55),
+                    Padding(
+                      padding: EdgeInsetsDirectional.only(end: 13),
                     ),
-                    SizedBox(width: 25,),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 55),
+                    _CategoryText(
+                      nameCategory: 'Wood gift',
                     ),
-                    SizedBox(width: 25,),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 55),
+                    Padding(
+                      padding: EdgeInsetsDirectional.only(end: 13),
                     ),
-                    SizedBox(width: 25,),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 55),
+                    _CategoryText(
+                      nameCategory: 'Tea cup',
                     ),
-                    SizedBox(width: 25,),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 55),
+                  ],
+                ),
+              ),
+              SizedBox(height: 35),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: const [
+                    _UnderCategoryCard(
+                      nameUnderCategory: 'Wood deck',
+                      nameIcon: Icons.wallet_giftcard_rounded,
                     ),
-                    SizedBox(width: 25,),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 55),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    _UnderCategoryCard(
+                      nameUnderCategory: 'Wood toys',
+                      nameIcon: Icons.toys_outlined,
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    _UnderCategoryCard(
+                      nameUnderCategory: 'Wood picture',
+                      nameIcon: Icons.photo_size_select_actual_outlined,
                     ),
                   ],
                 ),
@@ -100,7 +100,7 @@ class MainScreen extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {},
                     child: Text('See all'),
-                  )
+                  ),
                 ],
               ),
             ],
@@ -178,6 +178,70 @@ class _MainPageState extends State<MainPage> {
                 label: 'Профиль',
               ),
             ]),
+      ),
+    );
+  }
+}
+
+class _CategoryText extends StatelessWidget {
+  final String nameCategory;
+
+  const _CategoryText({required this.nameCategory});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(
+          Color(0xFF0ACF83),
+        ),
+      ),
+      onPressed: () {},
+      child: Text(
+        nameCategory,
+        style: TextStyle(fontSize: 18),
+      ),
+    );
+  }
+}
+
+class _UnderCategoryCard extends StatelessWidget {
+  final String nameUnderCategory;
+  final IconData nameIcon;
+
+  const _UnderCategoryCard(
+      {required this.nameUnderCategory, required this.nameIcon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
+      child: Row(
+        children: [
+          Column(
+            children: [
+              Text(nameUnderCategory, style: TextStyle(fontSize: 35),),
+              Row(
+                children: [
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        Color(0xFF0ACF83),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      'Shop now',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Icon(nameIcon, size: 45,),
+          SizedBox(width: 30,)
+        ],
       ),
     );
   }
