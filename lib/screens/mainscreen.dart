@@ -70,18 +70,18 @@ class MainScreen extends StatelessWidget {
                 child: Row(
                   children: const [
                     _UnderCategoryCard(
-                      nameUnderCategory: 'Wood deck',
+                      nameUnderCategory: 'Wood kitchen board',
                       nameIcon: Icons.wallet_giftcard_rounded,
                     ),
                     SizedBox(
-                      height: 50,
+                      width: 40,
                     ),
                     _UnderCategoryCard(
                       nameUnderCategory: 'Wood toys',
                       nameIcon: Icons.toys_outlined,
                     ),
                     SizedBox(
-                      height: 50,
+                      width: 40,
                     ),
                     _UnderCategoryCard(
                       nameUnderCategory: 'Wood picture',
@@ -91,7 +91,7 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 30,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -190,8 +190,12 @@ class _CategoryText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double widthButton = MediaQuery.of(context).size.width * 0.35;
     return ElevatedButton(
       style: ButtonStyle(
+        fixedSize: MaterialStateProperty.all(
+          Size.fromWidth(widthButton),
+        ),
         backgroundColor: MaterialStateProperty.all(
           Color(0xFF0ACF83),
         ),
@@ -199,7 +203,7 @@ class _CategoryText extends StatelessWidget {
       onPressed: () {},
       child: Text(
         nameCategory,
-        style: TextStyle(fontSize: 18),
+        style: TextStyle(fontSize: 15),
       ),
     );
   }
@@ -215,15 +219,36 @@ class _UnderCategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      width: MediaQuery.of(context).size.width * 0.85,
+      height: MediaQuery.of(context).size.height * 0.22,
+      decoration: BoxDecoration(
+        color: Colors.grey,
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Row(
         children: [
-          Column(
-            children: [
-              Text(nameUnderCategory, style: TextStyle(fontSize: 35),),
-              Row(
-                children: [
-                  ElevatedButton(
+          SizedBox(
+            width: 25,
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.55,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  height: MediaQuery.of(context).size.height * 0.14,
+                  child: Text(
+                    nameUnderCategory,
+                    style: TextStyle(
+                      fontSize: 28,
+                    ),
+                  ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.08,
+                  alignment: AlignmentDirectional.bottomStart,
+                  child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
                         Color(0xFF0ACF83),
@@ -232,15 +257,17 @@ class _UnderCategoryCard extends StatelessWidget {
                     onPressed: () {},
                     child: Text(
                       'Shop now',
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 14),
                     ),
                   ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
-          Icon(nameIcon, size: 45,),
-          SizedBox(width: 30,)
+          Icon(
+            nameIcon,
+            size: 80,
+          ),
         ],
       ),
     );
