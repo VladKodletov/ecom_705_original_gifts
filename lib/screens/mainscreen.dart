@@ -28,82 +28,117 @@ class MainScreen extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: 60,
+            height: 30,
           ),
           Text('place for search widget'),
           SizedBox(
-            height: 150,
+            height: 30,
           ),
-          Column(
-            children: [
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: const [
-                    _CategoryText(
-                      nameCategory: 'Wood gift',
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.only(end: 13),
-                    ),
-                    _CategoryText(
-                      nameCategory: 'Personal gift',
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.only(end: 13),
-                    ),
-                    _CategoryText(
-                      nameCategory: 'Wood gift',
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.only(end: 13),
-                    ),
-                    _CategoryText(
-                      nameCategory: 'Tea cup',
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 35),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: const [
-                    _UnderCategoryCard(
-                      nameUnderCategory: 'Wood kitchen board',
-                      nameIcon: Icons.wallet_giftcard_rounded,
-                    ),
-                    SizedBox(
-                      width: 40,
-                    ),
-                    _UnderCategoryCard(
-                      nameUnderCategory: 'Wood toys',
-                      nameIcon: Icons.toys_outlined,
-                    ),
-                    SizedBox(
-                      width: 40,
-                    ),
-                    _UnderCategoryCard(
-                      nameUnderCategory: 'Wood picture',
-                      nameIcon: Icons.photo_size_select_actual_outlined,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text('Featured Products'),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text('See all'),
+          Container(
+            padding: EdgeInsets.only(left: 8, top: 15, bottom: 10),
+            decoration: BoxDecoration(
+              // border: Border(top: BorderSide(),),
+              color: Colors.grey[400],
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: Column(
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: const [
+                      _CategoryText(
+                        nameCategory: 'Wood gift',
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.only(end: 13),
+                      ),
+                      _CategoryText(
+                        nameCategory: 'Personal gift',
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.only(end: 13),
+                      ),
+                      _CategoryText(
+                        nameCategory: 'Wood jewelry',
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.only(end: 13),
+                      ),
+                      _CategoryText(
+                        nameCategory: 'Tea cup',
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ],
+                ),
+                SizedBox(height: 25),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: const [
+                      _UnderCategoryCard(
+                        nameUnderCategory: 'Wood kitchen board',
+                        nameIcon: Icons.wallet_giftcard_rounded,
+                      ),
+                      SizedBox(
+                        width: 40,
+                      ),
+                      _UnderCategoryCard(
+                        nameUnderCategory: 'Wood toys',
+                        nameIcon: Icons.toys_outlined,
+                      ),
+                      SizedBox(
+                        width: 40,
+                      ),
+                      _UnderCategoryCard(
+                        nameUnderCategory: 'Wood picture',
+                        nameIcon: Icons.photo_size_select_actual_outlined,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('Featured Products'),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text('See all'),
+                    ),
+                  ],
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: const [
+                      _ProductsCard(
+                        nameProduct: 'Wood toy №9',
+                        nameProductIcon: Icons.toys_sharp,
+                        priceProduct: '450',
+                      ),
+                      _ProductsCard(
+                        nameProduct: 'Wood toy №12',
+                        nameProductIcon: Icons.toys_sharp,
+                        priceProduct: '650',
+                      ),
+                      _ProductsCard(
+                        nameProduct: 'Wood toy №8',
+                        nameProductIcon: Icons.toys_sharp,
+                        priceProduct: '350',
+                      ),
+                      _ProductsCard(
+                        nameProduct: 'Wood toy №3',
+                        nameProductIcon: Icons.toys_sharp,
+                        priceProduct: '850',
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       ),
@@ -213,8 +248,10 @@ class _UnderCategoryCard extends StatelessWidget {
   final String nameUnderCategory;
   final IconData nameIcon;
 
-  const _UnderCategoryCard(
-      {required this.nameUnderCategory, required this.nameIcon});
+  const _UnderCategoryCard({
+    required this.nameUnderCategory,
+    required this.nameIcon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -222,7 +259,7 @@ class _UnderCategoryCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.85,
       height: MediaQuery.of(context).size.height * 0.22,
       decoration: BoxDecoration(
-        color: Colors.grey,
+        color: Colors.grey[100],
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -270,6 +307,57 @@ class _UnderCategoryCard extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _ProductsCard extends StatelessWidget {
+  final IconData nameProductIcon;
+  final String nameProduct;
+  final String priceProduct;
+
+  const _ProductsCard({
+    required this.nameProductIcon,
+    required this.nameProduct,
+    required this.priceProduct,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          padding: EdgeInsets.all(8),
+          width: MediaQuery.of(context).size.width * 0.42,
+          height: MediaQuery.of(context).size.height * 0.20,
+          decoration: BoxDecoration(
+            color: Colors.grey[100],
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                nameProductIcon,
+                size: 80,
+              ),
+              Text(
+                nameProduct,
+                style: TextStyle(
+                  fontSize: 14,
+                ),
+              ),
+              Text(
+                'RUB ' + priceProduct,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          width: 6,
+        ),
+      ],
     );
   }
 }
