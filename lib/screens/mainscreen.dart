@@ -115,6 +115,16 @@ class MainScreen extends StatelessWidget {
                   child: Row(
                     children: const [
                       _ProductsCard(
+                        nameProduct: 'Wood toy "Car"',
+                        nameProductIcon: Icons.toys_sharp,
+                        priceProduct: '1150',
+                      ),
+                      _ProductsCard(
+                        nameProduct: 'Wood toy №28',
+                        nameProductIcon: Icons.toys_sharp,
+                        priceProduct: '250',
+                      ),
+                      _ProductsCard(
                         nameProduct: 'Wood toy №9',
                         nameProductIcon: Icons.toys_sharp,
                         priceProduct: '450',
