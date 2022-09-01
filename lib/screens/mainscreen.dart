@@ -28,18 +28,21 @@ class MainScreen extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           Text('place for search widget'),
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           Container(
-            padding: EdgeInsets.only(left: 8, top: 15, bottom: 10),
+            padding: EdgeInsets.only(left: 8, top: 15, bottom: 9.5),
             decoration: BoxDecoration(
               // border: Border(top: BorderSide(),),
               color: Colors.grey[400],
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12),
+                topRight: Radius.circular(12),
+              ),
             ),
             child: Column(
               children: [
@@ -98,17 +101,25 @@ class MainScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text('Featured Products'),
                     ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                          Color(0xFF0ACF83),
+                        ),
+                      ),
                       onPressed: () {},
                       child: Text('See all'),
                     ),
                   ],
+                ),
+                SizedBox(
+                  height: 14,
                 ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -266,8 +277,9 @@ class _UnderCategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(4),
       width: MediaQuery.of(context).size.width * 0.85,
-      height: MediaQuery.of(context).size.height * 0.22,
+      height: MediaQuery.of(context).size.height * 0.25,
       decoration: BoxDecoration(
         color: Colors.grey[100],
         borderRadius: BorderRadius.circular(12),
@@ -275,7 +287,7 @@ class _UnderCategoryCard extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: 25,
+            width: 10,
           ),
           Container(
             width: MediaQuery.of(context).size.width * 0.55,
@@ -337,7 +349,7 @@ class _ProductsCard extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.all(6),
           width: MediaQuery.of(context).size.width * 0.42,
           height: MediaQuery.of(context).size.height * 0.20,
           decoration: BoxDecoration(
