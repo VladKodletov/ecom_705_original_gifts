@@ -114,7 +114,7 @@ void _authent() {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 fixedSize: Size.fromHeight(55),
-                primary: const Color(0xFF0ACF83),
+                backgroundColor: const Color(0xFF0ACF83),
               ),
               onPressed: () {},
               child: const Text('Sign Up', style: TextStyle(fontSize: 20),),
