@@ -14,15 +14,33 @@ class MainPage extends StatefulWidget {
 }
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
-
-
 class _MainScreenState extends State<MainScreen> {
+  //наброски на логику поиска
+  // final _searchController = TextEditingController();
+
+  // void _searchGoods() {
+  //   final textEditing = _searchController.text;
+  //   if (textEditing.isNotEmpty) {
+  //     Row(
+  //       children: [
+  //         _ProductsCard
+  //       ],
+  //     );
+
+  //   }
+  // }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _searchController.addListener(_searchGoods);
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
               child: Container(
                 padding: EdgeInsets.only(left: 8, top: 12, bottom: 9.5),
                 decoration: BoxDecoration(
-                  color: Colors.grey[400],
+                  color: Colors.grey.withAlpha(65),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(12),
                     topRight: Radius.circular(12),
@@ -106,17 +124,12 @@ class _MainScreenState extends State<MainScreen> {
                       height: 20,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('Featured Products'),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                              Color(0xFF0ACF83),
-                            ),
-                          ),
+                        TextButton(
                           onPressed: () {},
-                          child: Text('See all'),
+                          child: Text('See all', style: TextStyle(color: Colors.black38),),
                         ),
                       ],
                     ),
@@ -206,7 +219,6 @@ class _MainPageState extends State<MainPage> {
             )),
         child: NavigationBar(
             height: 60,
-            // animationDuration: Duration(seconds: 2),
             selectedIndex: index,
             onDestinationSelected: (index) =>
                 setState(() => this.index = index),
@@ -325,17 +337,26 @@ class _UnderCategoryCard extends StatelessWidget {
                 Container(
                   height: MediaQuery.of(context).size.height * 0.08,
                   alignment: AlignmentDirectional.bottomStart,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                        Color(0xFF0ACF83),
+                  child: Row(
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Shop now',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF0ACF83),
+                          ),
+                        ),
                       ),
-                    ),
-                    onPressed: () {},
-                    child: Text(
-                      'Shop now',
-                      style: TextStyle(fontSize: 14),
-                    ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Icon(
+                        Icons.chevron_right_sharp,
+                        color: Color(0xFF0ACF83),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -388,7 +409,7 @@ class _ProductsCard extends StatelessWidget {
                 ),
               ),
               Text(
-                'RUB ' + priceProduct,
+                'RUB $priceProduct',
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
             ],
