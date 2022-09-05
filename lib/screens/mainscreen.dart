@@ -56,7 +56,7 @@ class _MainScreenState extends State<MainScreen> {
             child: Padding(
               padding: const EdgeInsets.only(top: 70.0),
               child: Container(
-                padding: EdgeInsets.only(left: 8, top: 12, bottom: 9.5),
+                padding: EdgeInsets.only(left: 12, top: 12, bottom: 9.5),
                 decoration: BoxDecoration(
                   color: Colors.grey.withAlpha(65),
                   borderRadius: BorderRadius.only(
@@ -104,14 +104,14 @@ class _MainScreenState extends State<MainScreen> {
                             nameIcon: Icons.wallet_giftcard_rounded,
                           ),
                           SizedBox(
-                            width: 40,
+                            width: 10,
                           ),
                           _UnderCategoryCard(
                             nameUnderCategory: 'Wood toys',
                             nameIcon: Icons.toys_outlined,
                           ),
                           SizedBox(
-                            width: 40,
+                            width: 10,
                           ),
                           _UnderCategoryCard(
                             nameUnderCategory: 'Wood picture',
@@ -129,7 +129,10 @@ class _MainScreenState extends State<MainScreen> {
                         Text('Featured Products'),
                         TextButton(
                           onPressed: () {},
-                          child: Text('See all', style: TextStyle(color: Colors.black38),),
+                          child: Text(
+                            'See all',
+                            style: TextStyle(color: Colors.black38),
+                          ),
                         ),
                       ],
                     ),
@@ -275,19 +278,27 @@ class _CategoryText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double widthButton = MediaQuery.of(context).size.width * 0.35;
-    return ElevatedButton(
+    return TextButton(
       style: ButtonStyle(
         fixedSize: MaterialStateProperty.all(
           Size.fromWidth(widthButton),
         ),
-        backgroundColor: MaterialStateProperty.all(
-          Color(0xFF0ACF83),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
         ),
+        // backgroundColor: MaterialStateProperty.all(
+        //   Color(0xFF0ACF83),
+        // ),
       ),
       onPressed: () {},
       child: Text(
         nameCategory,
-        style: TextStyle(fontSize: 15),
+        style: TextStyle(
+          fontSize: 15,
+          color: Colors.black38,
+        ),
       ),
     );
   }
@@ -416,7 +427,7 @@ class _ProductsCard extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: 6,
+          width: 10,
         ),
       ],
     );
