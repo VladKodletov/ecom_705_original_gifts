@@ -46,8 +46,11 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF0ACF83),
-        actions: const [
-          Icon(Icons.search),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: (() {}),
+          ),
         ],
       ),
       body: Stack(
@@ -68,31 +71,31 @@ class _MainScreenState extends State<MainScreen> {
                   children: [
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: const [
-                          _CategoryText(
-                            nameCategory: 'Wood gift',
+                      child: SelectCategory(
+                          // children: const [
+                          //   _CategoryText(
+                          //     nameCategory: 'Wood gift',
+                          //   ),
+                          //   Padding(
+                          //     padding: EdgeInsetsDirectional.only(end: 13),
+                          //   ),
+                          //   _CategoryText(
+                          //     nameCategory: 'Personal gift',
+                          //   ),
+                          //   Padding(
+                          //     padding: EdgeInsetsDirectional.only(end: 13),
+                          //   ),
+                          //   _CategoryText(
+                          //     nameCategory: 'Wood jewelry',
+                          //   ),
+                          //   Padding(
+                          //     padding: EdgeInsetsDirectional.only(end: 13),
+                          //   ),
+                          //   _CategoryText(
+                          //     nameCategory: 'Tea cup',
+                          //   ),
+                          // ],
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.only(end: 13),
-                          ),
-                          _CategoryText(
-                            nameCategory: 'Personal gift',
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.only(end: 13),
-                          ),
-                          _CategoryText(
-                            nameCategory: 'Wood jewelry',
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.only(end: 13),
-                          ),
-                          _CategoryText(
-                            nameCategory: 'Tea cup',
-                          ),
-                        ],
-                      ),
                     ),
                     SizedBox(height: 15),
                     SingleChildScrollView(
@@ -189,6 +192,7 @@ class _MainScreenState extends State<MainScreen> {
                 filled: true,
                 fillColor: Colors.white.withAlpha(230),
                 labelText: 'Search',
+                prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(),
               ),
             ),
@@ -270,36 +274,51 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-class _CategoryText extends StatelessWidget {
-  final String nameCategory;
+class SelectCategory extends StatefulWidget {
+  @override
+  State<SelectCategory> createState() => _SelectCategoryState();
+}
 
-  const _CategoryText({required this.nameCategory});
-
+class _SelectCategoryState extends State<SelectCategory> {
+  final List<bool> _selectedCategory = <bool>[
+    true,
+    false,
+    false,
+    false,
+  ];
+  List<Widget> categoryText = [
+    Text(
+      'Wood gift',
+    ),
+    Text(
+      'Personal gift',
+    ),
+    Text(
+      'Wood jewelry',
+    ),
+    Text(
+      'Tea cup',
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
-    double widthButton = MediaQuery.of(context).size.width * 0.35;
-    return TextButton(
-      style: ButtonStyle(
-        fixedSize: MaterialStateProperty.all(
-          Size.fromWidth(widthButton),
-        ),
-        shape: MaterialStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
-        ),
-        // backgroundColor: MaterialStateProperty.all(
-        //   Color(0xFF0ACF83),
-        // ),
-      ),
-      onPressed: () {},
-      child: Text(
-        nameCategory,
-        style: TextStyle(
-          fontSize: 15,
-          color: Colors.black38,
-        ),
-      ),
+    double widthCategory = MediaQuery.of(context).size.width * 0.28;
+    double heightCategory = MediaQuery.of(context).size.width * 0.07;
+    return ToggleButtons(
+      onPressed: (index) {
+        setState(() {
+          for (int i = 0; i < _selectedCategory.length; i++) {
+            _selectedCategory[i] = i == index;
+          }
+        });
+      },
+      renderBorder: false,
+      constraints:
+          BoxConstraints(minWidth: widthCategory, minHeight: heightCategory),
+      selectedColor: Colors.white,
+      fillColor: Color(0xFF0ACF83),
+      isSelected: _selectedCategory,
+      children: categoryText,
     );
   }
 }
@@ -352,20 +371,24 @@ class _UnderCategoryCard extends StatelessWidget {
                     children: [
                       TextButton(
                         onPressed: () {},
-                        child: Text(
-                          'Shop now',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Color(0xFF0ACF83),
-                          ),
+                        child: Row(
+                          children: const [
+                            Text(
+                              'Shop now',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Color(0xFF0ACF83),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Icon(
+                              Icons.arrow_circle_right_outlined,
+                              color: Color(0xFF0ACF83),
+                            ),
+                          ],
                         ),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Icon(
-                        Icons.chevron_right_sharp,
-                        color: Color(0xFF0ACF83),
                       ),
                     ],
                   ),
