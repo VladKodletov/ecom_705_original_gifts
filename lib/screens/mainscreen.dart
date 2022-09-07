@@ -104,21 +104,21 @@ class _MainScreenState extends State<MainScreen> {
                         children: const [
                           _UnderCategoryCard(
                             nameUnderCategory: 'Wood kitchen board',
-                            nameIcon: Icons.wallet_giftcard_rounded,
+                            picturesUnderCategory: 'https://drive.google.com/file/d/1CZyzQeQy6oWvRZsYRX18L8PcxiuOejSQ/view?usp=sharing',
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           _UnderCategoryCard(
                             nameUnderCategory: 'Wood toys',
-                            nameIcon: Icons.toys_outlined,
+                            picturesUnderCategory: 'https://drive.google.com/file/d/1SNmGGWbnywhlHpAhIRMJ24mKk78dJLrB/view?usp=sharing',
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           _UnderCategoryCard(
                             nameUnderCategory: 'Wood picture',
-                            nameIcon: Icons.photo_size_select_actual_outlined,
+                            picturesUnderCategory: 'https://drive.google.com/file/d/1i4yVJCSEevvtHxMU81PrkK8b_pT0mx87/view?usp=sharing',
                           ),
                         ],
                       ),
@@ -325,11 +325,11 @@ class _SelectCategoryState extends State<SelectCategory> {
 
 class _UnderCategoryCard extends StatelessWidget {
   final String nameUnderCategory;
-  final IconData nameIcon;
+  final String picturesUnderCategory;
 
   const _UnderCategoryCard({
     required this.nameUnderCategory,
-    required this.nameIcon,
+    required this.picturesUnderCategory,
   });
 
   @override
@@ -396,9 +396,14 @@ class _UnderCategoryCard extends StatelessWidget {
               ],
             ),
           ),
-          Icon(
-            nameIcon,
-            size: 80,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.network(
+              picturesUnderCategory,
+              width: MediaQuery.of(context).size.height * 0.10,
+              height: MediaQuery.of(context).size.height * 0.08,
+              fit: BoxFit.cover,
+            ),
           ),
         ],
       ),
