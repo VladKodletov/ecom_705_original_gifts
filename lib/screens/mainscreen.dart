@@ -101,24 +101,31 @@ class _MainScreenState extends State<MainScreen> {
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        children: const [
+                        children:  [
                           _UnderCategoryCard(
                             nameUnderCategory: 'Wood kitchen board',
-                            picturesUnderCategory: 'https://drive.google.com/file/d/1CZyzQeQy6oWvRZsYRX18L8PcxiuOejSQ/view?usp=sharing',
+                            picturesUnderCategory:
+                                'https://i.ibb.co/6ZbnbxG/2.jpg',
+                                
+
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           _UnderCategoryCard(
                             nameUnderCategory: 'Wood toys',
-                            picturesUnderCategory: 'https://drive.google.com/file/d/1SNmGGWbnywhlHpAhIRMJ24mKk78dJLrB/view?usp=sharing',
+                            picturesUnderCategory:
+                                'https://i.ibb.co/2gdzgm7/5.jpg',
+                                 
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           _UnderCategoryCard(
                             nameUnderCategory: 'Wood picture',
-                            picturesUnderCategory: 'https://drive.google.com/file/d/1i4yVJCSEevvtHxMU81PrkK8b_pT0mx87/view?usp=sharing',
+                            picturesUnderCategory:
+                                'https://i.ibb.co/F0rBHxk/9.jpg',
+                                 
                           ),
                         ],
                       ),
@@ -325,9 +332,9 @@ class _SelectCategoryState extends State<SelectCategory> {
 
 class _UnderCategoryCard extends StatelessWidget {
   final String nameUnderCategory;
-  final String picturesUnderCategory;
+  String picturesUnderCategory;
 
-  const _UnderCategoryCard({
+  _UnderCategoryCard({
     required this.nameUnderCategory,
     required this.picturesUnderCategory,
   });
@@ -349,13 +356,13 @@ class _UnderCategoryCard extends StatelessWidget {
           ),
           // ignore: sized_box_for_whitespace
           Container(
-            width: MediaQuery.of(context).size.width * 0.55,
+            width: MediaQuery.of(context).size.width * 0.35,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // ignore: sized_box_for_whitespace
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.25,
+                  width: MediaQuery.of(context).size.width * 0.24,
                   height: MediaQuery.of(context).size.height * 0.14,
                   child: Text(
                     nameUnderCategory,
@@ -397,12 +404,13 @@ class _UnderCategoryCard extends StatelessWidget {
             ),
           ),
           ClipRRect(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(24),
             child: Image.network(
               picturesUnderCategory,
-              width: MediaQuery.of(context).size.height * 0.10,
-              height: MediaQuery.of(context).size.height * 0.08,
+              width: MediaQuery.of(context).size.width * 0.40,
+              height: MediaQuery.of(context).size.height * 0.40,
               fit: BoxFit.cover,
+              
             ),
           ),
         ],
