@@ -101,13 +101,11 @@ class _MainScreenState extends State<MainScreen> {
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        children:  [
+                        children: [
                           _UnderCategoryCard(
                             nameUnderCategory: 'Wood kitchen board',
                             picturesUnderCategory:
                                 'https://i.ibb.co/6ZbnbxG/2.jpg',
-                                
-
                           ),
                           SizedBox(
                             width: 10,
@@ -116,7 +114,6 @@ class _MainScreenState extends State<MainScreen> {
                             nameUnderCategory: 'Wood toys',
                             picturesUnderCategory:
                                 'https://i.ibb.co/2gdzgm7/5.jpg',
-                                 
                           ),
                           SizedBox(
                             width: 10,
@@ -125,7 +122,6 @@ class _MainScreenState extends State<MainScreen> {
                             nameUnderCategory: 'Wood picture',
                             picturesUnderCategory:
                                 'https://i.ibb.co/F0rBHxk/9.jpg',
-                                 
                           ),
                         ],
                       ),
@@ -155,32 +151,32 @@ class _MainScreenState extends State<MainScreen> {
                         children: const [
                           _ProductsCard(
                             nameProduct: 'Wood toy "Car"',
-                            nameProductIcon: Icons.toys_sharp,
+                            imageProduct: 'assets/image/6.jpg',
                             priceProduct: '1150',
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №28',
-                            nameProductIcon: Icons.toys_sharp,
+                            imageProduct: 'assets/image/8.jpg',
                             priceProduct: '250',
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №9',
-                            nameProductIcon: Icons.toys_sharp,
+                            imageProduct: 'assets/image/7.jpg',
                             priceProduct: '450',
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №12',
-                            nameProductIcon: Icons.toys_sharp,
+                            imageProduct: 'assets/image/8.jpg',
                             priceProduct: '650',
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №8',
-                            nameProductIcon: Icons.toys_sharp,
+                            imageProduct: 'assets/image/6.jpg',
                             priceProduct: '350',
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №3',
-                            nameProductIcon: Icons.toys_sharp,
+                            imageProduct: 'assets/image/8.jpg',
                             priceProduct: '850',
                           ),
                         ],
@@ -407,10 +403,10 @@ class _UnderCategoryCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
             child: Image.network(
               picturesUnderCategory,
-              width: MediaQuery.of(context).size.width * 0.40,
-              height: MediaQuery.of(context).size.height * 0.40,
+              width: MediaQuery.of(context).size.width * 0.45,
+              height: MediaQuery.of(context).size.height * 0.32,
               fit: BoxFit.cover,
-              
+              scale: 0.8,
             ),
           ),
         ],
@@ -420,12 +416,12 @@ class _UnderCategoryCard extends StatelessWidget {
 }
 
 class _ProductsCard extends StatelessWidget {
-  final IconData nameProductIcon;
+  final String imageProduct;
   final String nameProduct;
   final String priceProduct;
 
   const _ProductsCard({
-    required this.nameProductIcon,
+    required this.imageProduct,
     required this.nameProduct,
     required this.priceProduct,
   });
@@ -445,9 +441,17 @@ class _ProductsCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
-                nameProductIcon,
-                size: 80,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  imageProduct,
+                  width: MediaQuery.of(context).size.width * 0.28,
+                  height: MediaQuery.of(context).size.height * 0.12,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(
+                height: 4,
               ),
               Text(
                 nameProduct,
