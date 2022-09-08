@@ -5,16 +5,53 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var imageProfile =
+        'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg';
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0ACF83),
-      ),
-      body: Center(
-        child: Text(
-          'Профиль',
-          style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+        foregroundColor: Colors.black,
+        centerTitle: true,
+        title: const Text(
+          'Profile',
         ),
+        backgroundColor: Colors.white,
       ),
+      body: Container(
+        padding: EdgeInsets.all(8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              ClipOval(
+                child: Image.network(
+                  imageProfile,
+                  width: 150,
+                  height: 150,
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Column(
+                children: const [
+                  Text('data'),
+                  Text('data'),
+                ],
+              )
+            ],
+          ),
+          Text('data'),
+          Text('data'),
+          Text('data'),
+          Text('data'),
+          Text('data'),
+          Text('data'),
+          Text('data'),
+          Text('data'),
+          Text('data'),
+        ],
+      )),
     );
   }
 }
