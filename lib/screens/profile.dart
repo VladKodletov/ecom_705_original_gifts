@@ -1,14 +1,15 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  final String imageProfile =
+      'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg';
+  final String nameProfile = 'Базилик Киберскотч';
+  final String emailProfile = 'sherlock@gmail.com';
 
   @override
   Widget build(BuildContext context) {
-    var imageProfile =
-        'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg';
-    const nameProfile = 'Базилик Киберскотч';
-    const emailProfile = 'sherlock@gmail.com';
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.black,
@@ -40,19 +41,19 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children:  [
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
                           nameProfile,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                       Text(
                         emailProfile,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black38,
                         ),
                       ),
@@ -62,135 +63,98 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-          Divider(
-            color: Colors.black38,
-            height: 1,
+          _MyProfileWidget(),
+          _ProfileCategoryWidget(
+            categoryName: 'General',
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 8.0,
-              bottom: 0,
-              top: 12,
-            ),
-            child: Text(
-              'General',
-              style: TextStyle(color: Colors.black38, fontSize: 12),
-            ),
+          _ProfileWidgetButton(
+            nameButton: 'Edit profile',
           ),
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Edit profile',
-              textAlign: TextAlign.left,
-              style: TextStyle(color: Colors.black),
-            ),
+          _MyProfileWidget(),
+          _ProfileWidgetButton(
+            nameButton: 'Notifications',
           ),
-          Divider(
-            color: Colors.black38,
-            height: 1,
+          _MyProfileWidget(),
+          _ProfileWidgetButton(
+            nameButton: 'Wishlist',
           ),
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Notifications',
-              textAlign: TextAlign.left,
-              style: TextStyle(color: Colors.black),
-            ),
+          _MyProfileWidget(),
+          _ProfileCategoryWidget(
+            categoryName: 'Legal',
           ),
-          Divider(
-            color: Colors.black38,
-            height: 1,
+          _ProfileWidgetButton(
+            nameButton: 'Terms of Use',
           ),
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Wishlist',
-              textAlign: TextAlign.left,
-              style: TextStyle(color: Colors.black),
-            ),
+          _MyProfileWidget(),
+          _ProfileWidgetButton(
+            nameButton: 'Privacy Policy',
           ),
-          Divider(
-            color: Colors.black38,
-            height: 1,
+          _MyProfileWidget(),
+          _ProfileCategoryWidget(
+            categoryName: 'Personal',
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 8.0,
-              bottom: 0,
-              top: 12,
-            ),
-            child: Text(
-              'Legal',
-              style: TextStyle(
-                color: Colors.black38,
-                fontSize: 12,
-              ),
-            ),
+          _ProfileWidgetButton(
+            nameButton: 'Report a bug',
           ),
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Terms of Use',
-              textAlign: TextAlign.left,
-              style: TextStyle(color: Colors.black),
-            ),
+          _MyProfileWidget(),
+          _ProfileWidgetButton(
+            nameButton: 'Logout',
           ),
-          Divider(
-            color: Colors.black38,
-            height: 1,
-          ),
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Privacy Policy',
-              textAlign: TextAlign.left,
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-          Divider(
-            color: Colors.black38,
-            height: 1,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 8.0,
-              bottom: 0,
-              top: 12,
-            ),
-            child: Text(
-              'Personal',
-              style: TextStyle(
-                color: Colors.black38,
-                fontSize: 12,
-              ),
-            ),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Report a bug',
-              textAlign: TextAlign.left,
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-          Divider(
-            color: Colors.black38,
-            height: 1,
-          ),
-          TextButton(
-            onPressed: () {},
-            child: Text(
-              'Logout',
-              textAlign: TextAlign.left,
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-          Divider(
-            color: Colors.black38,
-            height: 1,
-          ),
+          _MyProfileWidget(),
         ],
       ),
+    );
+  }
+}
+
+class _ProfileCategoryWidget extends StatelessWidget {
+  final String categoryName;
+
+  const _ProfileCategoryWidget({super.key, required this.categoryName});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 8.0,
+        bottom: 0,
+        top: 12,
+      ),
+      child: Text(
+        categoryName,
+        style: TextStyle(
+          color: Colors.black38,
+          fontSize: 12,
+        ),
+      ),
+    );
+  }
+}
+
+class _ProfileWidgetButton extends StatelessWidget {
+  final String nameButton;
+
+  const _ProfileWidgetButton({super.key, required this.nameButton});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      child: Text(
+        nameButton,
+        textAlign: TextAlign.left,
+        style: TextStyle(color: Colors.black),
+      ),
+    );
+  }
+}
+
+class _MyProfileWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Divider(
+      color: Colors.black38,
+      height: 1,
     );
   }
 }

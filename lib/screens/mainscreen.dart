@@ -45,7 +45,18 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0ACF83),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.green,
+                Color(0xFF0ACF83),
+              ],
+              begin: Alignment.bottomRight,
+              end: Alignment.topLeft,
+            ),
+          ),
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.search),
