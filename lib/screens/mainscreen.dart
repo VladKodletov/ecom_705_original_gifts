@@ -57,12 +57,6 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: (() {}),
-          ),
-        ],
       ),
       body: Stack(
         children: [
@@ -82,31 +76,7 @@ class _MainScreenState extends State<MainScreen> {
                   children: [
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: SelectCategory(
-                          // children: const [
-                          //   _CategoryText(
-                          //     nameCategory: 'Wood gift',
-                          //   ),
-                          //   Padding(
-                          //     padding: EdgeInsetsDirectional.only(end: 13),
-                          //   ),
-                          //   _CategoryText(
-                          //     nameCategory: 'Personal gift',
-                          //   ),
-                          //   Padding(
-                          //     padding: EdgeInsetsDirectional.only(end: 13),
-                          //   ),
-                          //   _CategoryText(
-                          //     nameCategory: 'Wood jewelry',
-                          //   ),
-                          //   Padding(
-                          //     padding: EdgeInsetsDirectional.only(end: 13),
-                          //   ),
-                          //   _CategoryText(
-                          //     nameCategory: 'Tea cup',
-                          //   ),
-                          // ],
-                          ),
+                      child: SelectCategory(),
                     ),
                     SizedBox(height: 15),
                     SingleChildScrollView(
@@ -231,7 +201,7 @@ class _MainPageState extends State<MainPage> {
       body: screensNavigation[index],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-            backgroundColor: Color.fromARGB(255, 151, 247, 210),
+            backgroundColor: Color.fromARGB(255, 205, 255, 236),
             labelTextStyle: MaterialStateProperty.all(
               TextStyle(
                 fontSize: 14,

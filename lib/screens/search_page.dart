@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ShoppingCart extends StatelessWidget {
-  const ShoppingCart({Key? key}) : super(key: key);
+class SearchScreen extends StatelessWidget {
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +20,17 @@ class ShoppingCart extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: Text(
-          'Корзина',
-          style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextField(
+          decoration: InputDecoration(
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            filled: true,
+            fillColor: Colors.white.withAlpha(230),
+            labelText: 'Search',
+            prefixIcon: Icon(Icons.search),
+            border: OutlineInputBorder(),
+          ),
         ),
       ),
     );

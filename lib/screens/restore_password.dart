@@ -13,10 +13,21 @@ class _RestorePasswordState extends State<RestorePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[600],
+      // backgroundColor: 
+      // Colors.teal[600],
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0ACF83),
-        title: const Text('App Shop'),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.green,
+                Color(0xFF0ACF83),
+              ],
+              begin: Alignment.bottomRight,
+              end: Alignment.topLeft,
+            ),
+          ),
+        ),
       ),
       body: const RestPassPage(),
     );
@@ -28,35 +39,48 @@ class RestPassPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: ListView(
-        children: const [
-          SizedBox(
-            height: 120,
-          ),
-          Text(
-            '705',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 52,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+    return Container(
+      decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.green.shade900,
+                Colors.green,
+                
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
           ),
-          SizedBox(
-            height: 15,
-          ),
-          Text(
-            'original gifts',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18, color: Colors.white),
-          ),
-          SizedBox(
-            height: 80,
-          ),
-          InputEmailForm(),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: ListView(
+          children: const [
+            SizedBox(
+              height: 120,
+            ),
+            Text(
+              '705',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 52,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Text(
+              'original gifts',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+            SizedBox(
+              height: 80,
+            ),
+            InputEmailForm(),
+          ],
+        ),
       ),
     );
   }

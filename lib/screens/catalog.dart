@@ -7,17 +7,29 @@ class CatalogScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0ACF83),
-        actions: [
-          Icon(Icons.search),
-        ],
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.green,
+                Color(0xFF0ACF83),
+              ],
+              begin: Alignment.bottomRight,
+              end: Alignment.topLeft,
+            ),
+          ),
+        ),
       ),
-      body: Center(
-        child: Text(
-          'Каталог',
-          style: TextStyle(
-            fontSize: 45,
-            fontWeight: FontWeight.bold,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextField(
+          decoration: InputDecoration(
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            filled: true,
+            fillColor: Colors.white.withAlpha(230),
+            labelText: 'Search',
+            prefixIcon: Icon(Icons.search),
+            border: OutlineInputBorder(),
           ),
         ),
       ),
