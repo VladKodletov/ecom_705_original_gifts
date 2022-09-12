@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:ecom_705_original_gifts/screens/product_screen.dart';
+
 import 'profile.dart';
 import 'package:flutter/material.dart';
 
@@ -82,7 +84,7 @@ class _MainScreenState extends State<MainScreen> {
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        children: [
+                        children: const [
                           _UnderCategoryCard(
                             nameUnderCategory: 'Wood kitchen board',
                             picturesUnderCategory:
@@ -309,92 +311,97 @@ class _SelectCategoryState extends State<SelectCategory> {
 
 class _UnderCategoryCard extends StatelessWidget {
   final String nameUnderCategory;
-  String picturesUnderCategory;
+  final String picturesUnderCategory;
 
-  _UnderCategoryCard({
+  const _UnderCategoryCard({
     required this.nameUnderCategory,
     required this.picturesUnderCategory,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(4),
-      width: MediaQuery.of(context).size.width * 0.85,
-      height: MediaQuery.of(context).size.height * 0.25,
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
+    return Material(
+      borderRadius: BorderRadius.circular(12),
+      child: InkWell(
+        onTap: () {},
         borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 10,
-          ),
-          // ignore: sized_box_for_whitespace
-          Container(
-            width: MediaQuery.of(context).size.width * 0.35,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // ignore: sized_box_for_whitespace
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.24,
-                  height: MediaQuery.of(context).size.height * 0.14,
-                  child: Text(
-                    nameUnderCategory,
-                    style: TextStyle(
-                      fontSize: 28,
-                    ),
-                  ),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.08,
-                  alignment: AlignmentDirectional.bottomStart,
-                  child: Row(
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: Row(
-                          children: const [
-                            Text(
-                              'Shop now',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF0ACF83),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Icon(
-                              Icons.arrow_circle_right_outlined,
-                              color: Color(0xFF0ACF83),
-                            ),
-                          ],
+        child: Container(
+          padding: EdgeInsets.all(4),
+          width: MediaQuery.of(context).size.width * 0.85,
+          height: MediaQuery.of(context).size.height * 0.25,
+          child: Row(
+            children: [
+              SizedBox(
+                width: 10,
+              ),
+              // ignore: sized_box_for_whitespace
+              Container(
+                width: MediaQuery.of(context).size.width * 0.35,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // ignore: sized_box_for_whitespace
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.24,
+                      height: MediaQuery.of(context).size.height * 0.14,
+                      child: Text(
+                        nameUnderCategory,
+                        style: TextStyle(
+                          fontSize: 28,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.08,
+                      alignment: AlignmentDirectional.bottomStart,
+                      child: Row(
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              children: const [
+                                Text(
+                                  'Shop now',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF0ACF83),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Icon(
+                                  Icons.arrow_circle_right_outlined,
+                                  color: Color(0xFF0ACF83),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  picturesUnderCategory,
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  height: MediaQuery.of(context).size.height * 0.32,
+                  fit: BoxFit.cover,
+                  scale: 0.8,
+                ),
+              ),
+            ],
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(24),
-            child: Image.network(
-              picturesUnderCategory,
-              width: MediaQuery.of(context).size.width * 0.45,
-              height: MediaQuery.of(context).size.height * 0.32,
-              fit: BoxFit.cover,
-              scale: 0.8,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
 }
+
+
 
 class _ProductsCard extends StatelessWidget {
   final String imageProduct;
@@ -411,53 +418,48 @@ class _ProductsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Stack(
-          children: [
-            Material(
-              borderRadius: BorderRadius.circular(12),
-              child: InkWell(
-                borderRadius: BorderRadius.circular(12),
-                onTap: () {},
-                child: Container(
-                  padding: EdgeInsets.all(6),
-                  width: MediaQuery.of(context).size.width * 0.42,
-                  height: MediaQuery.of(context).size.height * 0.20,
-                  // decoration: BoxDecoration(
-                  //   color: Colors.grey[100],
-                  //   borderRadius: BorderRadius.circular(12),
-                  // ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.asset(
-                          imageProduct,
-                          width: MediaQuery.of(context).size.width * 0.28,
-                          height: MediaQuery.of(context).size.height * 0.12,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        nameProduct,
-                        style: TextStyle(
-                          fontSize: 14,
-                        ),
-                      ),
-                      Text(
-                        'RUB $priceProduct',
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
-                      ),
-                    ],
+        Material(
+          borderRadius: BorderRadius.circular(12),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.all(6),
+              width: MediaQuery.of(context).size.width * 0.42,
+              height: MediaQuery.of(context).size.height * 0.20,
+              // decoration: BoxDecoration(
+              //   color: Colors.grey[100],
+              //   borderRadius: BorderRadius.circular(12),
+              // ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      imageProduct,
+                      width: MediaQuery.of(context).size.width * 0.28,
+                      height: MediaQuery.of(context).size.height * 0.12,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Text(
+                    nameProduct,
+                    style: TextStyle(
+                      fontSize: 14,
+                    ),
+                  ),
+                  Text(
+                    'RUB $priceProduct',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
         SizedBox(
           width: 10,
