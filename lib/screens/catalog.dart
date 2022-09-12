@@ -8,7 +8,7 @@ class CatalogScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.green,
@@ -23,13 +23,14 @@ class CatalogScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: TextField(
+          onChanged: (value) {},
           decoration: InputDecoration(
             floatingLabelBehavior: FloatingLabelBehavior.never,
             filled: true,
             fillColor: Colors.white.withAlpha(230),
             labelText: 'Search',
-            prefixIcon: Icon(Icons.search),
-            border: OutlineInputBorder(),
+            prefixIcon: const Icon(Icons.search),
+            border: const OutlineInputBorder(),
           ),
         ),
       ),

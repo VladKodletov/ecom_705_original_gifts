@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:ecom_705_original_gifts/screens/product_screen.dart';
-
 import 'profile.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +14,7 @@ class MainPage extends StatefulWidget {
 }
 
 class MainScreen extends StatefulWidget {
-  MainScreen({Key? key}) : super(key: key);
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -50,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
+              colors: const [
                 Colors.green,
                 Color(0xFF0ACF83),
               ],
@@ -173,6 +171,7 @@ class _MainScreenState extends State<MainScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
+              onChanged: (value) {},
               decoration: InputDecoration(
                 floatingLabelBehavior: FloatingLabelBehavior.never,
                 filled: true,
@@ -261,6 +260,8 @@ class _MainPageState extends State<MainPage> {
 }
 
 class SelectCategory extends StatefulWidget {
+  const SelectCategory({super.key});
+
   @override
   State<SelectCategory> createState() => _SelectCategoryState();
 }
@@ -400,8 +401,6 @@ class _UnderCategoryCard extends StatelessWidget {
     );
   }
 }
-
-
 
 class _ProductsCard extends StatelessWidget {
   final String imageProduct;

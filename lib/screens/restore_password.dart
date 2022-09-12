@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'authent.dart';
-
 class RestorePassword extends StatefulWidget {
   const RestorePassword({Key? key}) : super(key: key);
 
@@ -13,11 +11,11 @@ class _RestorePasswordState extends State<RestorePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: 
+      // backgroundColor:
       // Colors.teal[600],
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.green,
@@ -41,16 +39,15 @@ class RestPassPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.green.shade900,
-                Colors.green,
-                
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
+        gradient: LinearGradient(
+          colors: [
+            Colors.green.shade900,
+            Colors.green,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: ListView(
@@ -118,8 +115,8 @@ class _InputEmailFormState extends State<InputEmailForm> {
           children: [
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                fixedSize: Size.fromHeight(55),
-                primary: const Color(0xFF0ACF83),
+                fixedSize: const Size.fromHeight(55),
+                backgroundColor: const Color(0xFF0ACF83),
               ),
               onPressed: () {},
               child: const Text(

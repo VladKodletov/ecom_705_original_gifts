@@ -8,7 +8,7 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.green,
@@ -28,8 +28,8 @@ class SearchScreen extends StatelessWidget {
             filled: true,
             fillColor: Colors.white.withAlpha(230),
             labelText: 'Search',
-            prefixIcon: Icon(Icons.search),
-            border: OutlineInputBorder(),
+            prefixIcon: const Icon(Icons.search),
+            border: const OutlineInputBorder(),
           ),
         ),
       ),

@@ -8,6 +8,8 @@ class ProfileScreen extends StatelessWidget {
   final String nameProfile = 'Базилик Киберскотч';
   final String emailProfile = 'sherlock@gmail.com';
 
+  const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  [
+                    children: [
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
@@ -110,7 +112,7 @@ class ProfileScreen extends StatelessWidget {
 class _ProfileCategoryWidget extends StatelessWidget {
   final String categoryName;
 
-  const _ProfileCategoryWidget({super.key, required this.categoryName});
+  const _ProfileCategoryWidget({required this.categoryName});
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +136,7 @@ class _ProfileCategoryWidget extends StatelessWidget {
 class _ProfileWidgetButton extends StatelessWidget {
   final String nameButton;
 
-  const _ProfileWidgetButton({super.key, required this.nameButton});
+  const _ProfileWidgetButton({required this.nameButton});
 
   @override
   Widget build(BuildContext context) {

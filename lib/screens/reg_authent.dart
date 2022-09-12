@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'authent.dart';
-
 class RegScreenAuth extends StatefulWidget {
   const RegScreenAuth({Key? key}) : super(key: key);
 
@@ -16,7 +14,7 @@ class _RegScreenAuthState extends State<RegScreenAuth> {
       backgroundColor: Colors.teal[600],
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.green,
@@ -138,7 +136,7 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
           children: [
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                fixedSize: Size.fromHeight(55),
+                fixedSize: const Size.fromHeight(55),
                 backgroundColor: const Color(0xFF0ACF83),
               ),
               onPressed: () {},

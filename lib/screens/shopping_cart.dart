@@ -8,7 +8,7 @@ class ShoppingCart extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.green,
@@ -20,7 +20,7 @@ class ShoppingCart extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Корзина',
           style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),

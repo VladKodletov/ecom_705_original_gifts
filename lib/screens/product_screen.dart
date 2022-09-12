@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ProductScreen extends StatelessWidget {
+  const ProductScreen({super.key});
+
   // const ProductScreen({Key? key}) : super(key: key);
 
   @override
@@ -8,7 +10,7 @@ class ProductScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.green,
@@ -20,7 +22,7 @@ class ProductScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Карточка товара',
           style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),

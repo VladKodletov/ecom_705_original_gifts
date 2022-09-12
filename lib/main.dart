@@ -10,10 +10,10 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => ScreenAuth(),
-        '/reg_screen': (context) => RegScreenAuth(),
-        '/restore_password': (context) => RestorePassword(),
-        '/mainscreen': (context) => MainPage(),
+        '/': (context) => const ScreenAuth(),
+        '/reg_screen': (context) => const RegScreenAuth(),
+        '/restore_password': (context) => const RestorePassword(),
+        '/mainscreen': (context) => const MainPage(),
       },
       initialRoute: '/',
       // home: const ScreenAuth(),

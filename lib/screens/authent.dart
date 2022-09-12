@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'reg_authent.dart';
-import 'restore_password.dart';
-
 class ScreenAuth extends StatefulWidget {
   const ScreenAuth({Key? key}) : super(key: key);
 
@@ -17,7 +14,7 @@ class _ScreenAuthState extends State<ScreenAuth> {
       backgroundColor: Colors.teal[600],
       appBar: AppBar(
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.green,
@@ -41,16 +38,15 @@ class HeaderPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.green.shade900,
-                Colors.green,
-                
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
+        gradient: LinearGradient(
+          colors: [
+            Colors.green.shade900,
+            Colors.green,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: ListView(
@@ -111,7 +107,6 @@ class _AuthInputFormState extends State<AuthInputForm> {
 
   @override
   void setState(VoidCallback fn) {
-    // TODO: implement setState
     super.setState(fn);
   }
 
@@ -167,8 +162,8 @@ class _AuthInputFormState extends State<AuthInputForm> {
           children: [
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                fixedSize: Size.fromHeight(55),
-                primary: const Color(0xFF0ACF83),
+                fixedSize: const Size.fromHeight(55),
+                backgroundColor: const Color(0xFF0ACF83),
               ),
               onPressed: _mainScreen,
               child: const Text(
