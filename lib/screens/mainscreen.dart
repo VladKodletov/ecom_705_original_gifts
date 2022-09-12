@@ -413,47 +413,50 @@ class _ProductsCard extends StatelessWidget {
       children: [
         Stack(
           children: [
-            Container(
-              padding: EdgeInsets.all(6),
-              width: MediaQuery.of(context).size.width * 0.42,
-              height: MediaQuery.of(context).size.height * 0.20,
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
+            Material(
+              borderRadius: BorderRadius.circular(12),
+              child: InkWell(
                 borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      imageProduct,
-                      width: MediaQuery.of(context).size.width * 0.28,
-                      height: MediaQuery.of(context).size.height * 0.12,
-                      fit: BoxFit.cover,
-                    ),
+                onTap: () {},
+                child: Container(
+                  padding: EdgeInsets.all(6),
+                  width: MediaQuery.of(context).size.width * 0.42,
+                  height: MediaQuery.of(context).size.height * 0.20,
+                  // decoration: BoxDecoration(
+                  //   color: Colors.grey[100],
+                  //   borderRadius: BorderRadius.circular(12),
+                  // ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.asset(
+                          imageProduct,
+                          width: MediaQuery.of(context).size.width * 0.28,
+                          height: MediaQuery.of(context).size.height * 0.12,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        nameProduct,
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        'RUB $priceProduct',
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    nameProduct,
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                  Text(
-                    'RUB $priceProduct',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
-                ],
+                ),
               ),
             ),
-            Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: () {},
-                )),
           ],
         ),
         SizedBox(
