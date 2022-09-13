@@ -22,15 +22,73 @@ class CatalogScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: TextField(
-          onChanged: (value) {},
-          decoration: InputDecoration(
-            floatingLabelBehavior: FloatingLabelBehavior.never,
-            filled: true,
-            fillColor: Colors.white.withAlpha(230),
-            labelText: 'Search',
-            prefixIcon: const Icon(Icons.search),
-            border: const OutlineInputBorder(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              TextField(
+                onChanged: (value) {},
+                decoration: InputDecoration(
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                  filled: true,
+                  fillColor: Colors.white.withAlpha(230),
+                  labelText: 'Search',
+                  prefixIcon: const Icon(Icons.search),
+                  border: const OutlineInputBorder(),
+                ),
+              ),
+              ExpansionTile(
+                title: Text('Personal gift'),
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: ListTile(
+                      title: Text('Personal picture'),
+                      onTap: () {},
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: ExpansionTile(
+                      title: Text('Personal jewelry'),
+                      children: [
+                        ListTile(
+                          title: Text('Personal ring'),
+                          onTap: () {},
+                        ),
+                        ListTile(
+                          title: Text('Personal earrings'),
+                          onTap: () {},
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: Text('Wood gift'),
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: ListTile(
+                      title: Text('Wood toys'),
+                      onTap: () {},
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: ListTile(
+                      title: Text('Wood kitchen board'),
+                      onTap: () {},
+                    ),
+                  ),
+                ],
+              ),
+            
+              ExpansionTile(
+                title: Text('Tea cup'),
+                children: [],
+              )
+            ],
           ),
         ),
       ),
