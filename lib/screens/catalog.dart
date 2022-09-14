@@ -36,61 +36,63 @@ class CatalogScreen extends StatelessWidget {
                   border: const OutlineInputBorder(),
                 ),
               ),
-              ExpansionTile(
+              const ExpansionTile(
                 title: Text('Personal gift'),
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: ListTile(
-                      title: Text('Personal picture'),
-                      onTap: () {},
-                    ),
+                  _UnderCategory(
+                    nameUnderCategory: 'Personal picture',
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
+                    padding: EdgeInsets.only(left: 16.0),
                     child: ExpansionTile(
                       title: Text('Personal jewelry'),
                       children: [
-                        ListTile(
-                          title: Text('Personal ring'),
-                          onTap: () {},
+                        _UnderCategory(
+                          nameUnderCategory: 'Personal ring',
                         ),
-                        ListTile(
-                          title: Text('Personal earrings'),
-                          onTap: () {},
+                        _UnderCategory(
+                          nameUnderCategory: 'Personal earrings',
                         ),
                       ],
                     ),
                   ),
                 ],
               ),
-              ExpansionTile(
+              const ExpansionTile(
                 title: Text('Wood gift'),
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: ListTile(
-                      title: Text('Wood toys'),
-                      onTap: () {},
-                    ),
+                  _UnderCategory(
+                    nameUnderCategory: 'Wood toys',
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: ListTile(
-                      title: Text('Wood kitchen board'),
-                      onTap: () {},
-                    ),
+                  _UnderCategory(
+                    nameUnderCategory: 'Wood kitchen board',
                   ),
                 ],
               ),
-            
-              ExpansionTile(
+              const ExpansionTile(
                 title: Text('Tea cup'),
                 children: [],
               )
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _UnderCategory extends StatelessWidget {
+  final String nameUnderCategory;
+
+  const _UnderCategory({required this.nameUnderCategory});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16.0),
+      child: ListTile(
+        title: Text(nameUnderCategory),
+        onTap: () {},
       ),
     );
   }
