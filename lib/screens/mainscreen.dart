@@ -440,7 +440,7 @@ class _ProductsCard extends StatefulWidget {
 }
 
 class _ProductsCardState extends State<_ProductsCard> {
-  void _productScreen() {
+  void routeProduct() {
       Navigator.of(context).pushNamed('/productscreen');
     }
 
@@ -457,7 +457,7 @@ class _ProductsCardState extends State<_ProductsCard> {
           borderRadius: BorderRadius.circular(12),
           child: InkWell(
             borderRadius: BorderRadius.circular(12),
-            onTap: widget.routeProduct,
+            onTap: routeProduct,
             child: Container(
               padding: EdgeInsets.all(6),
               width: MediaQuery.of(context).size.width * 0.42,
