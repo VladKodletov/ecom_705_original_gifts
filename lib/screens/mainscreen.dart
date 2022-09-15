@@ -43,6 +43,15 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    void _productScreen() {
+      Navigator.of(context).pushNamed('/productscreen');
+    }
+
+    @override
+    void setState(VoidCallback fn) {
+      super.setState(fn);
+    }
+
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
@@ -129,36 +138,42 @@ class _MainScreenState extends State<MainScreen> {
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        children: const [
+                        children: [
                           _ProductsCard(
                             nameProduct: 'Wood toy "Car"',
                             imageProduct: 'assets/image/6.jpg',
                             priceProduct: '1150',
+                            routeProduct: _productScreen,
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №28',
                             imageProduct: 'assets/image/8.jpg',
                             priceProduct: '250',
+                            routeProduct: _productScreen,
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №9',
                             imageProduct: 'assets/image/7.jpg',
                             priceProduct: '450',
+                            routeProduct: _productScreen,
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №12',
                             imageProduct: 'assets/image/8.jpg',
                             priceProduct: '650',
+                            routeProduct: _productScreen,
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №8',
                             imageProduct: 'assets/image/6.jpg',
                             priceProduct: '350',
+                            routeProduct: _productScreen,
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №3',
                             imageProduct: 'assets/image/8.jpg',
                             priceProduct: '850',
+                            routeProduct: _productScreen,
                           ),
                         ],
                       ),
@@ -198,6 +213,8 @@ class _MainPageState extends State<MainPage> {
   ];
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: screensNavigation[index],
       bottomNavigationBar: NavigationBarTheme(
@@ -258,6 +275,9 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
+
+
+
 
 class SelectCategory extends StatefulWidget {
   const SelectCategory({super.key});
@@ -402,16 +422,32 @@ class _UnderCategoryCard extends StatelessWidget {
   }
 }
 
-class _ProductsCard extends StatelessWidget {
+class _ProductsCard extends StatefulWidget {
   final String imageProduct;
   final String nameProduct;
   final String priceProduct;
+  final void Function() routeProduct;
 
   const _ProductsCard({
     required this.imageProduct,
     required this.nameProduct,
     required this.priceProduct,
+    required this.routeProduct,
   });
+
+  @override
+  State<_ProductsCard> createState() => _ProductsCardState();
+}
+
+class _ProductsCardState extends State<_ProductsCard> {
+  void _productScreen() {
+      Navigator.of(context).pushNamed('/productscreen');
+    }
+
+    @override
+    void setState(VoidCallback fn) {
+      super.setState(fn);
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -421,7 +457,7 @@ class _ProductsCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           child: InkWell(
             borderRadius: BorderRadius.circular(12),
-            onTap: () {},
+            onTap: widget.routeProduct,
             child: Container(
               padding: EdgeInsets.all(6),
               width: MediaQuery.of(context).size.width * 0.42,
@@ -436,7 +472,7 @@ class _ProductsCard extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: Image.asset(
-                      imageProduct,
+                      widget.imageProduct,
                       width: MediaQuery.of(context).size.width * 0.28,
                       height: MediaQuery.of(context).size.height * 0.12,
                       fit: BoxFit.cover,
@@ -446,13 +482,13 @@ class _ProductsCard extends StatelessWidget {
                     height: 4,
                   ),
                   Text(
-                    nameProduct,
+                    widget.nameProduct,
                     style: TextStyle(
                       fontSize: 14,
                     ),
                   ),
                   Text(
-                    'RUB $priceProduct',
+                    'RUB ${widget.priceProduct}',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                   ),
                 ],
