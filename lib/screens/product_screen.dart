@@ -62,9 +62,7 @@ class ProductScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
+                
                 const Text('3 select button'),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -77,7 +75,7 @@ class ProductScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 8,
                 ),
                 Container(
                   alignment: Alignment.topLeft,
@@ -87,16 +85,32 @@ class ProductScreen extends StatelessWidget {
                   height: 16,
                 ),
                 const ReviewWidget(),
+                const SizedBox(
+                  height: 8,
+                ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     Text('Another Product'),
                     Text('See All'),
                     SingleChildScrollView(),
                   ],
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Add to cart'),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        // fixedSize: const Size.fromHeight(55),
+                        backgroundColor: const Color(0xFF0ACF83),
+                      ),
+                      onPressed: () {},
+                      child: const Text(
+                        'Add to cart',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -110,13 +124,42 @@ class ReviewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        const Icon(Icons.man),
-        Column(
-          children: const [Text('name'), Text('rate review')],
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              alignment: Alignment.topLeft,
+              padding: const EdgeInsets.only(right: 8.0),
+              child: const CircleAvatar(
+                backgroundImage: NetworkImage(
+                  'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg',
+                ),
+                radius: 20,
+              ),
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text('name'),
+                    Text(
+                      'date review',
+                      style: TextStyle(color: Colors.black38),
+                    ),
+                  ],
+                ),
+                const Text('rate review'),
+                const SizedBox(
+                  height: 24,
+                ),
+              ],
+            ),
+          ],
         ),
-        const Text('date review'),
+        const Text('text review text review text review text review'),
       ],
     );
   }
