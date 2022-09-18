@@ -15,7 +15,7 @@ void main() {
         '/reg_screen': (context) => const RegScreenAuth(),
         '/restore_password': (context) => const RestorePassword(),
         '/mainscreen': (context) => const MainPage(),
-        '/productscreen': (context) => const ProductScreen(),
+        '/productscreen': (context) => const ProductScreen(priceProductScreen: 350),
 
       },
       initialRoute: '/',

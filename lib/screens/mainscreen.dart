@@ -43,14 +43,14 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    void _productScreen() {
+    void productScreen() {
       Navigator.of(context).pushNamed('/productscreen');
     }
 
-    @override
-    void setState(VoidCallback fn) {
-      super.setState(fn);
-    }
+    // @override
+    // void setState(VoidCallback fn) {
+    //   super.setState(fn);
+    // }
 
     return Scaffold(
       appBar: AppBar(
@@ -143,37 +143,37 @@ class _MainScreenState extends State<MainScreen> {
                             nameProduct: 'Wood toy "Car"',
                             imageProduct: 'assets/image/6.jpg',
                             priceProduct: '1150',
-                            routeProduct: _productScreen,
+                            routeProduct: productScreen,
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №28',
                             imageProduct: 'assets/image/8.jpg',
                             priceProduct: '250',
-                            routeProduct: _productScreen,
+                            routeProduct: productScreen,
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №9',
                             imageProduct: 'assets/image/7.jpg',
                             priceProduct: '450',
-                            routeProduct: _productScreen,
+                            routeProduct: productScreen,
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №12',
                             imageProduct: 'assets/image/8.jpg',
                             priceProduct: '650',
-                            routeProduct: _productScreen,
+                            routeProduct: productScreen,
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №8',
                             imageProduct: 'assets/image/6.jpg',
                             priceProduct: '350',
-                            routeProduct: _productScreen,
+                            routeProduct: productScreen,
                           ),
                           _ProductsCard(
                             nameProduct: 'Wood toy №3',
                             imageProduct: 'assets/image/8.jpg',
                             priceProduct: '850',
-                            routeProduct: _productScreen,
+                            routeProduct: productScreen,
                           ),
                         ],
                       ),
