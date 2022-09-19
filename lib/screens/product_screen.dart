@@ -62,7 +62,6 @@ class ProductScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                
                 const Text('3 select button'),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -88,13 +87,24 @@ class ProductScreen extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text('Another Product'),
-                    Text('See All'),
-                    SingleChildScrollView(),
-                  ],
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.only(right: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text('Another Product'),
+                      Text(
+                        'See All',
+                        style: TextStyle(
+                          color: Colors.black38,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SingleChildScrollView(
+                  child: Row(),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -125,38 +135,47 @@ class ReviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          alignment: Alignment.topLeft,
-          padding: const EdgeInsets.only(right: 8.0),
-          child: const CircleAvatar(
-            backgroundImage: NetworkImage(
-              'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg',
+        const CircleAvatar(
+          backgroundImage: NetworkImage(
+            'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg',
+          ),
+          radius: 20,
+        ),
+        const Padding(
+          padding: EdgeInsets.only(right: 6),
+        ),
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.only(right: 8),
+            // alignment: Alignment.topLeft,
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text('name'),
+                    Text(
+                      'date review',
+                      style: TextStyle(color: Colors.black38),
+                    ),
+                  ],
+                ),
+                const Text('rate review'),
+                const SizedBox(
+                  height: 16,
+                ),
+                const Text('text review text review text review text review'),
+                const SizedBox(
+                  height: 24,
+                ),
+              ],
             ),
-            radius: 20,
           ),
         ),
-        Container(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('name'),
-                  Text(
-                    'date review',
-                    style: TextStyle(color: Colors.black38),
-                  ),
-                ],
-              ),
-              const Text('rate review'),
-              const SizedBox(
-                height: 24,
-              ),
-            ],
-          ),
-        ),
-        const Text('text review text review text review text review'),
       ],
     );
   }
