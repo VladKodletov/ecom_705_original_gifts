@@ -124,40 +124,37 @@ class ReviewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Container(
-              alignment: Alignment.topLeft,
-              padding: const EdgeInsets.only(right: 8.0),
-              child: const CircleAvatar(
-                backgroundImage: NetworkImage(
-                  'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg',
-                ),
-                radius: 20,
+        Container(
+          alignment: Alignment.topLeft,
+          padding: const EdgeInsets.only(right: 8.0),
+          child: const CircleAvatar(
+            backgroundImage: NetworkImage(
+              'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg',
+            ),
+            radius: 20,
+          ),
+        ),
+        Container(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text('name'),
+                  Text(
+                    'date review',
+                    style: TextStyle(color: Colors.black38),
+                  ),
+                ],
               ),
-            ),
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text('name'),
-                    Text(
-                      'date review',
-                      style: TextStyle(color: Colors.black38),
-                    ),
-                  ],
-                ),
-                const Text('rate review'),
-                const SizedBox(
-                  height: 24,
-                ),
-              ],
-            ),
-          ],
+              const Text('rate review'),
+              const SizedBox(
+                height: 24,
+              ),
+            ],
+          ),
         ),
         const Text('text review text review text review text review'),
       ],
