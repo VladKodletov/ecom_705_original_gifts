@@ -139,37 +139,37 @@ class _MainScreenState extends State<MainScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          _ProductsCard(
+                          ProductsCard(
                             nameProduct: 'Wood toy "Car"',
                             imageProduct: 'assets/image/6.jpg',
                             priceProduct: '1150',
                             routeProduct: productScreen,
                           ),
-                          _ProductsCard(
+                          ProductsCard(
                             nameProduct: 'Wood toy №28',
                             imageProduct: 'assets/image/8.jpg',
                             priceProduct: '250',
                             routeProduct: productScreen,
                           ),
-                          _ProductsCard(
+                          ProductsCard(
                             nameProduct: 'Wood toy №9',
                             imageProduct: 'assets/image/7.jpg',
                             priceProduct: '450',
                             routeProduct: productScreen,
                           ),
-                          _ProductsCard(
+                          ProductsCard(
                             nameProduct: 'Wood toy №12',
                             imageProduct: 'assets/image/8.jpg',
                             priceProduct: '650',
                             routeProduct: productScreen,
                           ),
-                          _ProductsCard(
+                          ProductsCard(
                             nameProduct: 'Wood toy №8',
                             imageProduct: 'assets/image/6.jpg',
                             priceProduct: '350',
                             routeProduct: productScreen,
                           ),
-                          _ProductsCard(
+                          ProductsCard(
                             nameProduct: 'Wood toy №3',
                             imageProduct: 'assets/image/8.jpg',
                             priceProduct: '850',
@@ -422,13 +422,13 @@ class _UnderCategoryCard extends StatelessWidget {
   }
 }
 
-class _ProductsCard extends StatefulWidget {
+class ProductsCard extends StatefulWidget {
   final String imageProduct;
   final String nameProduct;
   final String priceProduct;
   final void Function() routeProduct;
 
-  const _ProductsCard({
+  const ProductsCard({super.key, 
     required this.imageProduct,
     required this.nameProduct,
     required this.priceProduct,
@@ -436,10 +436,10 @@ class _ProductsCard extends StatefulWidget {
   });
 
   @override
-  State<_ProductsCard> createState() => _ProductsCardState();
+  State<ProductsCard> createState() => _ProductsCardState();
 }
 
-class _ProductsCardState extends State<_ProductsCard> {
+class _ProductsCardState extends State<ProductsCard> {
   void routeProduct() {
       Navigator.of(context).pushNamed('/productscreen');
     }
