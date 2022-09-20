@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_rating_stars/flutter_rating_stars.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'mainscreen.dart';
 
-class ProductScreen extends StatelessWidget {
+class ProductScreen extends StatefulWidget {
   final double priceProductScreen;
 
   const ProductScreen({super.key, required this.priceProductScreen});
 
+  @override
+  State<ProductScreen> createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +52,7 @@ class ProductScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'RUB $priceProductScreen',
+                          'RUB ${widget.priceProductScreen}',
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                             fontSize: 14,
@@ -64,7 +70,36 @@ class ProductScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Text('3 select button'),
+                  DefaultTabController(
+                    length: 3,
+                    initialIndex: 0,
+                    child: TabBar(
+                      padding: const EdgeInsets.only(bottom: 10,),
+                      indicatorColor: const Color(0xFF0ACF83),
+                      tabs: const [
+                        Tab(
+                          text: "Overview",
+                        ),
+                        Tab(
+                          text: "Features",
+                        ),
+                        Tab(
+                          text: "Specification",
+                        ),
+                      ],
+                      labelColor: Colors.black,
+                      indicator: MaterialIndicator(
+                        height: 5,
+                        topLeftRadius: 8,
+                        bottomLeftRadius: 8,
+                        bottomRightRadius: 8,
+                        topRightRadius: 8,
+                        horizontalPadding: 50,
+                        color: const Color(0xFF0ACF83),
+                        tabPosition: TabPosition.bottom,
+                      ),
+                    ),
+                  ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -93,7 +128,7 @@ class ProductScreen extends StatelessWidget {
                           'Two roads diverged in a yellow wood, And sorry I could not travel both And be one traveler, long I stood And looked down one as far as I could To where it bent in the undergrowth.'),
                   const ReviewWidget(
                       dateReview: '2 month ago',
-                      nameReview: 'Базилик Киберскотч',
+                      nameReview: 'Бургеркинг Гендерсвитч',
                       rateReview: '3 stars',
                       textReview:
                           'blablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablabl'),
@@ -202,7 +237,7 @@ class ProductScreen extends StatelessWidget {
   }
 }
 
-class ReviewWidget extends StatelessWidget {
+class ReviewWidget extends StatefulWidget {
   final String nameReview;
 
   ///'Базилик Киберскотч'
@@ -222,6 +257,13 @@ class ReviewWidget extends StatelessWidget {
       required this.dateReview,
       required this.rateReview,
       required this.textReview});
+
+  @override
+  State<ReviewWidget> createState() => _ReviewWidgetState();
+}
+
+class _ReviewWidgetState extends State<ReviewWidget> {
+  double value = 3.5;
 
   @override
   Widget build(BuildContext context) {
@@ -248,18 +290,34 @@ class ReviewWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(nameReview),
+                    Text(widget.nameReview),
                     Text(
-                      dateReview,
-                      style: TextStyle(color: Colors.black38),
+                      widget.dateReview,
+                      style: const TextStyle(color: Colors.black38),
                     ),
                   ],
                 ),
-                Text(rateReview),
+                RatingStars(
+                  value: value,
+                  starColor: const Color(0xFFFFC120),
+                  onValueChanged: (v) {
+                    //
+                    setState(() {
+                      value = v;
+                    });
+                  },
+                  starBuilder: (index, color) => Icon(
+                    Icons.star_outlined,
+                    color: color,
+                  ),
+                  starCount: 5,
+                  starSize: 20,
+                  valueLabelVisibility: false,
+                ),
                 const SizedBox(
                   height: 16,
                 ),
-                Text(textReview),
+                Text(widget.textReview),
                 const SizedBox(
                   height: 12,
                 ),
