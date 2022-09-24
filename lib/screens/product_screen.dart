@@ -298,6 +298,9 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                   ],
                 ),
                 RatingStars(
+                 // starOffColor: Colors.white,
+                //  valueLabelColor: Colors.white,
+                // starOffColor: Colors.white,
                   value: value,
                   starColor: const Color(0xFFFFC120),
                   onValueChanged: (v) {
