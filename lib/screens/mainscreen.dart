@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'catalog.dart';
 import 'shopping_cart.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -83,10 +84,11 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 child: Column(
                   children: [
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: SelectCategory(),
-                    ),
+                    SelectCat(),
+                    // SingleChildScrollView(
+                    //   scrollDirection: Axis.horizontal,
+                    //   child: SelectCategory(),
+                    // ),
                     SizedBox(height: 15),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -213,8 +215,6 @@ class _MainPageState extends State<MainPage> {
   ];
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       body: screensNavigation[index],
       bottomNavigationBar: NavigationBarTheme(
@@ -276,8 +276,54 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
+class SelectCat extends StatefulWidget {
+  const SelectCat({super.key});
 
+  @override
+  State<SelectCat> createState() => _SelectCatState();
+}
 
+class _SelectCatState extends State<SelectCat> {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 4,
+      initialIndex: 0,
+      child: TabBar(
+        
+        labelPadding: EdgeInsets.symmetric(horizontal: 22),
+        isScrollable: true,
+        tabs: const [
+          Tab(
+            text: 'Wood gift',
+          ),
+          Tab(
+            text: 'Personal gift',
+          ),
+          Tab(
+            text: 'Wood jewelry',
+          ),
+          Tab(
+            text: 'Tea cup',
+          ),
+        ],
+        labelColor: Colors.white,
+        unselectedLabelColor: Colors.grey.shade500,
+        indicator: RectangularIndicator(
+          // height: 5,
+          // strokeWidth: 2,
+          topLeftRadius: 16,
+          bottomLeftRadius: 16,
+          bottomRightRadius: 16,
+          topRightRadius: 16,
+          horizontalPadding: 10,
+          color: const Color(0xFF0ACF83),
+          // tabPosition: TabPosition.bottom,
+        ),
+      ),
+    );
+  }
+}
 
 class SelectCategory extends StatefulWidget {
   const SelectCategory({super.key});
@@ -428,7 +474,8 @@ class ProductsCard extends StatefulWidget {
   final String priceProduct;
   final void Function() routeProduct;
 
-  const ProductsCard({super.key, 
+  const ProductsCard({
+    super.key,
     required this.imageProduct,
     required this.nameProduct,
     required this.priceProduct,
@@ -441,13 +488,13 @@ class ProductsCard extends StatefulWidget {
 
 class _ProductsCardState extends State<ProductsCard> {
   void routeProduct() {
-      Navigator.of(context).pushNamed('/productscreen');
-    }
+    Navigator.of(context).pushNamed('/productscreen');
+  }
 
-    @override
-    void setState(VoidCallback fn) {
-      super.setState(fn);
-    }
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
 
   @override
   Widget build(BuildContext context) {
