@@ -22,36 +22,11 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  //наброски на логику поиска
-  // final _searchController = TextEditingController();
-
-  // void _searchGoods() {
-  //   final textEditing = _searchController.text;
-  //   if (textEditing.isNotEmpty) {
-  //     Row(
-  //       children: [
-  //         _ProductsCard
-  //       ],
-  //     );
-
-  //   }
-  // }
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _searchController.addListener(_searchGoods);
-  // }
-
   @override
   Widget build(BuildContext context) {
     void productScreen() {
       Navigator.of(context).pushNamed('/productscreen');
     }
-
-    // @override
-    // void setState(VoidCallback fn) {
-    //   super.setState(fn);
-    // }
 
     return Scaffold(
       appBar: AppBar(
@@ -76,7 +51,7 @@ class _MainScreenState extends State<MainScreen> {
               child: Container(
                 padding: EdgeInsets.only(left: 12, top: 12, bottom: 9.5),
                 decoration: BoxDecoration(
-                  color: Colors.grey.withAlpha(65),
+                  color: Colors.grey.withAlpha(40),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(12),
                     topRight: Radius.circular(12),
@@ -85,10 +60,6 @@ class _MainScreenState extends State<MainScreen> {
                 child: Column(
                   children: [
                     SelectCat(),
-                    // SingleChildScrollView(
-                    //   scrollDirection: Axis.horizontal,
-                    //   child: SelectCategory(),
-                    // ),
                     SizedBox(height: 15),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -290,7 +261,6 @@ class _SelectCatState extends State<SelectCat> {
       length: 4,
       initialIndex: 0,
       child: TabBar(
-        
         labelPadding: EdgeInsets.symmetric(horizontal: 22),
         isScrollable: true,
         tabs: const [
@@ -310,68 +280,15 @@ class _SelectCatState extends State<SelectCat> {
         labelColor: Colors.white,
         unselectedLabelColor: Colors.grey.shade500,
         indicator: RectangularIndicator(
-          // height: 5,
-          // strokeWidth: 2,
           topLeftRadius: 16,
           bottomLeftRadius: 16,
           bottomRightRadius: 16,
           topRightRadius: 16,
-          horizontalPadding: 10,
+          horizontalPadding: 6,
+          verticalPadding: 12,
           color: const Color(0xFF0ACF83),
-          // tabPosition: TabPosition.bottom,
         ),
       ),
-    );
-  }
-}
-
-class SelectCategory extends StatefulWidget {
-  const SelectCategory({super.key});
-
-  @override
-  State<SelectCategory> createState() => _SelectCategoryState();
-}
-
-class _SelectCategoryState extends State<SelectCategory> {
-  final List<bool> _selectedCategory = <bool>[
-    true,
-    false,
-    false,
-    false,
-  ];
-  List<Widget> categoryText = [
-    Text(
-      'Wood gift',
-    ),
-    Text(
-      'Personal gift',
-    ),
-    Text(
-      'Wood jewelry',
-    ),
-    Text(
-      'Tea cup',
-    ),
-  ];
-  @override
-  Widget build(BuildContext context) {
-    double widthCategory = MediaQuery.of(context).size.width * 0.28;
-    double heightCategory = MediaQuery.of(context).size.width * 0.07;
-    return ToggleButtons(
-      onPressed: (index) {
-        setState(() {
-          for (int i = 0; i < _selectedCategory.length; i++) {
-            _selectedCategory[i] = i == index;
-          }
-        });
-      },
-      renderBorder: false,
-      constraints:
-          BoxConstraints(minWidth: widthCategory, minHeight: heightCategory),
-      selectedColor: Colors.white,
-      fillColor: Color(0xFF0ACF83),
-      isSelected: _selectedCategory,
-      children: categoryText,
     );
   }
 }
