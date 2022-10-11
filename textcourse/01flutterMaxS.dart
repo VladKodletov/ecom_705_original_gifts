@@ -1,6 +1,4 @@
-// ignore_for_file: file_names, duplicate_ignore
-// ignore: file_names
-// ignore: file_names
+
 ///Flutter - 2 основные вещи
 ///1 - SDK(Software development Kit) - набор инструментов для компиляции в нативный 
 ///машинный код под каждую платформу(Android, IOS)
