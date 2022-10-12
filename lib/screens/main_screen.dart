@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:ecom_705_original_gifts/models/product.dart';
+
 import 'profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -112,6 +114,17 @@ class _MainScreenState extends State<MainScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
+                          // ProductsCard(
+                          //   loadedProducts: Product(
+                          //       'p1',
+                          //       'Woooood',
+                          //       650,
+                          //       'best wood gift',
+                          //       'assets/image/6.jpg',
+                          //       'assets/image/6.jpg',
+                          //       'assets/image/6.jpg'),
+                          //   routeProduct: productScreen,
+                          // ),
                           ProductsCard(
                             nameProduct: 'Wood toy "Car"',
                             imageProduct: 'assets/image/6.jpg',
@@ -386,6 +399,13 @@ class _UnderCategoryCard extends StatelessWidget {
 }
 
 class ProductsCard extends StatefulWidget {
+  // final Product loadedProducts;
+  // final void Function() routeProduct;
+
+  // const ProductsCard(
+  //     {super.key, required this.loadedProducts, required this.routeProduct});
+
+
   final String imageProduct;
   final String nameProduct;
   final String priceProduct;
@@ -404,6 +424,7 @@ class ProductsCard extends StatefulWidget {
 }
 
 class _ProductsCardState extends State<ProductsCard> {
+  
   void routeProduct() {
     Navigator.of(context).pushNamed('/productscreen');
   }
@@ -426,10 +447,6 @@ class _ProductsCardState extends State<ProductsCard> {
               padding: EdgeInsets.all(6),
               width: MediaQuery.of(context).size.width * 0.42,
               height: MediaQuery.of(context).size.height * 0.20,
-              // decoration: BoxDecoration(
-              //   color: Colors.grey[100],
-              //   borderRadius: BorderRadius.circular(12),
-              // ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
