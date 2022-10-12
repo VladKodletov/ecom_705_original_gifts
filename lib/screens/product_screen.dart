@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'mainscreen.dart';
+import 'main_screen.dart';
 
 class ProductScreen extends StatefulWidget {
   final double priceProductScreen;

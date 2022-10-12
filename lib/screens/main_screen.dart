@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'profile.dart';
+import 'profile_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'catalog.dart';
-import 'shopping_cart.dart';
+import 'catalog_screen.dart';
+import 'shopping_cart_screen.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class MainPage extends StatefulWidget {

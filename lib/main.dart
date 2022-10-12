@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'screens/authent.dart';
-import 'screens/mainscreen.dart';
+import 'screens/authent_screen.dart';
+import 'screens/main_screen.dart';
 import 'screens/product_screen.dart';
-import 'screens/reg_authent.dart';
-import 'screens/restore_password.dart';
+import 'screens/reg_authent_screen.dart';
+import 'screens/restore_password_screen.dart';
 
 void main() {
   runApp(
@@ -15,14 +15,10 @@ void main() {
         '/reg_screen': (context) => const RegScreenAuth(),
         '/restore_password': (context) => const RestorePassword(),
         '/mainscreen': (context) => const MainPage(),
-        '/productscreen': (context) => const ProductScreen(priceProductScreen: 350),
-
+        '/productscreen': (context) =>
+            const ProductScreen(priceProductScreen: 350),
       },
       initialRoute: '/',
-      // home: const ScreenAuth(),
-      // home: const RegScreenAuth(),
-      // home: const RestorePassword(),
-
       theme: ThemeData(),
     ),
   );
