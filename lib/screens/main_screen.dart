@@ -399,13 +399,7 @@ class _UnderCategoryCard extends StatelessWidget {
 }
 
 class ProductsCard extends StatefulWidget {
-  // final Product loadedProducts;
-  // final void Function() routeProduct;
-
-  // const ProductsCard(
-  //     {super.key, required this.loadedProducts, required this.routeProduct});
-
-
+  
   final String imageProduct;
   final String nameProduct;
   final String priceProduct;
@@ -424,7 +418,15 @@ class ProductsCard extends StatefulWidget {
 }
 
 class _ProductsCardState extends State<ProductsCard> {
-  
+  // final List<Product> loadedProducts = [
+  //   Product('p1', 'Wood toy "Car"', 1150, 'assets/image/6.jpg',
+  //       'assets/image/6.jpg', 'assets/image/6.jpg'),
+  //   Product('p2', 'Wood toy №28', 250, 'assets/image/8.jpg',
+  //       'assets/image/8.jpg', 'assets/image/8.jpg'),
+  //   Product('p3', 'Wood toy №9', 450, 'assets/image/7.jpg',
+  //       'assets/image/7.jpg', 'assets/image/7.jpg'),
+  // ];
+
   void routeProduct() {
     Navigator.of(context).pushNamed('/productscreen');
   }
