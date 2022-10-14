@@ -2,6 +2,7 @@
 
 import 'package:ecom_705_original_gifts/models/product.dart';
 
+import '../widgets/mini_products.dart';
 import 'profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -114,53 +115,54 @@ class _MainScreenState extends State<MainScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          // ProductsCard(
-                          //   loadedProducts: Product(
-                          //       'p1',
-                          //       'Woooood',
-                          //       650,
-                          //       'best wood gift',
-                          //       'assets/image/6.jpg',
-                          //       'assets/image/6.jpg',
-                          //       'assets/image/6.jpg'),
-                          //   routeProduct: productScreen,
-                          // ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy "Car"',
-                            imageProduct: 'assets/image/6.jpg',
-                            priceProduct: '1150',
-                            routeProduct: productScreen,
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy №28',
-                            imageProduct: 'assets/image/8.jpg',
-                            priceProduct: '250',
-                            routeProduct: productScreen,
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy №9',
-                            imageProduct: 'assets/image/7.jpg',
-                            priceProduct: '450',
-                            routeProduct: productScreen,
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy №12',
-                            imageProduct: 'assets/image/8.jpg',
-                            priceProduct: '650',
-                            routeProduct: productScreen,
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy №8',
-                            imageProduct: 'assets/image/6.jpg',
-                            priceProduct: '350',
-                            routeProduct: productScreen,
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy №3',
-                            imageProduct: 'assets/image/8.jpg',
-                            priceProduct: '850',
-                            routeProduct: productScreen,
-                          ),
+                          //       // ProductsCard(
+                          //       //   loadedProducts: Product(
+                          //       //       'p1',
+                          //       //       'Woooood',
+                          //       //       650,
+                          //       //       'best wood gift',
+                          //       //       'assets/image/6.jpg',
+                          //       //       'assets/image/6.jpg',
+                          //       //       'assets/image/6.jpg'),
+                          //       //   routeProduct: productScreen,
+                          //       // ),
+                                ProductsCard(
+                                  nameProduct: 'Wood toy "Car"',
+                                  imageProduct: 'assets/image/6.jpg',
+                                  priceProduct: '1150',
+                                  routeProduct: productScreen,
+                                ),
+                                ProductsCard(
+                                  nameProduct: 'Wood toy №28',
+                                  imageProduct: 'assets/image/8.jpg',
+                                  priceProduct: '250',
+                                  routeProduct: productScreen,
+                                ),
+                                ProductsCard(
+                                  nameProduct: 'Wood toy №9',
+                                  imageProduct: 'assets/image/7.jpg',
+                                  priceProduct: '450',
+                                  routeProduct: productScreen,
+                                ),
+                                ProductsCard(
+                                  nameProduct: 'Wood toy №12',
+                                  imageProduct: 'assets/image/8.jpg',
+                                  priceProduct: '650',
+                                  routeProduct: productScreen,
+                                ),
+                                ProductsCard(
+                                  nameProduct: 'Wood toy №8',
+                                  imageProduct: 'assets/image/6.jpg',
+                                  priceProduct: '350',
+                                  routeProduct: productScreen,
+                                ),
+                                ProductsCard(
+                                  nameProduct: 'Wood toy №3',
+                                  imageProduct: 'assets/image/8.jpg',
+                                  priceProduct: '850',
+                                  routeProduct: productScreen,
+                                ),
+                          
                         ],
                       ),
                     ),
@@ -399,7 +401,6 @@ class _UnderCategoryCard extends StatelessWidget {
 }
 
 class ProductsCard extends StatefulWidget {
-  
   final String imageProduct;
   final String nameProduct;
   final String priceProduct;
@@ -418,15 +419,6 @@ class ProductsCard extends StatefulWidget {
 }
 
 class _ProductsCardState extends State<ProductsCard> {
-  // final List<Product> loadedProducts = [
-  //   Product('p1', 'Wood toy "Car"', 1150, 'assets/image/6.jpg',
-  //       'assets/image/6.jpg', 'assets/image/6.jpg'),
-  //   Product('p2', 'Wood toy №28', 250, 'assets/image/8.jpg',
-  //       'assets/image/8.jpg', 'assets/image/8.jpg'),
-  //   Product('p3', 'Wood toy №9', 450, 'assets/image/7.jpg',
-  //       'assets/image/7.jpg', 'assets/image/7.jpg'),
-  // ];
-
   void routeProduct() {
     Navigator.of(context).pushNamed('/productscreen');
   }
