@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "582587026888",
+    "project_id": "original-gift",
+    "storage_bucket": "original-gift.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582587026888:android:d602b1b2fd4aa2cc9bc4fd",
+        "android_client_info": {
+          "package_name": "com.example.ecom_705_original_gifts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582587026888-fev7n16a1kurf2b611mth8jeogtsg75d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPQ0da_Rb5k9XZ6pYCfGsz-ZMl9mafvuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582587026888-fev7n16a1kurf2b611mth8jeogtsg75d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

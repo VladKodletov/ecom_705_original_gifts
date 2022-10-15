@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_rating_stars: ^1.0.3+4
   tab_indicator_styler: ^2.0.0
+  firebase_core: ^1.24.0
+  firebase_auth: ^3.11.2
+  cloud_firestore: ^3.5.1
 
 dev_dependencies:
   flutter_test:
