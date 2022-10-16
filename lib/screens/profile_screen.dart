@@ -1,14 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'main_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   final String imageProfile =
       'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg';
   final String nameProfile = 'Базилик Киберскотч';
-  final String emailProfile = 'sherlock@gmail.com';
+  final String emailProfile = email;
 
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,14 +80,17 @@ class ProfileScreen extends StatelessWidget {
           ),
           _ProfileWidgetButton(
             nameButton: 'Edit profile',
+            onPressed: () {},
           ),
           _MyProfileWidget(),
           _ProfileWidgetButton(
             nameButton: 'Notifications',
+            onPressed: () {},
           ),
           _MyProfileWidget(),
           _ProfileWidgetButton(
             nameButton: 'Wishlist',
+            onPressed: () {},
           ),
           _MyProfileWidget(),
           _ProfileCategoryWidget(
@@ -92,10 +98,12 @@ class ProfileScreen extends StatelessWidget {
           ),
           _ProfileWidgetButton(
             nameButton: 'Terms of Use',
+            onPressed: () {},
           ),
           _MyProfileWidget(),
           _ProfileWidgetButton(
             nameButton: 'Privacy Policy',
+            onPressed: () {},
           ),
           _MyProfileWidget(),
           _ProfileCategoryWidget(
@@ -103,10 +111,12 @@ class ProfileScreen extends StatelessWidget {
           ),
           _ProfileWidgetButton(
             nameButton: 'Report a bug',
+            onPressed: () {},
           ),
           _MyProfileWidget(),
           _ProfileWidgetButton(
             nameButton: 'Logout',
+            onPressed: () => FirebaseAuth.instance.signOut(),
           ),
           _MyProfileWidget(),
         ],
@@ -141,13 +151,14 @@ class _ProfileCategoryWidget extends StatelessWidget {
 
 class _ProfileWidgetButton extends StatelessWidget {
   final String nameButton;
+  var onPressed;
 
-  const _ProfileWidgetButton({required this.nameButton});
+   _ProfileWidgetButton({required this.nameButton, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         nameButton,
         textAlign: TextAlign.left,

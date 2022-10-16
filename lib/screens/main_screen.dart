@@ -2,7 +2,6 @@
 
 import 'package:ecom_705_original_gifts/models/product.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 import '../widgets/mini_products.dart';
 import 'profile_screen.dart';
@@ -20,16 +19,21 @@ class MainPage extends StatefulWidget {
 }
 
 class MainScreen extends StatefulWidget {
+ 
+
   const MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
+var user = FirebaseAuth.instance.currentUser!;
+String email = user.email!.toString();
+
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    var user = FirebaseAuth.instance.currentUser!;
+    
 
     void productScreen() {
       Navigator.of(context).pushNamed('/productscreen');
@@ -37,8 +41,10 @@ class _MainScreenState extends State<MainScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           'Signed in as ${user.email!}',
+          textAlign: TextAlign.center,
         ),
         actions: [
           IconButton(

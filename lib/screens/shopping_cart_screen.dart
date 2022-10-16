@@ -22,13 +22,13 @@ class ShoppingCart extends StatelessWidget {
           ),
         ),
       ),
-      body: MiniOverviewProducts(),
-      //const Center(
-      //   child: Text(
-      //     'Корзина',
-      //     style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-      //   ),
-      // ),
+      body: const Center(
+        child: Text(
+          'Корзина',
+          style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+        ),
+      ),
+      // MiniOverviewProducts(),
     );
   }
 }

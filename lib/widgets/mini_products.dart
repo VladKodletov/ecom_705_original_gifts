@@ -22,7 +22,8 @@ class MiniOverviewProducts extends StatelessWidget {
         ),
         scrollDirection: Axis.horizontal,
         itemCount: loadedProducts.length,
-        itemBuilder: (BuildContext, int) {
+        // ignore: avoid_types_as_parameter_names
+        itemBuilder: (context, int) {
           return Material(
             borderRadius: BorderRadius.circular(12),
             child: InkWell(

@@ -10,6 +10,9 @@ class ScreenAuth extends StatefulWidget {
   State<ScreenAuth> createState() => _ScreenAuthState();
 }
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
+
 class _ScreenAuthState extends State<ScreenAuth> {
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,15 @@ class _ScreenAuthState extends State<ScreenAuth> {
       body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return const Center(
+              child: Text('Что-то пошло не так, сорюшки'),
+            );
+          } else if (snapshot.hasData) {
             return const MainPage();
           } else {
             return const HeaderPage();
@@ -190,7 +201,9 @@ class _AuthInputFormState extends State<AuthInputForm> {
                 fixedSize: const Size.fromHeight(55),
                 backgroundColor: const Color(0xFF0ACF83),
               ),
-              onPressed: signIn,                 /// _mainScreen,
+              onPressed: signIn,
+
+              /// _mainScreen,
               child: const Text(
                 'Sign In',
                 style: TextStyle(fontSize: 18),
@@ -224,8 +237,23 @@ class _AuthInputFormState extends State<AuthInputForm> {
   }
 
   Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
-        password: passwordController.text.trim());
+        password: passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      
+    }
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
+  
 }
