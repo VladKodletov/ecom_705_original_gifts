@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/authent_screen.dart';
@@ -6,7 +7,10 @@ import 'screens/product_screen.dart';
 import 'screens/reg_authent_screen.dart';
 import 'screens/restore_password_screen.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,

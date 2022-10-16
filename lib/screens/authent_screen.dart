@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'main_screen.dart';
 
 class ScreenAuth extends StatefulWidget {
   const ScreenAuth({Key? key}) : super(key: key);
@@ -12,21 +15,30 @@ class _ScreenAuthState extends State<ScreenAuth> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal[600],
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.green,
-                Color(0xFF0ACF83),
-              ],
-              begin: Alignment.bottomRight,
-              end: Alignment.topLeft,
-            ),
-          ),
-        ),
+      // appBar: AppBar(
+      //   flexibleSpace: Container(
+      //     decoration: const BoxDecoration(
+      //       gradient: LinearGradient(
+      //         colors: [
+      //           Colors.green,
+      //           Color(0xFF0ACF83),
+      //         ],
+      //         begin: Alignment.bottomRight,
+      //         end: Alignment.topLeft,
+      //       ),
+      //     ),
+      //   ),
+      // ),
+      body: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return const MainPage();
+          } else {
+            return const HeaderPage();
+          }
+        },
       ),
-      body: const HeaderPage(),
     );
   }
 }
@@ -93,6 +105,17 @@ class AuthInputForm extends StatefulWidget {
 }
 
 class _AuthInputFormState extends State<AuthInputForm> {
+  var passwordController = TextEditingController();
+  var emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
+
   void _forgotPassword() {
     Navigator.of(context).pushNamed('/restore_password');
   }
@@ -115,6 +138,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
     return Column(
       children: [
         TextField(
+          controller: emailController,
           decoration: InputDecoration(
               fillColor: Colors.white,
               filled: true,
@@ -130,6 +154,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
           height: 16,
         ),
         TextField(
+          controller: passwordController,
           decoration: InputDecoration(
             fillColor: Colors.white,
             filled: true,
@@ -165,7 +190,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
                 fixedSize: const Size.fromHeight(55),
                 backgroundColor: const Color(0xFF0ACF83),
               ),
-              onPressed: _mainScreen,
+              onPressed: signIn,                 /// _mainScreen,
               child: const Text(
                 'Sign In',
                 style: TextStyle(fontSize: 18),
@@ -196,5 +221,11 @@ class _AuthInputFormState extends State<AuthInputForm> {
         ),
       ],
     );
+  }
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim());
   }
 }

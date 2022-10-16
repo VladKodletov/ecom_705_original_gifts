@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:ecom_705_original_gifts/models/product.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import '../widgets/mini_products.dart';
 import 'profile_screen.dart';
@@ -27,12 +29,23 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
+    var user = FirebaseAuth.instance.currentUser!;
+
     void productScreen() {
       Navigator.of(context).pushNamed('/productscreen');
     }
 
     return Scaffold(
       appBar: AppBar(
+        title: Text(
+          'Signed in as ${user.email!}',
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () => FirebaseAuth.instance.signOut(),
+          ),
+        ],
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -126,43 +139,42 @@ class _MainScreenState extends State<MainScreen> {
                           //       //       'assets/image/6.jpg'),
                           //       //   routeProduct: productScreen,
                           //       // ),
-                                ProductsCard(
-                                  nameProduct: 'Wood toy "Car"',
-                                  imageProduct: 'assets/image/6.jpg',
-                                  priceProduct: '1150',
-                                  routeProduct: productScreen,
-                                ),
-                                ProductsCard(
-                                  nameProduct: 'Wood toy №28',
-                                  imageProduct: 'assets/image/8.jpg',
-                                  priceProduct: '250',
-                                  routeProduct: productScreen,
-                                ),
-                                ProductsCard(
-                                  nameProduct: 'Wood toy №9',
-                                  imageProduct: 'assets/image/7.jpg',
-                                  priceProduct: '450',
-                                  routeProduct: productScreen,
-                                ),
-                                ProductsCard(
-                                  nameProduct: 'Wood toy №12',
-                                  imageProduct: 'assets/image/8.jpg',
-                                  priceProduct: '650',
-                                  routeProduct: productScreen,
-                                ),
-                                ProductsCard(
-                                  nameProduct: 'Wood toy №8',
-                                  imageProduct: 'assets/image/6.jpg',
-                                  priceProduct: '350',
-                                  routeProduct: productScreen,
-                                ),
-                                ProductsCard(
-                                  nameProduct: 'Wood toy №3',
-                                  imageProduct: 'assets/image/8.jpg',
-                                  priceProduct: '850',
-                                  routeProduct: productScreen,
-                                ),
-                          
+                          ProductsCard(
+                            nameProduct: 'Wood toy "Car"',
+                            imageProduct: 'assets/image/6.jpg',
+                            priceProduct: '1150',
+                            routeProduct: productScreen,
+                          ),
+                          ProductsCard(
+                            nameProduct: 'Wood toy №28',
+                            imageProduct: 'assets/image/8.jpg',
+                            priceProduct: '250',
+                            routeProduct: productScreen,
+                          ),
+                          ProductsCard(
+                            nameProduct: 'Wood toy №9',
+                            imageProduct: 'assets/image/7.jpg',
+                            priceProduct: '450',
+                            routeProduct: productScreen,
+                          ),
+                          ProductsCard(
+                            nameProduct: 'Wood toy №12',
+                            imageProduct: 'assets/image/8.jpg',
+                            priceProduct: '650',
+                            routeProduct: productScreen,
+                          ),
+                          ProductsCard(
+                            nameProduct: 'Wood toy №8',
+                            imageProduct: 'assets/image/6.jpg',
+                            priceProduct: '350',
+                            routeProduct: productScreen,
+                          ),
+                          ProductsCard(
+                            nameProduct: 'Wood toy №3',
+                            imageProduct: 'assets/image/8.jpg',
+                            priceProduct: '850',
+                            routeProduct: productScreen,
+                          ),
                         ],
                       ),
                     ),
