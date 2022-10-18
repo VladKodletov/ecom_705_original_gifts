@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:ecom_705_original_gifts/models/product.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../widgets/mini_products.dart';
 import 'profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -43,8 +41,8 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Signed in as ${user.email!}',
-          textAlign: TextAlign.center,
+          'Signed in as $email',
+          
         ),
         actions: [
           IconButton(

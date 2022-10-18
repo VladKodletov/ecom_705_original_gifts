@@ -151,9 +151,9 @@ class _ProfileCategoryWidget extends StatelessWidget {
 
 class _ProfileWidgetButton extends StatelessWidget {
   final String nameButton;
-  var onPressed;
+  final Function() onPressed;
 
-   _ProfileWidgetButton({required this.nameButton, required this.onPressed});
+   const _ProfileWidgetButton({required this.nameButton, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

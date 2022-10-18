@@ -135,9 +135,9 @@ class _AuthInputFormState extends State<AuthInputForm> {
     Navigator.of(context).pushNamed('/reg_screen');
   }
 
-  void _mainScreen() {
-    Navigator.of(context).pushNamed('/mainscreen');
-  }
+  // void _mainScreen() {
+  //   Navigator.of(context).pushNamed('/mainscreen');
+  // }
 
   @override
   void setState(VoidCallback fn) {
