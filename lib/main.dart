@@ -8,16 +8,12 @@ import 'screens/reg_authent_screen.dart';
 import 'screens/restore_password_screen.dart';
 
 Future main() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  
 
   // final navigatorKey = GlobalKey<NavigatorState>();
 
-
   runApp(
-    
     MaterialApp(
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
@@ -32,10 +28,10 @@ Future main() async {
       initialRoute: '/',
       theme: ThemeData(),
     ),
-    // navigatorKey.currentState!.popUntil((route) => route.isFirst);
   );
-    
 }
+
+final navigatorKey = GlobalKey<NavigatorState>();
 
 
 

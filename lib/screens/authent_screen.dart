@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../main.dart';
 import 'main_screen.dart';
 
 class ScreenAuth extends StatefulWidget {
@@ -10,7 +11,7 @@ class ScreenAuth extends StatefulWidget {
   State<ScreenAuth> createState() => _ScreenAuthState();
 }
 
-final navigatorKey = GlobalKey<NavigatorState>();
+
 
 
 class _ScreenAuthState extends State<ScreenAuth> {

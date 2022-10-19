@@ -139,4 +139,6 @@ switch(firstName) {
 ///
 ///С видео Johannes Mike о Firebase authentification
 ///
-///
+///RichText - виджет позволяющий сувать текстовые виджеты(например через TextSpan(
+///отличается тем что в свойствах есть чилдрен в отличие от обычного Text) как у 
+///Johannes Mike) в его строку без использования Row

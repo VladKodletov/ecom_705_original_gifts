@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../main.dart';
 
 class RegScreenAuth extends StatefulWidget {
   const RegScreenAuth({Key? key}) : super(key: key);
@@ -92,8 +95,18 @@ class RegAuthInputForm extends StatefulWidget {
 }
 
 class _RegAuthInputFormState extends State<RegAuthInputForm> {
+  var passwordController = TextEditingController();
+  var emailController = TextEditingController();
   void _authent() {
     Navigator.of(context).pushNamed('/');
+  }
+
+@override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -101,6 +114,7 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
     return Column(
       children: [
         TextField(
+          controller: emailController,
           decoration: InputDecoration(
               fillColor: Colors.white,
               filled: true,
@@ -116,6 +130,7 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
           height: 16,
         ),
         TextField(
+          controller: passwordController,
           decoration: InputDecoration(
             fillColor: Colors.white,
             filled: true,
@@ -131,6 +146,23 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
         const SizedBox(
           height: 16,
         ),
+        // TextField(
+        //   controller: passwordController,
+        //   decoration: InputDecoration(
+        //     fillColor: Colors.white,
+        //     filled: true,
+        //     prefixIcon: const Icon(
+        //       Icons.lock,
+        //     ),
+        //     hintText: 'Confirm password',
+        //     border: OutlineInputBorder(
+        //       borderRadius: BorderRadius.circular(12),
+        //     ),
+        //   ),
+        // ),
+        // const SizedBox(
+        //   height: 16,
+        // ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -139,7 +171,7 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
                 fixedSize: const Size.fromHeight(55),
                 backgroundColor: const Color(0xFF0ACF83),
               ),
-              onPressed: () {},
+              onPressed: signUp,
               child: const Text(
                 'Sign Up',
                 style: TextStyle(fontSize: 20),
@@ -164,11 +196,32 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
                   decoration: TextDecoration.underline,
                   color: Color(0xFF0ACF83),
                 ),
-              ),
+              ), 
             ),
           ],
         ),
       ],
     );
   }
+
+  Future signUp() async {
+
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const Center(
+              child: CircularProgressIndicator(),
+            ));
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      
+    }
+   navigatorKey.currentState!.popUntil((route) => route.isFirst);
+  }
+  
 }
