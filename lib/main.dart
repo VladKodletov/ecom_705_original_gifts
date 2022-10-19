@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,8 @@ import 'screens/product_screen.dart';
 import 'screens/reg_authent_screen.dart';
 import 'screens/restore_password_screen.dart';
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -15,6 +18,7 @@ Future main() async {
 
   runApp(
     MaterialApp(
+      scaffoldMessengerKey: Utils.messengerKey,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       routes: {
@@ -31,152 +35,33 @@ Future main() async {
   );
 }
 
-final navigatorKey = GlobalKey<NavigatorState>();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// class Route extends StatelessWidget {
+//   const Route({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: StreamBuilder<User?>(
+//         stream: FirebaseAuth.instance.authStateChanges(),
+//         builder: (context, snapshot) {
+//           if (snapshot.connectionState == ConnectionState.waiting) {
+//             return const Center(
+//               child: CircularProgressIndicator(),
+//             );
+//           } else if (snapshot.hasError) {
+//             return const Center(
+//               child: Text('Что-то пошло не так, сорюшки'),
+//             );
+//           } else if (snapshot.hasData) {
+//             return const MainPage();
+//           } else {
+//             return const HeaderPage();
+//           }
+//         },
+//       ),
+//     );
+//   }
+// }
 
 /*
 class MyApp extends StatelessWidget {

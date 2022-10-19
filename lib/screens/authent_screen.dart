@@ -3,22 +3,20 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import 'main_screen.dart';
+import 'reg_authent_screen.dart';
 
 class ScreenAuth extends StatefulWidget {
-  const ScreenAuth({Key? key}) : super(key: key);
+  const ScreenAuth({super.key});
 
   @override
   State<ScreenAuth> createState() => _ScreenAuthState();
 }
 
-
-
-
 class _ScreenAuthState extends State<ScreenAuth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.teal[600],
+      // backgroundColor: Colors.teal[600],
       // appBar: AppBar(
       //   flexibleSpace: Container(
       //     decoration: const BoxDecoration(
@@ -110,15 +108,15 @@ class HeaderPage extends StatelessWidget {
 }
 
 class AuthInputForm extends StatefulWidget {
-  const AuthInputForm({Key? key}) : super(key: key);
+  const AuthInputForm({super.key});
 
   @override
   State<AuthInputForm> createState() => _AuthInputFormState();
 }
 
 class _AuthInputFormState extends State<AuthInputForm> {
-  var passwordController = TextEditingController();
-  var emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
 
   @override
   void dispose() {
@@ -227,7 +225,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
                 'Sign Up here',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
-                  color: Color(0xFF0ACF83),
+                  color: Color.fromARGB(255, 34, 46, 41),
                 ),
               ),
             ),
@@ -251,10 +249,9 @@ class _AuthInputFormState extends State<AuthInputForm> {
         password: passwordController.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
-      print(e);
-      
+
+      Utils.showSnackBar(e.message);
     }
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
-  
 }

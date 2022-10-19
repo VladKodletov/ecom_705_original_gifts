@@ -3,6 +3,23 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 
+class Utils {
+  static final messengerKey = GlobalKey<ScaffoldMessengerState>();
+
+  static showSnackBar(String? text) {
+    if (text == null) return;
+
+    final snackBar = SnackBar(
+      content: Text(text, textAlign: TextAlign.center),
+      backgroundColor: Colors.red,
+    );
+
+    messengerKey.currentState!
+      ..removeCurrentSnackBar()
+      ..showSnackBar(snackBar);
+  }
+}
+
 class RegScreenAuth extends StatefulWidget {
   const RegScreenAuth({Key? key}) : super(key: key);
 
@@ -95,13 +112,14 @@ class RegAuthInputForm extends StatefulWidget {
 }
 
 class _RegAuthInputFormState extends State<RegAuthInputForm> {
-  var passwordController = TextEditingController();
-  var emailController = TextEditingController();
+  // final formKey = GlobalKey<FormState>();
+  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
   void _authent() {
     Navigator.of(context).pushNamed('/');
   }
 
-@override
+  @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
@@ -113,23 +131,39 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextField(
+        TextFormField(
+          // textInputAction: TextInputAction.next,
+          // autovalidateMode: AutovalidateMode.onUserInteraction,
+          // validator: (email) {
+          //   email != null && !EmailValidator.validate(email)
+          //       ? 'Enter a valid email'
+          //       : null;
+          // },
           controller: emailController,
           decoration: InputDecoration(
-              fillColor: Colors.white,
-              filled: true,
-              prefixIcon: const Icon(
-                Icons.mail_outline,
-              ),
-              hintText: 'Email',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-              )),
+            fillColor: Colors.white,
+            filled: true,
+            prefixIcon: const Icon(
+              Icons.mail_outline,
+            ),
+            hintText: 'Email',
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
         ),
         const SizedBox(
           height: 16,
         ),
-        TextField(
+        TextFormField(
+          // obscureText: true,
+          // textInputAction: TextInputAction.next,
+          // autovalidateMode: AutovalidateMode.onUserInteraction,
+          // validator: (value) {
+          //   value != null && value.length < 6
+          //       ? 'Enter min. 6 characters'
+          //       : null;
+          // },
           controller: passwordController,
           decoration: InputDecoration(
             fillColor: Colors.white,
@@ -146,23 +180,6 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
         const SizedBox(
           height: 16,
         ),
-        // TextField(
-        //   controller: passwordController,
-        //   decoration: InputDecoration(
-        //     fillColor: Colors.white,
-        //     filled: true,
-        //     prefixIcon: const Icon(
-        //       Icons.lock,
-        //     ),
-        //     hintText: 'Confirm password',
-        //     border: OutlineInputBorder(
-        //       borderRadius: BorderRadius.circular(12),
-        //     ),
-        //   ),
-        // ),
-        // const SizedBox(
-        //   height: 16,
-        // ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -196,7 +213,7 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
                   decoration: TextDecoration.underline,
                   color: Color(0xFF0ACF83),
                 ),
-              ), 
+              ),
             ),
           ],
         ),
@@ -205,23 +222,22 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
   }
 
   Future signUp() async {
-
     showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => const Center(
-              child: CircularProgressIndicator(),
-            ));
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
-      print(e);
-      
+
+      Utils.showSnackBar(e.message);
     }
-   navigatorKey.currentState!.popUntil((route) => route.isFirst);
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
-  
 }
