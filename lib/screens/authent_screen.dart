@@ -16,33 +16,18 @@ class _ScreenAuthState extends State<ScreenAuth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.teal[600],
-      // appBar: AppBar(
-      //   flexibleSpace: Container(
-      //     decoration: const BoxDecoration(
-      //       gradient: LinearGradient(
-      //         colors: [
-      //           Colors.green,
-      //           Color(0xFF0ACF83),
-      //         ],
-      //         begin: Alignment.bottomRight,
-      //         end: Alignment.topLeft,
-      //       ),
-      //     ),
-      //   ),
-      // ),
       body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasError) {
-            return const Center(
-              child: Text('Что-то пошло не так, сорюшки'),
-            );
-          } else if (snapshot.hasData) {
+          // if (snapshot.connectionState == ConnectionState.waiting) {
+          //   return const Center(
+          //     child: CircularProgressIndicator(),
+          //   );
+          // } else if (snapshot.hasError) {
+          //   return const Center(
+          //     child: Text('Что-то пошло не так, сорюшки'),
+          //   );
+          if (snapshot.hasData) {
             return const MainPage();
           } else {
             return const HeaderPage();
@@ -225,7 +210,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
                 'Sign Up here',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
-                  color: Color.fromARGB(255, 34, 46, 41),
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
               ),
             ),
@@ -249,7 +234,6 @@ class _AuthInputFormState extends State<AuthInputForm> {
         password: passwordController.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
-
       Utils.showSnackBar(e.message);
     }
     navigatorKey.currentState!.popUntil((route) => route.isFirst);

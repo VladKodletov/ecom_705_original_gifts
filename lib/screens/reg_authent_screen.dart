@@ -211,7 +211,7 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
                 'Sign In here',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
-                  color: Color(0xFF0ACF83),
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
               ),
             ),
@@ -222,22 +222,22 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
   }
 
   Future signUp() async {
-    showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (context) => const Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
+    // showDialog(
+    //   barrierDismissible: false,
+    //   context: context,
+    //   builder: (context) => const Center(
+    //     child: CircularProgressIndicator(),
+    //   ),
+    // );
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
+      navigatorKey.currentState!.popUntil((route) => route.isFirst);
     } on FirebaseAuthException catch (e) {
-
       Utils.showSnackBar(e.message);
+      
     }
-    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }
