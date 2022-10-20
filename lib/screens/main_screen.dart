@@ -9,30 +9,95 @@ import 'catalog_screen.dart';
 import 'shopping_cart_screen.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+class BottomNavBar extends StatefulWidget {
+  const BottomNavBar({Key? key}) : super(key: key);
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<BottomNavBar> createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  int index = 0;
+  final screensNavigation = [
+    MainScreen(),
+    CatalogScreen(),
+    ShoppingCart(),
+    ProfileScreen(),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: screensNavigation[index],
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+            backgroundColor: Color.fromARGB(255, 205, 255, 236),
+            labelTextStyle: MaterialStateProperty.all(
+              TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            )),
+        child: NavigationBar(
+            height: 60,
+            selectedIndex: index,
+            onDestinationSelected: (index) =>
+                setState(() => this.index = index),
+            // ignore: prefer_const_literals_to_create_immutables
+            destinations: [
+              NavigationDestination(
+                icon: Icon(
+                  Icons.home_outlined,
+                ),
+                selectedIcon: Icon(Icons.home, size: 32),
+                label: 'Главная',
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  Icons.format_indent_increase_outlined,
+                ),
+                selectedIcon: Icon(
+                  Icons.format_indent_increase,
+                  size: 32,
+                ),
+                label: 'Каталог',
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  Icons.shopping_bag_outlined,
+                ),
+                selectedIcon: Icon(
+                  Icons.shopping_bag,
+                  size: 32,
+                ),
+                label: 'Корзина',
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  Icons.account_circle_outlined,
+                ),
+                selectedIcon: Icon(
+                  Icons.account_circle,
+                  size: 32,
+                ),
+                label: 'Профиль',
+              ),
+            ]),
+      ),
+    );
+  }
 }
 
 class MainScreen extends StatefulWidget {
- 
-
   const MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
-var user = FirebaseAuth.instance.currentUser!;
-String email = user.email!.toString();
-
 class _MainScreenState extends State<MainScreen> {
+  var email = FirebaseAuth.instance.currentUser!.email.toString();
   @override
   Widget build(BuildContext context) {
-    
-
     void productScreen() {
       Navigator.of(context).pushNamed('/productscreen');
     }
@@ -42,7 +107,6 @@ class _MainScreenState extends State<MainScreen> {
         centerTitle: true,
         title: Text(
           'Signed in as $email',
-          
         ),
         actions: [
           IconButton(
@@ -202,77 +266,6 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _MainPageState extends State<MainPage> {
-  int index = 0;
-  final screensNavigation = [
-    MainScreen(),
-    CatalogScreen(),
-    ShoppingCart(),
-    ProfileScreen(),
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: screensNavigation[index],
-      bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(
-            backgroundColor: Color.fromARGB(255, 205, 255, 236),
-            labelTextStyle: MaterialStateProperty.all(
-              TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              ),
-            )),
-        child: NavigationBar(
-            height: 60,
-            selectedIndex: index,
-            onDestinationSelected: (index) =>
-                setState(() => this.index = index),
-            // ignore: prefer_const_literals_to_create_immutables
-            destinations: [
-              NavigationDestination(
-                icon: Icon(
-                  Icons.home_outlined,
-                ),
-                selectedIcon: Icon(Icons.home, size: 32),
-                label: 'Главная',
-              ),
-              NavigationDestination(
-                icon: Icon(
-                  Icons.format_indent_increase_outlined,
-                ),
-                selectedIcon: Icon(
-                  Icons.format_indent_increase,
-                  size: 32,
-                ),
-                label: 'Каталог',
-              ),
-              NavigationDestination(
-                icon: Icon(
-                  Icons.shopping_bag_outlined,
-                ),
-                selectedIcon: Icon(
-                  Icons.shopping_bag,
-                  size: 32,
-                ),
-                label: 'Корзина',
-              ),
-              NavigationDestination(
-                icon: Icon(
-                  Icons.account_circle_outlined,
-                ),
-                selectedIcon: Icon(
-                  Icons.account_circle,
-                  size: 32,
-                ),
-                label: 'Профиль',
-              ),
-            ]),
       ),
     );
   }

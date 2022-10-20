@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,7 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  // final navigatorKey = GlobalKey<NavigatorState>();
+  
 
   runApp(
     MaterialApp(
@@ -24,8 +23,8 @@ Future main() async {
       routes: {
         '/': (context) => const ScreenAuth(),
         '/reg_screen': (context) => const RegScreenAuth(),
-        '/restore_password': (context) => const RestorePassword(),
-        '/mainscreen': (context) => const MainPage(),
+        '/restore_password': (context) => const ResetPassword(),
+        '/mainscreen': (context) => const BottomNavBar(),
         '/productscreen': (context) =>
             const ProductScreen(priceProductScreen: 350),
       },

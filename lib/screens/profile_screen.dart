@@ -3,13 +3,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'main_screen.dart';
-
 class ProfileScreen extends StatelessWidget {
+  final email = FirebaseAuth.instance.currentUser!.email.toString();
   final String imageProfile =
       'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg';
   final String nameProfile = 'Базилик Киберскотч';
-  final String emailProfile = email;
+  // final String emailProfile = email;
 
   ProfileScreen({super.key});
 
@@ -63,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        emailProfile,
+                        email,
                         style: const TextStyle(
                           color: Colors.black38,
                         ),
@@ -153,7 +152,8 @@ class _ProfileWidgetButton extends StatelessWidget {
   final String nameButton;
   final Function() onPressed;
 
-   const _ProfileWidgetButton({required this.nameButton, required this.onPressed});
+  const _ProfileWidgetButton(
+      {required this.nameButton, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

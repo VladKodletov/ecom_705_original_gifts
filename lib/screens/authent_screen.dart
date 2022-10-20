@@ -28,7 +28,7 @@ class _ScreenAuthState extends State<ScreenAuth> {
           //     child: Text('Что-то пошло не так, сорюшки'),
           //   );
           if (snapshot.hasData) {
-            return const MainPage();
+            return const BottomNavBar();
           } else {
             return const HeaderPage();
           }
@@ -118,10 +118,6 @@ class _AuthInputFormState extends State<AuthInputForm> {
   void _register() {
     Navigator.of(context).pushNamed('/reg_screen');
   }
-
-  // void _mainScreen() {
-  //   Navigator.of(context).pushNamed('/mainscreen');
-  // }
 
   @override
   void setState(VoidCallback fn) {
@@ -236,6 +232,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
     } on FirebaseAuthException catch (e) {
       Utils.showSnackBar(e.message);
     }
+
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }
