@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+
 import 'main_screen.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -74,7 +75,9 @@ class _ProductScreenState extends State<ProductScreen> {
                     length: 3,
                     initialIndex: 0,
                     child: TabBar(
-                      padding: const EdgeInsets.only(bottom: 10,),
+                      padding: const EdgeInsets.only(
+                        bottom: 10,
+                      ),
                       indicatorColor: const Color(0xFF0ACF83),
                       tabs: const [
                         Tab(
@@ -298,9 +301,9 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                   ],
                 ),
                 RatingStars(
-                 // starOffColor: Colors.white,
-                //  valueLabelColor: Colors.white,
-                // starOffColor: Colors.white,
+                  // starOffColor: Colors.white,
+                  //  valueLabelColor: Colors.white,
+                  // starOffColor: Colors.white,
                   value: value,
                   starColor: const Color(0xFFFFC120),
                   onValueChanged: (v) {

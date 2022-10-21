@@ -1,13 +1,12 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 import 'profile_screen.dart';
-import 'package:flutter/material.dart';
-
 import 'catalog_screen.dart';
 import 'shopping_cart_screen.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
