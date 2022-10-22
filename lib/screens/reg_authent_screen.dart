@@ -133,13 +133,6 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
     return Column(
       children: [
         TextFormField(
-          // textInputAction: TextInputAction.next,
-          // autovalidateMode: AutovalidateMode.onUserInteraction,
-          // validator: (email) {
-          //   email != null && !EmailValidator.validate(email)
-          //       ? 'Enter a valid email'
-          //       : null;
-          // },
           controller: emailController,
           decoration: InputDecoration(
             fillColor: Colors.white,
@@ -157,6 +150,7 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
           height: 16,
         ),
         TextFormField(
+          // ниже демо код валидации
           // obscureText: true,
           // textInputAction: TextInputAction.next,
           // autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -223,13 +217,14 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
   }
 
   Future signUp() async {
-    // showDialog(
-    //   barrierDismissible: false,
-    //   context: context,
-    //   builder: (context) => const Center(
-    //     child: CircularProgressIndicator(),
-    //   ),
-    // );
+    // прогресс индикатор, если понадобится
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),

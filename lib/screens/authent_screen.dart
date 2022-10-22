@@ -31,6 +31,7 @@ class _ScreenAuthState extends State<ScreenAuth> {
         body: StreamBuilder<User?>(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
+            // доп проверки если понадобятся
             // if (snapshot.connectionState == ConnectionState.waiting) {
             //   return const Center(
             //     child: CircularProgressIndicator(),

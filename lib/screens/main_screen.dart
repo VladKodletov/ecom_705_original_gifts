@@ -194,17 +194,6 @@ class _MainScreenState extends State<MainScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          //       // ProductsCard(
-                          //       //   loadedProducts: Product(
-                          //       //       'p1',
-                          //       //       'Woooood',
-                          //       //       650,
-                          //       //       'best wood gift',
-                          //       //       'assets/image/6.jpg',
-                          //       //       'assets/image/6.jpg',
-                          //       //       'assets/image/6.jpg'),
-                          //       //   routeProduct: productScreen,
-                          //       // ),
                           ProductsCard(
                             nameProduct: 'Wood toy "Car"',
                             imageProduct: 'assets/image/6.jpg',
