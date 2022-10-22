@@ -7,7 +7,6 @@ import 'profile_screen.dart';
 import 'catalog_screen.dart';
 import 'shopping_cart_screen.dart';
 
-
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
 
@@ -284,7 +283,7 @@ class _SelectCatState extends State<SelectCat> {
       length: 4,
       initialIndex: 0,
       child: TabBar(
-        labelPadding: EdgeInsets.symmetric(horizontal: 22),
+        labelPadding: EdgeInsets.symmetric(horizontal: 19),
         isScrollable: true,
         tabs: const [
           Tab(

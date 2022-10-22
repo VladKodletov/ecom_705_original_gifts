@@ -12,24 +12,35 @@ class ResetPassword extends StatefulWidget {
 class _ResetPasswordState extends State<ResetPassword> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // backgroundColor:
-      // Colors.teal[600],
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.green,
-                Color(0xFF0ACF83),
-              ],
-              begin: Alignment.bottomRight,
-              end: Alignment.topLeft,
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.45), BlendMode.darken),
+          image: const AssetImage(
+            'assets/image/background.jpg',
           ),
         ),
       ),
-      body: const RestPassPage(),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.green,
+                  Color(0xFF0ACF83),
+                ],
+                begin: Alignment.bottomRight,
+                end: Alignment.topLeft,
+              ),
+            ),
+          ),
+        ),
+        body: const RestPassPage(),
+      ),
     );
   }
 }
@@ -39,47 +50,38 @@ class RestPassPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.green.shade900,
-            Colors.green,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: ListView(
-          children: const [
-            SizedBox(
-              height: 120,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: ListView(
+        children: const [
+          SizedBox(
+            height: 120,
+          ),
+          Text(
+            '705',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 56,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF0ACF83),
             ),
-            Text(
-              '705',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 52,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            'original gifts',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 18,
+              color: Color(0xFF0ACF83),
             ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              'original gifts',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18, color: Colors.white),
-            ),
-            SizedBox(
-              height: 80,
-            ),
-            InputEmailForm(),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 80,
+          ),
+          InputEmailForm(),
+        ],
       ),
     );
   }

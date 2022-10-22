@@ -15,24 +15,37 @@ class ScreenAuth extends StatefulWidget {
 class _ScreenAuthState extends State<ScreenAuth> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          // if (snapshot.connectionState == ConnectionState.waiting) {
-          //   return const Center(
-          //     child: CircularProgressIndicator(),
-          //   );
-          // } else if (snapshot.hasError) {
-          //   return const Center(
-          //     child: Text('Что-то пошло не так, сорюшки'),
-          //   );
-          if (snapshot.hasData) {
-            return const BottomNavBar();
-          } else {
-            return const HeaderPage();
-          }
-        },
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.45), BlendMode.darken),
+          image: const AssetImage(
+            'assets/image/background.jpg',
+          ),
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            // if (snapshot.connectionState == ConnectionState.waiting) {
+            //   return const Center(
+            //     child: CircularProgressIndicator(),
+            //   );
+            // } else if (snapshot.hasError) {
+            //   return const Center(
+            //     child: Text('Что-то пошло не так, сорюшки'),
+            //   );
+            if (snapshot.hasData) {
+              return const BottomNavBar();
+            } else {
+              return const HeaderPage();
+            }
+          },
+        ),
       ),
     );
   }
@@ -44,16 +57,6 @@ class HeaderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.green.shade900,
-            Colors.green,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: ListView(
@@ -65,9 +68,9 @@ class HeaderPage extends StatelessWidget {
               '705',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 52,
+                fontSize: 60,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Color(0xFF0ACF83),
               ),
             ),
             SizedBox(
@@ -77,8 +80,8 @@ class HeaderPage extends StatelessWidget {
               'original gifts',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 18,
-                color: Colors.white,
+                fontSize: 24,
+                color: Color(0xFF0ACF83),
               ),
             ),
             SizedBox(
@@ -186,7 +189,7 @@ class _AuthInputFormState extends State<AuthInputForm> {
               /// _mainScreen,
               child: const Text(
                 'Sign In',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 20),
               ),
             ),
           ],

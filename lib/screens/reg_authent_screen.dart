@@ -30,23 +30,35 @@ class RegScreenAuth extends StatefulWidget {
 class _RegScreenAuthState extends State<RegScreenAuth> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.teal[600],
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.green,
-                Color(0xFF0ACF83),
-              ],
-              begin: Alignment.bottomRight,
-              end: Alignment.topLeft,
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.45), BlendMode.darken),
+          image: const AssetImage(
+            'assets/image/background.jpg',
           ),
         ),
       ),
-      body: const RegHeaderPage(),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.green,
+                  Color(0xFF0ACF83),
+                ],
+                begin: Alignment.bottomRight,
+                end: Alignment.topLeft,
+              ),
+            ),
+          ),
+        ),
+        body: const RegHeaderPage(),
+      ),
     );
   }
 }
@@ -56,49 +68,38 @@ class RegHeaderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.green.shade900,
-            Colors.green,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: ListView(
-          children: const [
-            SizedBox(
-              height: 80,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: ListView(
+        children: const [
+          SizedBox(
+            height: 80,
+          ),
+          Text(
+            '705',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 56,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF0ACF83),
             ),
-            Text(
-              '705',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 52,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            'original gifts',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              color: Color(0xFF0ACF83),
             ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              'original gifts',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(
-              height: 80,
-            ),
-            RegAuthInputForm(),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 80,
+          ),
+          RegAuthInputForm(),
+        ],
       ),
     );
   }
@@ -237,7 +238,6 @@ class _RegAuthInputFormState extends State<RegAuthInputForm> {
       navigatorKey.currentState!.popUntil((route) => route.isFirst);
     } on FirebaseAuthException catch (e) {
       Utils.showSnackBar(e.message);
-      
     }
   }
 }
