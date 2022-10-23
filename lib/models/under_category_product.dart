@@ -3,5 +3,8 @@ class UnderCategory {
   final String titleUnderCategory;
   final String underCategoryImageUrl;
 
-  UnderCategory(this.id, this.titleUnderCategory, this.underCategoryImageUrl);
+  UnderCategory(
+      {required this.id,
+      required this.titleUnderCategory,
+      required this.underCategoryImageUrl});
 }

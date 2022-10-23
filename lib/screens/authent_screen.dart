@@ -57,40 +57,38 @@ class HeaderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: ListView(
-          children: const [
-            SizedBox(
-              height: 80,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: ListView(
+        children: const [
+          SizedBox(
+            height: 80,
+          ),
+          Text(
+            '705',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 60,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF0ACF83),
             ),
-            Text(
-              '705',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 60,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF0ACF83),
-              ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            'original gifts',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 24,
+              color: Color(0xFF0ACF83),
             ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              'original gifts',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24,
-                color: Color(0xFF0ACF83),
-              ),
-            ),
-            SizedBox(
-              height: 80,
-            ),
-            AuthInputForm(),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 80,
+          ),
+          AuthInputForm(),
+        ],
       ),
     );
   }

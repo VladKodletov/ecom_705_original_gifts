@@ -3,6 +3,8 @@ class Category {
   final List underCategoryName;
   final String titleCategory;
 
-  Category(this.id, this.underCategoryName, this.titleCategory);
- 
+  Category(
+      {required this.id,
+      required this.underCategoryName,
+      required this.titleCategory});
 }

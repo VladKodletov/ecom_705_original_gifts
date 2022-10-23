@@ -4,12 +4,27 @@ import 'package:flutter/material.dart';
 
 class MiniOverviewProducts extends StatelessWidget {
   final List<Product> loadedProducts = [
-    Product('p1', 'Wood toy "Car"', 1150, 'assets/image/6.jpg',
-        'assets/image/6.jpg', 'assets/image/6.jpg'),
-    Product('p2', 'Wood toy №28', 250, 'assets/image/8.jpg',
-        'assets/image/8.jpg', 'assets/image/8.jpg'),
-    Product('p3', 'Wood toy №9', 450, 'assets/image/7.jpg',
-        'assets/image/7.jpg', 'assets/image/7.jpg'),
+    Product(
+        id: 'p1', 
+        title: 'Wood toy "Car"',
+        price: 1150,
+        firstImageUrl: 'assets/image/6.jpg',
+        secondImageUrl: 'assets/image/6.jpg',
+        thirdImageUrl: 'assets/image/6.jpg'),
+    Product(
+        id: 'p2',
+        title: 'Wood toy №28',
+        price: 250,
+        firstImageUrl: 'assets/image/8.jpg',
+        secondImageUrl: 'assets/image/8.jpg',
+        thirdImageUrl: 'assets/image/8.jpg'),
+    Product(
+        id: 'p3',
+        title: 'Wood toy №9',
+        price: 450,
+        firstImageUrl: 'assets/image/7.jpg',
+        secondImageUrl: 'assets/image/7.jpg',
+        thirdImageUrl: 'assets/image/7.jpg'),
   ];
 
   MiniOverviewProducts({super.key});
