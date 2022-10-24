@@ -97,9 +97,10 @@ class _MainScreenState extends State<MainScreen> {
   var email = FirebaseAuth.instance.currentUser!.email.toString();
   @override
   Widget build(BuildContext context) {
-    void productScreen() {
-      Navigator.of(context).pushNamed('/productscreen');
-    }
+    ///ниже dead code?
+    // void productScreen() {
+    //   Navigator.of(context).pushNamed('/productscreen');
+    // }
 
     return Scaffold(
       appBar: AppBar(
@@ -132,7 +133,10 @@ class _MainScreenState extends State<MainScreen> {
             child: Padding(
               padding: const EdgeInsets.only(top: 70.0),
               child: Container(
-                padding: EdgeInsets.only(left: 12, top: 12, bottom: 9.5),
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height,
+                ),
+                // padding: EdgeInsets.only(left: 12, top: 12, bottom: 9.5),
                 decoration: BoxDecoration(
                   color: Colors.grey.withAlpha(40),
                   borderRadius: BorderRadius.only(
@@ -241,7 +245,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6),
             child: TextField(
               onChanged: (value) {},
               decoration: InputDecoration(
@@ -254,6 +258,9 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
           ),
+          SizedBox(
+            height: 6,
+          )
         ],
       ),
     );
@@ -398,81 +405,81 @@ class _UnderCategoryCard extends StatelessWidget {
   }
 }
 
-class ProductsCard extends StatefulWidget {
-  final String imageProduct;
-  final String nameProduct;
-  final String priceProduct;
-  final void Function() routeProduct;
+// class ProductsCard extends StatefulWidget {
+//   final String imageProduct;
+//   final String nameProduct;
+//   final String priceProduct;
+//   final void Function() routeProduct;
 
-  const ProductsCard({
-    super.key,
-    required this.imageProduct,
-    required this.nameProduct,
-    required this.priceProduct,
-    required this.routeProduct,
-  });
+//   const ProductsCard({
+//     super.key,
+//     required this.imageProduct,
+//     required this.nameProduct,
+//     required this.priceProduct,
+//     required this.routeProduct,
+//   });
 
-  @override
-  State<ProductsCard> createState() => _ProductsCardState();
-}
+//   @override
+//   State<ProductsCard> createState() => _ProductsCardState();
+// }
 
-class _ProductsCardState extends State<ProductsCard> {
-  void routeProduct() {
-    Navigator.of(context).pushNamed('/productscreen');
-  }
+// class _ProductsCardState extends State<ProductsCard> {
+//   void routeProduct() {
+//     Navigator.of(context).pushNamed('/productscreen');
+//   }
 
-  @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
-  }
+//   @override
+//   void setState(VoidCallback fn) {
+//     super.setState(fn);
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Material(
-          borderRadius: BorderRadius.circular(12),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(12),
-            onTap: routeProduct,
-            child: Container(
-              padding: EdgeInsets.all(6),
-              width: MediaQuery.of(context).size.width * 0.42,
-              height: MediaQuery.of(context).size.height * 0.20,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      widget.imageProduct,
-                      width: MediaQuery.of(context).size.width * 0.28,
-                      height: MediaQuery.of(context).size.height * 0.12,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    widget.nameProduct,
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                  Text(
-                    'RUB ${widget.priceProduct}',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       children: [
+//         Material(
+//           borderRadius: BorderRadius.circular(12),
+//           child: InkWell(
+//             borderRadius: BorderRadius.circular(12),
+//             onTap: routeProduct,
+//             child: Container(
+//               padding: EdgeInsets.all(6),
+//               width: MediaQuery.of(context).size.width * 0.42,
+//               height: MediaQuery.of(context).size.height * 0.20,
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.center,
+//                 children: [
+//                   ClipRRect(
+//                     borderRadius: BorderRadius.circular(12),
+//                     child: Image.asset(
+//                       widget.imageProduct,
+//                       width: MediaQuery.of(context).size.width * 0.28,
+//                       height: MediaQuery.of(context).size.height * 0.12,
+//                       fit: BoxFit.cover,
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     height: 4,
+//                   ),
+//                   Text(
+//                     widget.nameProduct,
+//                     style: TextStyle(
+//                       fontSize: 14,
+//                     ),
+//                   ),
+//                   Text(
+//                     'RUB ${widget.priceProduct}',
+//                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//         SizedBox(
+//           width: 10,
+//         ),
+//       ],
+//     );
+//   }
+// }

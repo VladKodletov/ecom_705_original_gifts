@@ -3,42 +3,28 @@ import 'package:ecom_705_original_gifts/models/product.dart';
 
 import 'package:flutter/material.dart';
 
-class MiniOverviewProducts extends StatelessWidget {
+class MiniOverviewProducts extends StatefulWidget {
+  const MiniOverviewProducts({super.key});
+
+  @override
+  State<MiniOverviewProducts> createState() => _MiniOverviewProductsState();
+}
+
+class _MiniOverviewProductsState extends State<MiniOverviewProducts> {
   final loadedProducts =
       FirebaseFirestore.instance.collection('products').withConverter(
             fromFirestore: (snapshot, _) => Product.fromJson(snapshot.data()!),
             toFirestore: (user, _) => user.toJson(),
           );
 
-  //
-  //final List<Product> loadedProducts = [
-  //   Product(
-  //     amount: 3,
-  //       id: 'p1',
-  //       title: 'Wood toy "Car"',
-  //       price: 1150,
-  //       firstImageUrl: 'assets/image/6.jpg',
-  //       secondImageUrl: 'assets/image/6.jpg',
-  //       thirdImageUrl: 'assets/image/6.jpg'),
-  //   Product(
-  //     amount: 2,
-  //       id: 'p2',
-  //       title: 'Wood toy №28',
-  //       price: 250,
-  //       firstImageUrl: 'assets/image/8.jpg',
-  //       secondImageUrl: 'assets/image/8.jpg',
-  //       thirdImageUrl: 'assets/image/8.jpg'),
-  //   Product(
-  //     amount: 1,
-  //       id: 'p3',
-  //       title: 'Wood toy №9',
-  //       price: 450,
-  //       firstImageUrl: 'assets/image/7.jpg',
-  //       secondImageUrl: 'assets/image/7.jpg',
-  //       thirdImageUrl: 'assets/image/7.jpg'),
-  // ];
+  void routeProduct() {
+    Navigator.of(context).pushNamed('/productscreen');
+  }
 
-  MiniOverviewProducts({super.key});
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
 
   @override
   Widget build(BuildContext context) => StreamBuilder<QuerySnapshot>(
@@ -51,7 +37,7 @@ class MiniOverviewProducts extends StatelessWidget {
         if (userSnapshot!.isEmpty) {
           return const Text("Данные не загружены");
         }
-        return Container(
+        return SizedBox(
           height: MediaQuery.of(context).size.height * 0.20,
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -64,11 +50,12 @@ class MiniOverviewProducts extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(12),
-                      onTap: () {}, //routeProduct,
+                      onTap: routeProduct,
                       child: Container(
                         padding: const EdgeInsets.all(6),
                         width: MediaQuery.of(context).size.width * 0.42,
-                        height: MediaQuery.of(context).size.height * 0.20,
+                        //fix dead code bottom - DRY principle
+                        // height: MediaQuery.of(context).size.height * 0.20,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [

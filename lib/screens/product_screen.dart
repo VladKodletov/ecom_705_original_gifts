@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-import 'main_screen.dart';
+import '../widgets/mini_products.dart';
 
 class ProductScreen extends StatefulWidget {
   final double priceProductScreen;
@@ -177,40 +177,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   const SizedBox(
                     height: 8,
                   ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        children: [
-                          ProductsCard(
-                            nameProduct: 'Wood toy №28',
-                            imageProduct: 'assets/image/8.jpg',
-                            priceProduct: '250',
-                            routeProduct: () {},
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy "Car"',
-                            imageProduct: 'assets/image/6.jpg',
-                            priceProduct: '1150',
-                            routeProduct: () {},
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy №28',
-                            imageProduct: 'assets/image/8.jpg',
-                            priceProduct: '250',
-                            routeProduct: () {},
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy "Car"',
-                            imageProduct: 'assets/image/6.jpg',
-                            priceProduct: '1150',
-                            routeProduct: () {},
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  MiniOverviewProducts(),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(

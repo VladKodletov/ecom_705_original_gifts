@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/mini_products.dart';
 
 class ShoppingCart extends StatelessWidget {
   const ShoppingCart({Key? key}) : super(key: key);
