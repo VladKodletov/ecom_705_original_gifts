@@ -1,16 +1,8 @@
 # ecom_705_original_gifts
 
-A new Flutter project.
+Проект полноценного приложения маркетплейса "705. Магазин оригинальных подарков".
 
-## Getting Started
+Была поставлена задача разработать приложение с интуитивно понятным интерфейсам пользователю. С учетом требований Android и iOS платформ для последующей загрузки в соответствующие магазины приложений.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Дизайн был дан в макете figma, по которому и осуществлялась верстка с адаптационными правками. 
+Получение данных из Firebase Firestore с помощью JSON методов. Аутентификация пользователей с использованием Firebase Auth.
