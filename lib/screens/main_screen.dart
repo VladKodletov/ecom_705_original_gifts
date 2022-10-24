@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
+import '../widgets/mini_products.dart';
 import 'profile_screen.dart';
 import 'catalog_screen.dart';
 import 'shopping_cart_screen.dart';
@@ -190,49 +191,50 @@ class _MainScreenState extends State<MainScreen> {
                     SizedBox(
                       height: 14,
                     ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          ProductsCard(
-                            nameProduct: 'Wood toy "Car"',
-                            imageProduct: 'assets/image/6.jpg',
-                            priceProduct: '1150',
-                            routeProduct: productScreen,
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy №28',
-                            imageProduct: 'assets/image/8.jpg',
-                            priceProduct: '250',
-                            routeProduct: productScreen,
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy №9',
-                            imageProduct: 'assets/image/7.jpg',
-                            priceProduct: '450',
-                            routeProduct: productScreen,
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy №12',
-                            imageProduct: 'assets/image/8.jpg',
-                            priceProduct: '650',
-                            routeProduct: productScreen,
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy №8',
-                            imageProduct: 'assets/image/6.jpg',
-                            priceProduct: '350',
-                            routeProduct: productScreen,
-                          ),
-                          ProductsCard(
-                            nameProduct: 'Wood toy №3',
-                            imageProduct: 'assets/image/8.jpg',
-                            priceProduct: '850',
-                            routeProduct: productScreen,
-                          ),
-                        ],
-                      ),
-                    ),
+                    MiniOverviewProducts(),
+                    // SingleChildScrollView(
+                    //   scrollDirection: Axis.horizontal,
+                    //   child: Row(
+                    //     children: [
+                    //       ProductsCard(
+                    //         nameProduct: 'Wood toy "Car"',
+                    //         imageProduct: 'assets/image/6.jpg',
+                    //         priceProduct: '1150',
+                    //         routeProduct: productScreen,
+                    //       ),
+                    //       ProductsCard(
+                    //         nameProduct: 'Wood toy №28',
+                    //         imageProduct: 'assets/image/8.jpg',
+                    //         priceProduct: '250',
+                    //         routeProduct: productScreen,
+                    //       ),
+                    //       ProductsCard(
+                    //         nameProduct: 'Wood toy №9',
+                    //         imageProduct: 'assets/image/7.jpg',
+                    //         priceProduct: '450',
+                    //         routeProduct: productScreen,
+                    //       ),
+                    //       ProductsCard(
+                    //         nameProduct: 'Wood toy №12',
+                    //         imageProduct: 'assets/image/8.jpg',
+                    //         priceProduct: '650',
+                    //         routeProduct: productScreen,
+                    //       ),
+                    //       ProductsCard(
+                    //         nameProduct: 'Wood toy №8',
+                    //         imageProduct: 'assets/image/6.jpg',
+                    //         priceProduct: '350',
+                    //         routeProduct: productScreen,
+                    //       ),
+                    //       ProductsCard(
+                    //         nameProduct: 'Wood toy №3',
+                    //         imageProduct: 'assets/image/8.jpg',
+                    //         priceProduct: '850',
+                    //         routeProduct: productScreen,
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

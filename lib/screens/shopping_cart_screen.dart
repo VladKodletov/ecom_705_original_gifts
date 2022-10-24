@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+import '../widgets/mini_products.dart';
 
 class ShoppingCart extends StatelessWidget {
   const ShoppingCart({Key? key}) : super(key: key);
@@ -28,7 +28,6 @@ class ShoppingCart extends StatelessWidget {
           style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
         ),
       ),
-      // MiniOverviewProducts(),
     );
   }
 }
