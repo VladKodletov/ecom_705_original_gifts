@@ -1,4 +1,3 @@
-
 class Product {
   final String id;
   final String title;
@@ -32,6 +31,10 @@ class Product {
           price: json['price']! as double,
           amount: json['amount']! as double,
           firstImageUrl: json['firstImageUrl']! as String,
+          secondImageUrl: json['secondImageUrl']! as String,
+          thirdImageUrl: json['thirdImageUrl']! as String,
+          description: json['description']! as String,
+          isFavorite: json['isFavorite']! as bool,
         );
   Map<String, Object?> toJson() => {
         'id': id,
@@ -39,5 +42,9 @@ class Product {
         'price': price,
         'amount': amount,
         'firstImageUrl': firstImageUrl,
+        'secondImageUrl': secondImageUrl,
+        'thirdImageUrl': thirdImageUrl,
+        'description': description,
+        'isFavorite': isFavorite,
       };
 }

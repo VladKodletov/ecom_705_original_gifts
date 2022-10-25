@@ -19,8 +19,6 @@ class _MiniOverviewProductsState extends State<MiniOverviewProducts> {
             toFirestore: (user, _) => user.toJson(),
           );
 
-
-
   // @override
   // void setState(VoidCallback fn) {
   //   super.setState(fn);
@@ -55,10 +53,23 @@ class _MiniOverviewProductsState extends State<MiniOverviewProducts> {
                         //пример перехода по навигатору на конкретную страницу с пробросом значений для полей
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => ProductScreen(
+                                  idProductScreen: userSnapshot[int]['id'],
                                   priceProductScreen:
                                       (userSnapshot[int]['price']).toDouble(),
                                   titleProductScreen: userSnapshot[int]
                                       ['title'],
+                                  amountProductScreen:
+                                      (userSnapshot[int]['amount']).toDouble(),
+                                  firstImageUrlProductScreen: userSnapshot[int]
+                                      ['firstImageUrl'],
+                                  secondImageUrlProductScreen: userSnapshot[int]
+                                      ['secondImageUrl'],
+                                  thirdImageUrlProductScreen: userSnapshot[int]
+                                      ['thirdImageUrl'],
+                                  descriptionProductScreen: userSnapshot[int]
+                                      ['description'],
+                                  isFavoriteProductScreen: userSnapshot[int]
+                                      ['isFavorite'],
                                 )));
                       },
                       child: Container(

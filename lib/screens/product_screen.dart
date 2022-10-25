@@ -5,13 +5,27 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import '../widgets/mini_products.dart';
 
 class ProductScreen extends StatefulWidget {
+  final String idProductScreen;
   final double priceProductScreen;
   final String titleProductScreen;
+  final double amountProductScreen;
+  final String firstImageUrlProductScreen;
+  final String secondImageUrlProductScreen;
+  final String thirdImageUrlProductScreen;
+  final String descriptionProductScreen;
+  final bool isFavoriteProductScreen;
 
   const ProductScreen(
       {super.key,
+      required this.idProductScreen,
       required this.priceProductScreen,
-      required this.titleProductScreen});
+      required this.titleProductScreen,
+      required this.amountProductScreen,
+      required this.firstImageUrlProductScreen,
+      this.secondImageUrlProductScreen = '',
+      this.thirdImageUrlProductScreen = '',
+      this.descriptionProductScreen = '',
+      this.isFavoriteProductScreen = false});
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -79,7 +93,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         ),
                       ),
                       DefaultTabController(
-                        length: 3,
+                        length: 2,
                         child: TabBar(
                           padding: const EdgeInsets.only(
                             bottom: 10,
@@ -92,9 +106,9 @@ class _ProductScreenState extends State<ProductScreen> {
                             Tab(
                               text: "Features",
                             ),
-                            Tab(
-                              text: "Specification",
-                            ),
+                            // Tab(
+                            //   text: "Specification",
+                            // ),
                           ],
                           labelColor: Colors.black,
                           indicator: MaterialIndicator(
@@ -112,10 +126,13 @@ class _ProductScreenState extends State<ProductScreen> {
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          children: const [
-                            ImageCard(imagePath: 'assets/image/6.jpg'),
-                            ImageCard(imagePath: 'assets/image/6.jpg'),
-                            ImageCard(imagePath: 'assets/image/6.jpg'),
+                          children: [
+                            ImageCard(
+                                imagePath: widget.firstImageUrlProductScreen),
+                            ImageCard(
+                                imagePath: widget.secondImageUrlProductScreen),
+                            ImageCard(
+                                imagePath: widget.thirdImageUrlProductScreen),
                           ],
                         ),
                       ),
@@ -322,7 +339,7 @@ class ImageCard extends StatelessWidget {
       padding: const EdgeInsets.only(right: 16.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
-        child: Image.asset(
+        child: Image.network(
           imagePath,
           width: MediaQuery.of(context).size.width * 0.85,
           height: MediaQuery.of(context).size.height * 0.45,
