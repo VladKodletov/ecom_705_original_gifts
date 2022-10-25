@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'screens/authent_screen.dart';
 import 'screens/main_screen.dart';
-import 'screens/product_screen.dart';
 import 'screens/reg_authent_screen.dart';
 import 'screens/restore_password_screen.dart';
 

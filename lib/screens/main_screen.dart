@@ -129,80 +129,74 @@ class _MainScreenState extends State<MainScreen> {
       ),
       body: Stack(
         children: [
-          SingleChildScrollView(
-            // padding: EdgeInsets.only(
-            //   top: 70,
-            //   left: 8,
-            // ),
-            child: Container(
-              constraints: BoxConstraints(
-                maxHeight: MediaQuery.of(context).size.height * 0.72,
+          Container(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height,
+            ),
+            padding: EdgeInsets.only(
+              left: 12,
+              top: 70,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.grey.withAlpha(40),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12),
+                topRight: Radius.circular(12),
               ),
-              padding: EdgeInsets.only(
-                left: 12,
-                top: 70,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.grey.withAlpha(40),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
-                ),
-              ),
-              child: Column(
-                children: [
-                  SelectCat(),
-                  SizedBox(height: 15),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: const [
-                        _UnderCategoryCard(
-                          nameUnderCategory: 'Wood kitchen board',
-                          picturesUnderCategory:
-                              'https://i.ibb.co/6ZbnbxG/2.jpg',
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        _UnderCategoryCard(
-                          nameUnderCategory: 'Wood toys',
-                          picturesUnderCategory:
-                              'https://i.ibb.co/2gdzgm7/5.jpg',
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        _UnderCategoryCard(
-                          nameUnderCategory: 'Wood picture',
-                          picturesUnderCategory:
-                              'https://i.ibb.co/F0rBHxk/9.jpg',
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Featured Products'),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'See all',
-                          style: TextStyle(color: Colors.black38),
-                        ),
+            ),
+            child: Column(
+              children: [
+                SelectCat(),
+                SizedBox(height: 15),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: const [
+                      _UnderCategoryCard(
+                        nameUnderCategory: 'Wood kitchen board',
+                        picturesUnderCategory:
+                            'https://i.ibb.co/6ZbnbxG/2.jpg',
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      _UnderCategoryCard(
+                        nameUnderCategory: 'Wood toys',
+                        picturesUnderCategory:
+                            'https://i.ibb.co/2gdzgm7/5.jpg',
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      _UnderCategoryCard(
+                        nameUnderCategory: 'Wood picture',
+                        picturesUnderCategory:
+                            'https://i.ibb.co/F0rBHxk/9.jpg',
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 14,
-                  ),
-                  MiniOverviewProducts(),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Featured Products'),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'See all',
+                        style: TextStyle(color: Colors.black38),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 14,
+                ),
+                MiniOverviewProducts(),
+              ],
             ),
           ),
           Padding(

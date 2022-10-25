@@ -31,7 +31,9 @@ class ProductScreen extends StatefulWidget {
   State<ProductScreen> createState() => _ProductScreenState();
 }
 
-class _ProductScreenState extends State<ProductScreen> {
+class _ProductScreenState extends State<ProductScreen>
+    with SingleTickerProviderStateMixin {
+  late final _tabController = TabController(length: 2, vsync: this);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +60,6 @@ class _ProductScreenState extends State<ProductScreen> {
       body: Stack(
         children: [
           SingleChildScrollView(
-            padding: const EdgeInsets.only(bottom: 40),
             child: Column(
               children: [
                 Padding(
@@ -95,6 +96,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       DefaultTabController(
                         length: 2,
                         child: TabBar(
+                          controller: _tabController,
                           padding: const EdgeInsets.only(
                             bottom: 10,
                           ),
@@ -106,9 +108,6 @@ class _ProductScreenState extends State<ProductScreen> {
                             Tab(
                               text: "Features",
                             ),
-                            // Tab(
-                            //   text: "Specification",
-                            // ),
                           ],
                           labelColor: Colors.black,
                           indicator: MaterialIndicator(
@@ -123,56 +122,37 @@ class _ProductScreenState extends State<ProductScreen> {
                           ),
                         ),
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.8,
+                        child: TabBarView(
+                          controller: _tabController,
                           children: [
-                            ImageCard(
-                                imagePath: widget.firstImageUrlProductScreen),
-                            ImageCard(
-                                imagePath: widget.secondImageUrlProductScreen),
-                            ImageCard(
-                                imagePath: widget.thirdImageUrlProductScreen),
+                            TabOverview(
+                              imageFirst: widget.firstImageUrlProductScreen,
+                              imageSecond: widget.secondImageUrlProductScreen,
+                              imageThird: widget.thirdImageUrlProductScreen,
+                            ),
+
+                            SizedBox(
+                              child: Text(
+                                widget.descriptionProductScreen,
+                                textAlign: TextAlign.start,
+                                style: TextStyle(fontSize: 32),
+                              ),
+                            ),
+                            // TabOverview(
+                            //   imageFirst: widget.firstImageUrlProductScreen,
+                            //   imageSecond: widget.secondImageUrlProductScreen,
+                            //   imageThird: widget.thirdImageUrlProductScreen,
+                            // ),
                           ],
                         ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        child: const Text('Review(102)'),
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      const ReviewWidget(
-                          dateReview: '1 month ago',
-                          nameReview: 'Базилик Киберскотч',
-                          rateReview: '4 stars',
-                          textReview:
-                              'Two roads diverged in a yellow wood, And sorry I could not travel both And be one traveler, long I stood And looked down one as far as I could To where it bent in the undergrowth.'),
-                      const ReviewWidget(
-                          dateReview: '2 month ago',
-                          nameReview: 'Бургеркинг Гендерсвитч',
-                          rateReview: '3 stars',
-                          textReview:
-                              'blablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablabl'),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      TextButton(
-                        style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.black38),
-                        ),
-                        onPressed: () {},
-                        child: const Text('See all reviews'),
                       ),
                     ],
                   ),
                 ),
                 Container(
+                  padding: const EdgeInsets.only(bottom: 40),
                   color: Colors.black12,
                   child: Column(
                     children: [
@@ -202,6 +182,9 @@ class _ProductScreenState extends State<ProductScreen> {
                       const Padding(
                         padding: EdgeInsets.only(left: 8.0),
                         child: MiniOverviewProducts(),
+                      ),
+                      const SizedBox(
+                        height: 8,
                       ),
                     ],
                   ),
@@ -235,16 +218,11 @@ class _ProductScreenState extends State<ProductScreen> {
 class ReviewWidget extends StatefulWidget {
   final String nameReview;
 
-  ///'Базилик Киберскотч'
   final String dateReview;
 
-  ///'1 month ago'
   final String rateReview;
 
-  ///'4 stars'
   final String textReview;
-
-  ///
 
   const ReviewWidget(
       {super.key,
@@ -293,9 +271,6 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                   ],
                 ),
                 RatingStars(
-                  // starOffColor: Colors.white,
-                  //  valueLabelColor: Colors.white,
-                  // starOffColor: Colors.white,
                   value: value,
                   starColor: const Color(0xFFFFC120),
                   onValueChanged: (v) {
@@ -328,6 +303,69 @@ class _ReviewWidgetState extends State<ReviewWidget> {
   }
 }
 
+class TabOverview extends StatelessWidget {
+  final String imageFirst;
+  final String imageSecond;
+  final String imageThird;
+
+  const TabOverview(
+      {super.key,
+      required this.imageFirst,
+      required this.imageSecond,
+      required this.imageThird});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            ImageCard(
+                imagePath: imageFirst), //widget.firstImageUrlProductScreen
+            ImageCard(
+                imagePath: imageSecond), //widget.secondImageUrlProductScreen
+            ImageCard(
+                imagePath: imageThird), // widget.thirdImageUrlProductScreen
+          ],
+        ),
+      ),
+      const SizedBox(
+        height: 8,
+      ),
+      Container(
+        alignment: Alignment.topLeft,
+        child: const Text('Review(102)'),
+      ),
+      const SizedBox(
+        height: 16,
+      ),
+      const ReviewWidget(
+          dateReview: '1 month ago',
+          nameReview: 'Базилик Киберскотч',
+          rateReview: '4 stars',
+          textReview:
+              'Two roads diverged in a yellow wood, And sorry I could not travel both And be one traveler, long I stood And looked down one as far as I could To where it bent in the undergrowth.'),
+      const ReviewWidget(
+          dateReview: '2 month ago',
+          nameReview: 'Бургеркинг Гендерсвитч',
+          rateReview: '3 stars',
+          textReview:
+              'blablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablabl'),
+      const SizedBox(
+        height: 8,
+      ),
+      TextButton(
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all(Colors.black38),
+        ),
+        onPressed: () {},
+        child: const Text('See all reviews'),
+      )
+    ]);
+  }
+}
+
 class ImageCard extends StatelessWidget {
   final String imagePath;
 
@@ -341,8 +379,8 @@ class ImageCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         child: Image.network(
           imagePath,
-          width: MediaQuery.of(context).size.width * 0.85,
-          height: MediaQuery.of(context).size.height * 0.45,
+          width: MediaQuery.of(context).size.width * 0.75,
+          height: MediaQuery.of(context).size.height * 0.35,
           fit: BoxFit.cover,
         ),
       ),
