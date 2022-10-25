@@ -3,6 +3,8 @@ import 'package:ecom_705_original_gifts/models/product.dart';
 
 import 'package:flutter/material.dart';
 
+import '../screens/product_screen.dart';
+
 class MiniOverviewProducts extends StatefulWidget {
   const MiniOverviewProducts({super.key});
 
@@ -17,14 +19,12 @@ class _MiniOverviewProductsState extends State<MiniOverviewProducts> {
             toFirestore: (user, _) => user.toJson(),
           );
 
-  void routeProduct() {
-    Navigator.of(context).pushNamed('/productscreen');
-  }
 
-  @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
-  }
+
+  // @override
+  // void setState(VoidCallback fn) {
+  //   super.setState(fn);
+  // }
 
   @override
   Widget build(BuildContext context) => StreamBuilder<QuerySnapshot>(
@@ -34,6 +34,7 @@ class _MiniOverviewProductsState extends State<MiniOverviewProducts> {
           return const CircularProgressIndicator();
         }
         final userSnapshot = snapshot.data?.docs;
+
         if (userSnapshot!.isEmpty) {
           return const Text("Данные не загружены");
         }
@@ -50,7 +51,16 @@ class _MiniOverviewProductsState extends State<MiniOverviewProducts> {
                     borderRadius: BorderRadius.circular(12),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(12),
-                      onTap: routeProduct,
+                      onTap: () {
+                        //пример перехода по навигатору на конкретную страницу с пробросом значений для полей
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ProductScreen(
+                                  priceProductScreen:
+                                      (userSnapshot[int]['price']).toDouble(),
+                                  titleProductScreen: userSnapshot[int]
+                                      ['title'],
+                                )));
+                      },
                       child: Container(
                         padding: const EdgeInsets.all(6),
                         width: MediaQuery.of(context).size.width * 0.42,

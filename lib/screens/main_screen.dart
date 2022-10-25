@@ -130,117 +130,78 @@ class _MainScreenState extends State<MainScreen> {
       body: Stack(
         children: [
           SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 70.0),
-              child: Container(
-                constraints: BoxConstraints(
-                  maxHeight: MediaQuery.of(context).size.height,
+            // padding: EdgeInsets.only(
+            //   top: 70,
+            //   left: 8,
+            // ),
+            child: Container(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.72,
+              ),
+              padding: EdgeInsets.only(
+                left: 12,
+                top: 70,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.grey.withAlpha(40),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
                 ),
-                // padding: EdgeInsets.only(left: 12, top: 12, bottom: 9.5),
-                decoration: BoxDecoration(
-                  color: Colors.grey.withAlpha(40),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    SelectCat(),
-                    SizedBox(height: 15),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: const [
-                          _UnderCategoryCard(
-                            nameUnderCategory: 'Wood kitchen board',
-                            picturesUnderCategory:
-                                'https://i.ibb.co/6ZbnbxG/2.jpg',
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          _UnderCategoryCard(
-                            nameUnderCategory: 'Wood toys',
-                            picturesUnderCategory:
-                                'https://i.ibb.co/2gdzgm7/5.jpg',
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          _UnderCategoryCard(
-                            nameUnderCategory: 'Wood picture',
-                            picturesUnderCategory:
-                                'https://i.ibb.co/F0rBHxk/9.jpg',
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Featured Products'),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'See all',
-                            style: TextStyle(color: Colors.black38),
-                          ),
+              ),
+              child: Column(
+                children: [
+                  SelectCat(),
+                  SizedBox(height: 15),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: const [
+                        _UnderCategoryCard(
+                          nameUnderCategory: 'Wood kitchen board',
+                          picturesUnderCategory:
+                              'https://i.ibb.co/6ZbnbxG/2.jpg',
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        _UnderCategoryCard(
+                          nameUnderCategory: 'Wood toys',
+                          picturesUnderCategory:
+                              'https://i.ibb.co/2gdzgm7/5.jpg',
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        _UnderCategoryCard(
+                          nameUnderCategory: 'Wood picture',
+                          picturesUnderCategory:
+                              'https://i.ibb.co/F0rBHxk/9.jpg',
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                    MiniOverviewProducts(),
-                    // SingleChildScrollView(
-                    //   scrollDirection: Axis.horizontal,
-                    //   child: Row(
-                    //     children: [
-                    //       ProductsCard(
-                    //         nameProduct: 'Wood toy "Car"',
-                    //         imageProduct: 'assets/image/6.jpg',
-                    //         priceProduct: '1150',
-                    //         routeProduct: productScreen,
-                    //       ),
-                    //       ProductsCard(
-                    //         nameProduct: 'Wood toy №28',
-                    //         imageProduct: 'assets/image/8.jpg',
-                    //         priceProduct: '250',
-                    //         routeProduct: productScreen,
-                    //       ),
-                    //       ProductsCard(
-                    //         nameProduct: 'Wood toy №9',
-                    //         imageProduct: 'assets/image/7.jpg',
-                    //         priceProduct: '450',
-                    //         routeProduct: productScreen,
-                    //       ),
-                    //       ProductsCard(
-                    //         nameProduct: 'Wood toy №12',
-                    //         imageProduct: 'assets/image/8.jpg',
-                    //         priceProduct: '650',
-                    //         routeProduct: productScreen,
-                    //       ),
-                    //       ProductsCard(
-                    //         nameProduct: 'Wood toy №8',
-                    //         imageProduct: 'assets/image/6.jpg',
-                    //         priceProduct: '350',
-                    //         routeProduct: productScreen,
-                    //       ),
-                    //       ProductsCard(
-                    //         nameProduct: 'Wood toy №3',
-                    //         imageProduct: 'assets/image/8.jpg',
-                    //         priceProduct: '850',
-                    //         routeProduct: productScreen,
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Featured Products'),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'See all',
+                          style: TextStyle(color: Colors.black38),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 14,
+                  ),
+                  MiniOverviewProducts(),
+                ],
               ),
             ),
           ),
@@ -404,82 +365,3 @@ class _UnderCategoryCard extends StatelessWidget {
     );
   }
 }
-
-// class ProductsCard extends StatefulWidget {
-//   final String imageProduct;
-//   final String nameProduct;
-//   final String priceProduct;
-//   final void Function() routeProduct;
-
-//   const ProductsCard({
-//     super.key,
-//     required this.imageProduct,
-//     required this.nameProduct,
-//     required this.priceProduct,
-//     required this.routeProduct,
-//   });
-
-//   @override
-//   State<ProductsCard> createState() => _ProductsCardState();
-// }
-
-// class _ProductsCardState extends State<ProductsCard> {
-//   void routeProduct() {
-//     Navigator.of(context).pushNamed('/productscreen');
-//   }
-
-//   @override
-//   void setState(VoidCallback fn) {
-//     super.setState(fn);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       children: [
-//         Material(
-//           borderRadius: BorderRadius.circular(12),
-//           child: InkWell(
-//             borderRadius: BorderRadius.circular(12),
-//             onTap: routeProduct,
-//             child: Container(
-//               padding: EdgeInsets.all(6),
-//               width: MediaQuery.of(context).size.width * 0.42,
-//               height: MediaQuery.of(context).size.height * 0.20,
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.center,
-//                 children: [
-//                   ClipRRect(
-//                     borderRadius: BorderRadius.circular(12),
-//                     child: Image.asset(
-//                       widget.imageProduct,
-//                       width: MediaQuery.of(context).size.width * 0.28,
-//                       height: MediaQuery.of(context).size.height * 0.12,
-//                       fit: BoxFit.cover,
-//                     ),
-//                   ),
-//                   SizedBox(
-//                     height: 4,
-//                   ),
-//                   Text(
-//                     widget.nameProduct,
-//                     style: TextStyle(
-//                       fontSize: 14,
-//                     ),
-//                   ),
-//                   Text(
-//                     'RUB ${widget.priceProduct}',
-//                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ),
-//         SizedBox(
-//           width: 10,
-//         ),
-//       ],
-//     );
-//   }
-// }

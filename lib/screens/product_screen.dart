@@ -6,8 +6,12 @@ import '../widgets/mini_products.dart';
 
 class ProductScreen extends StatefulWidget {
   final double priceProductScreen;
+  final String titleProductScreen;
 
-  const ProductScreen({super.key, required this.priceProductScreen});
+  const ProductScreen(
+      {super.key,
+      required this.priceProductScreen,
+      required this.titleProductScreen});
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -37,171 +41,175 @@ class _ProductScreenState extends State<ProductScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 16,
-                top: 25,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    alignment: Alignment.topLeft,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'RUB ${widget.priceProductScreen}',
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF0ACF83),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            padding: const EdgeInsets.only(bottom: 40),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 8,
+                    top: 25,
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'RUB ${widget.priceProductScreen}',
+                              textAlign: TextAlign.left,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF0ACF83),
+                              ),
+                            ),
+                            Text(
+                              widget.titleProductScreen,
+                              style: const TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      DefaultTabController(
+                        length: 3,
+                        child: TabBar(
+                          padding: const EdgeInsets.only(
+                            bottom: 10,
+                          ),
+                          indicatorColor: const Color(0xFF0ACF83),
+                          tabs: const [
+                            Tab(
+                              text: "Overview",
+                            ),
+                            Tab(
+                              text: "Features",
+                            ),
+                            Tab(
+                              text: "Specification",
+                            ),
+                          ],
+                          labelColor: Colors.black,
+                          indicator: MaterialIndicator(
+                            height: 5,
+                            topLeftRadius: 8,
+                            bottomLeftRadius: 8,
+                            bottomRightRadius: 8,
+                            topRightRadius: 8,
+                            horizontalPadding: 50,
+                            color: const Color(0xFF0ACF83),
+                            tabPosition: TabPosition.bottom,
                           ),
                         ),
-                        const Text(
-                          'Wood toy №28',
-                          style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  DefaultTabController(
-                    length: 3,
-                    initialIndex: 0,
-                    child: TabBar(
-                      padding: const EdgeInsets.only(
-                        bottom: 10,
                       ),
-                      indicatorColor: const Color(0xFF0ACF83),
-                      tabs: const [
-                        Tab(
-                          text: "Overview",
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: const [
+                            ImageCard(imagePath: 'assets/image/6.jpg'),
+                            ImageCard(imagePath: 'assets/image/6.jpg'),
+                            ImageCard(imagePath: 'assets/image/6.jpg'),
+                          ],
                         ),
-                        Tab(
-                          text: "Features",
-                        ),
-                        Tab(
-                          text: "Specification",
-                        ),
-                      ],
-                      labelColor: Colors.black,
-                      indicator: MaterialIndicator(
-                        height: 5,
-                        topLeftRadius: 8,
-                        bottomLeftRadius: 8,
-                        bottomRightRadius: 8,
-                        topRightRadius: 8,
-                        horizontalPadding: 50,
-                        color: const Color(0xFF0ACF83),
-                        tabPosition: TabPosition.bottom,
                       ),
-                    ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child: const Text('Review(102)'),
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      const ReviewWidget(
+                          dateReview: '1 month ago',
+                          nameReview: 'Базилик Киберскотч',
+                          rateReview: '4 stars',
+                          textReview:
+                              'Two roads diverged in a yellow wood, And sorry I could not travel both And be one traveler, long I stood And looked down one as far as I could To where it bent in the undergrowth.'),
+                      const ReviewWidget(
+                          dateReview: '2 month ago',
+                          nameReview: 'Бургеркинг Гендерсвитч',
+                          rateReview: '3 stars',
+                          textReview:
+                              'blablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablabl'),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      TextButton(
+                        style: ButtonStyle(
+                          foregroundColor:
+                              MaterialStateProperty.all(Colors.black38),
+                        ),
+                        onPressed: () {},
+                        child: const Text('See all reviews'),
+                      ),
+                    ],
                   ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: const [
-                        ImageCard(imagePath: 'assets/image/6.jpg'),
-                        ImageCard(imagePath: 'assets/image/6.jpg'),
-                        ImageCard(imagePath: 'assets/image/6.jpg'),
-                      ],
-                    ),
+                ),
+                Container(
+                  color: Colors.black12,
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(left: 8, right: 4),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('Another Product'),
+                            TextButton(
+                              style: ButtonStyle(
+                                foregroundColor:
+                                    MaterialStateProperty.all(Colors.black38),
+                              ),
+                              onPressed: () {},
+                              child: const Text('See all'),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 8.0),
+                        child: MiniOverviewProducts(),
+                      ),
+                    ],
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    child: const Text('Review(102)'),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  const ReviewWidget(
-                      dateReview: '1 month ago',
-                      nameReview: 'Базилик Киберскотч',
-                      rateReview: '4 stars',
-                      textReview:
-                          'Two roads diverged in a yellow wood, And sorry I could not travel both And be one traveler, long I stood And looked down one as far as I could To where it bent in the undergrowth.'),
-                  const ReviewWidget(
-                      dateReview: '2 month ago',
-                      nameReview: 'Бургеркинг Гендерсвитч',
-                      rateReview: '3 stars',
-                      textReview:
-                          'blablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablablablablablaablabl'),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextButton(
-                    style: ButtonStyle(
-                      foregroundColor:
-                          MaterialStateProperty.all(Colors.black38),
-                    ),
-                    onPressed: () {},
-                    child: const Text('See all reviews'),
-                  ),
-                ],
-              ),
+                )
+              ],
             ),
-            Container(
-              color: Colors.black12,
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.only(left: 20, right: 4),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('Another Product'),
-                        TextButton(
-                          style: ButtonStyle(
-                            foregroundColor:
-                                MaterialStateProperty.all(Colors.black38),
-                          ),
-                          onPressed: () {},
-                          child: const Text('See all'),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  MiniOverviewProducts(),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            // fixedSize: const Size.fromHeight(55),
-                            backgroundColor: const Color(0xFF0ACF83),
-                          ),
-                          onPressed: () {},
-                          child: const Text(
-                            'Add to cart',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  fixedSize: const Size.fromHeight(35),
+                  backgroundColor: const Color(0xFF0ACF83),
+                ),
+                onPressed: () {},
+                child: const Text(
+                  'Add to cart',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
-            )
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }
