@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -93,15 +93,12 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen>
+    with SingleTickerProviderStateMixin {
+  late final _tabController = TabController(length: 4, vsync: this);
   var email = FirebaseAuth.instance.currentUser!.email.toString();
   @override
   Widget build(BuildContext context) {
-    ///ниже dead code?
-    // void productScreen() {
-    //   Navigator.of(context).pushNamed('/productscreen');
-    // }
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -144,59 +141,109 @@ class _MainScreenState extends State<MainScreen> {
                 topRight: Radius.circular(12),
               ),
             ),
-            child: Column(
-              children: [
-                SelectCat(),
-                SizedBox(height: 15),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: const [
-                      _UnderCategoryCard(
-                        nameUnderCategory: 'Wood kitchen board',
-                        picturesUnderCategory:
-                            'https://i.ibb.co/6ZbnbxG/2.jpg',
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  DefaultTabController(
+                    length: 4,
+                    initialIndex: 0,
+                    child: TabBar(
+                      controller: _tabController,
+                      labelPadding: EdgeInsets.symmetric(horizontal: 19),
+                      isScrollable: true,
+                      tabs: const [
+                        Tab(
+                          text: 'Wood gift',
+                        ),
+                        Tab(
+                          text: 'Personal gift',
+                        ),
+                        Tab(
+                          text: 'Wood jewelry',
+                        ),
+                        Tab(
+                          text: 'Tea cup',
+                        ),
+                      ],
+                      labelColor: Colors.white,
+                      unselectedLabelColor: Colors.grey.shade500,
+                      indicator: RectangularIndicator(
+                        topLeftRadius: 16,
+                        bottomLeftRadius: 16,
+                        bottomRightRadius: 16,
+                        topRightRadius: 16,
+                        horizontalPadding: 6,
+                        verticalPadding: 12,
+                        color: const Color(0xFF0ACF83),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      _UnderCategoryCard(
-                        nameUnderCategory: 'Wood toys',
-                        picturesUnderCategory:
-                            'https://i.ibb.co/2gdzgm7/5.jpg',
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      _UnderCategoryCard(
-                        nameUnderCategory: 'Wood picture',
-                        picturesUnderCategory:
-                            'https://i.ibb.co/F0rBHxk/9.jpg',
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.30,
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: [
+                        CustomScrollView(
+                          firstNameCard: 'Wood gift board',
+                          firstSourcePicture: 'https://i.ibb.co/6ZbnbxG/2.jpg',
+                          secondNameCard: 'Wood gift toys',
+                          secondSourcePicture: 'https://i.ibb.co/2gdzgm7/5.jpg',
+                          thirdNameCard: 'Wood gift picture',
+                          thirdSourcePicture: 'https://i.ibb.co/F0rBHxk/9.jpg',
+                        ),
+                        CustomScrollView(
+                          firstNameCard: 'Personal toys',
+                          firstSourcePicture: 'https://i.ibb.co/2gdzgm7/5.jpg',
+                          secondNameCard: 'Personal kitchen board',
+                          secondSourcePicture: 'https://i.ibb.co/6ZbnbxG/2.jpg',
+                          thirdNameCard: 'Personal picture',
+                          thirdSourcePicture: 'https://i.ibb.co/F0rBHxk/9.jpg',
+                        ),
+                        CustomScrollView(
+                          firstNameCard: 'Jewelry picture',
+                          firstSourcePicture: 'https://i.ibb.co/F0rBHxk/9.jpg',
+                          secondNameCard: 'Jewelry toys',
+                          secondSourcePicture: 'https://i.ibb.co/2gdzgm7/5.jpg',
+                          thirdNameCard: 'Jewelry rings',
+                          thirdSourcePicture: 'https://i.ibb.co/6ZbnbxG/2.jpg',
+                        ),
+                        CustomScrollView(
+                          firstNameCard: 'Wood tea cup',
+                          firstSourcePicture: 'https://i.ibb.co/2gdzgm7/5.jpg',
+                          secondNameCard: 'Kitchen tea cup',
+                          secondSourcePicture: 'https://i.ibb.co/6ZbnbxG/2.jpg',
+                          thirdNameCard: 'Tea cup picture',
+                          thirdSourcePicture: 'https://i.ibb.co/F0rBHxk/9.jpg',
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Featured Products'),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'See all',
+                          style: TextStyle(color: Colors.black38),
+                        ),
                       ),
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Featured Products'),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'See all',
-                        style: TextStyle(color: Colors.black38),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 14,
-                ),
-                MiniOverviewProducts(),
-              ],
+                  SizedBox(
+                    height: 18,
+                  ),
+                  MiniOverviewProducts(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ],
+              ),
             ),
           ),
           Padding(
@@ -286,27 +333,25 @@ class _UnderCategoryCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         child: Container(
           padding: EdgeInsets.all(4),
-          width: MediaQuery.of(context).size.width * 0.85,
-          height: MediaQuery.of(context).size.height * 0.25,
+          width: MediaQuery.of(context).size.width * 0.90,
+          height: MediaQuery.of(context).size.height * 0.30,
           child: Row(
             children: [
               SizedBox(
                 width: 10,
               ),
-              // ignore: sized_box_for_whitespace
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.35,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // ignore: sized_box_for_whitespace
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.24,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.26,
                       height: MediaQuery.of(context).size.height * 0.14,
                       child: Text(
                         nameUnderCategory,
                         style: TextStyle(
-                          fontSize: 28,
+                          fontSize: 24,
                         ),
                       ),
                     ),
@@ -346,7 +391,7 @@ class _UnderCategoryCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 child: Image.network(
                   picturesUnderCategory,
-                  width: MediaQuery.of(context).size.width * 0.45,
+                  width: MediaQuery.of(context).size.width * 0.5,
                   height: MediaQuery.of(context).size.height * 0.32,
                   fit: BoxFit.cover,
                   scale: 0.8,
@@ -355,6 +400,56 @@ class _UnderCategoryCard extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CustomScrollView extends StatelessWidget {
+  final String firstNameCard;
+  final String secondNameCard;
+  final String thirdNameCard;
+  final String firstSourcePicture;
+  final String secondSourcePicture;
+  final String thirdSourcePicture;
+
+  const CustomScrollView(
+      {super.key,
+      required this.firstNameCard,
+      required this.secondNameCard,
+      required this.thirdNameCard,
+      required this.firstSourcePicture,
+      required this.secondSourcePicture,
+      required this.thirdSourcePicture});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          _UnderCategoryCard(
+            nameUnderCategory: firstNameCard,
+            picturesUnderCategory: firstSourcePicture,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          _UnderCategoryCard(
+            nameUnderCategory: secondNameCard,
+            picturesUnderCategory: secondSourcePicture,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          _UnderCategoryCard(
+            nameUnderCategory: thirdNameCard,
+            picturesUnderCategory: thirdSourcePicture,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+        ],
       ),
     );
   }

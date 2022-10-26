@@ -137,7 +137,7 @@ class _ProductScreenState extends State<ProductScreen>
                               child: Text(
                                 widget.descriptionProductScreen,
                                 textAlign: TextAlign.start,
-                                style: TextStyle(fontSize: 32),
+                                style: const TextStyle(fontSize: 32),
                               ),
                             ),
                             // TabOverview(
