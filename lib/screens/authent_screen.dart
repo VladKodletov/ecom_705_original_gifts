@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart';
-import 'main_screen.dart';
+import '../widgets/bottom_nav_bar.dart';
 import 'reg_authent_screen.dart';
 
 class ScreenAuth extends StatefulWidget {

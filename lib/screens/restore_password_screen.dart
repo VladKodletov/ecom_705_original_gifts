@@ -115,6 +115,7 @@ class _InputEmailFormState extends State<InputEmailForm> {
         email: emailController.text.trim(),
       );
       Utils.showSnackBar('Password reset email sent');
+      // ignore: use_build_context_synchronously
       Navigator.of(context).popUntil((route) => route.isFirst);
     } on FirebaseAuthException catch (e) {
       Utils.showSnackBar(e.message);
