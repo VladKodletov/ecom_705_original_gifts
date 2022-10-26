@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -27,14 +27,14 @@ class _MainScreenState extends State<MainScreen>
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () => FirebaseAuth.instance.signOut(),
           ),
         ],
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: const [
+              colors: [
                 Colors.green,
                 Color(0xFF0ACF83),
               ],
@@ -50,13 +50,13 @@ class _MainScreenState extends State<MainScreen>
             constraints: BoxConstraints(
               maxHeight: MediaQuery.of(context).size.height,
             ),
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 12,
               top: 70,
             ),
             decoration: BoxDecoration(
               color: Colors.grey.withAlpha(40),
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
               ),
@@ -69,7 +69,7 @@ class _MainScreenState extends State<MainScreen>
                     initialIndex: 0,
                     child: TabBar(
                       controller: _tabController,
-                      labelPadding: EdgeInsets.symmetric(horizontal: 19),
+                      labelPadding: const EdgeInsets.symmetric(horizontal: 19),
                       isScrollable: true,
                       tabs: const [
                         Tab(
@@ -98,12 +98,12 @@ class _MainScreenState extends State<MainScreen>
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.30,
                     child: TabBarView(
                       controller: _tabController,
-                      children: [
+                      children: const [
                         MyCustomScrollView(
                           firstNameCard: 'Wood gift board',
                           firstSourcePicture: 'https://i.ibb.co/6ZbnbxG/2.jpg',
@@ -139,27 +139,27 @@ class _MainScreenState extends State<MainScreen>
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Featured Products'),
+                      const Text('Featured Products'),
                       TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           'See all',
                           style: TextStyle(color: Colors.black38),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
-                  MiniOverviewProducts(),
-                  SizedBox(
+                  const MiniOverviewProducts(),
+                  const SizedBox(
                     height: 20,
                   ),
                 ],
@@ -175,12 +175,12 @@ class _MainScreenState extends State<MainScreen>
                 filled: true,
                 fillColor: Colors.white.withAlpha(230),
                 labelText: 'Search',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.search),
+                border: const OutlineInputBorder(),
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 6,
           )
         ],

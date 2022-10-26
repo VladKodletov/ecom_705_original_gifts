@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -53,7 +51,7 @@ class ProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.0),
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
                           nameProfile,
                           style: const TextStyle(
@@ -74,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           _MyProfileWidget(),
-          _ProfileCategoryWidget(
+          const _ProfileCategoryWidget(
             categoryName: 'General',
           ),
           _ProfileWidgetButton(
@@ -92,7 +90,7 @@ class ProfileScreen extends StatelessWidget {
             onPressed: () {},
           ),
           _MyProfileWidget(),
-          _ProfileCategoryWidget(
+          const _ProfileCategoryWidget(
             categoryName: 'Legal',
           ),
           _ProfileWidgetButton(
@@ -105,7 +103,7 @@ class ProfileScreen extends StatelessWidget {
             onPressed: () {},
           ),
           _MyProfileWidget(),
-          _ProfileCategoryWidget(
+          const _ProfileCategoryWidget(
             categoryName: 'Personal',
           ),
           _ProfileWidgetButton(
@@ -139,7 +137,7 @@ class _ProfileCategoryWidget extends StatelessWidget {
       ),
       child: Text(
         categoryName,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.black38,
           fontSize: 12,
         ),
@@ -162,7 +160,7 @@ class _ProfileWidgetButton extends StatelessWidget {
       child: Text(
         nameButton,
         textAlign: TextAlign.left,
-        style: TextStyle(color: Colors.black),
+        style: const TextStyle(color: Colors.black),
       ),
     );
   }
@@ -171,7 +169,7 @@ class _ProfileWidgetButton extends StatelessWidget {
 class _MyProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Divider(
+    return const Divider(
       color: Colors.black38,
       height: 1,
     );

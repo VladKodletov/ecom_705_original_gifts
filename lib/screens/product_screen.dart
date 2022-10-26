@@ -132,7 +132,6 @@ class _ProductScreenState extends State<ProductScreen>
                               imageSecond: widget.secondImageUrlProductScreen,
                               imageThird: widget.thirdImageUrlProductScreen,
                             ),
-
                             SizedBox(
                               child: Text(
                                 widget.descriptionProductScreen,
@@ -140,11 +139,6 @@ class _ProductScreenState extends State<ProductScreen>
                                 style: const TextStyle(fontSize: 32),
                               ),
                             ),
-                            // TabOverview(
-                            //   imageFirst: widget.firstImageUrlProductScreen,
-                            //   imageSecond: widget.secondImageUrlProductScreen,
-                            //   imageThird: widget.thirdImageUrlProductScreen,
-                            // ),
                           ],
                         ),
                       ),
@@ -321,12 +315,9 @@ class TabOverview extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            ImageCard(
-                imagePath: imageFirst), //widget.firstImageUrlProductScreen
-            ImageCard(
-                imagePath: imageSecond), //widget.secondImageUrlProductScreen
-            ImageCard(
-                imagePath: imageThird), // widget.thirdImageUrlProductScreen
+            ImageCard(imagePath: imageFirst),
+            ImageCard(imagePath: imageSecond),
+            ImageCard(imagePath: imageThird),
           ],
         ),
       ),
