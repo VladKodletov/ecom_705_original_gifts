@@ -34,6 +34,7 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen>
     with SingleTickerProviderStateMixin {
   late final _tabController = TabController(length: 2, vsync: this);
+  Icon iconsFavorite = Icon(Icons.favorite);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,25 +72,37 @@ class _ProductScreenState extends State<ProductScreen>
                     children: [
                       Container(
                         alignment: Alignment.topLeft,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Row(
                           children: [
-                            Text(
-                              'RUB ${widget.priceProductScreen}',
-                              textAlign: TextAlign.left,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF0ACF83),
-                              ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'RUB ${widget.priceProductScreen}',
+                                  textAlign: TextAlign.left,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF0ACF83),
+                                  ),
+                                ),
+                                Text(
+                                  widget.titleProductScreen,
+                                  style: const TextStyle(
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              widget.titleProductScreen,
-                              style: const TextStyle(
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            IconButton(
+                                onPressed: () {
+                                  widget.isFavoriteProductScreen =
+                                      widget.!isFavoriteProductScreen;
+                                },
+                                icon: widget.isFavoriteProductScreen
+                                    ? Icon(Icons.favorite)
+                                    : Icon(Icons.favorite_border))
                           ],
                         ),
                       ),
