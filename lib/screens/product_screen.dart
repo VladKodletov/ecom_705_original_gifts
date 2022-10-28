@@ -13,9 +13,9 @@ class ProductScreen extends StatefulWidget {
   final String secondImageUrlProductScreen;
   final String thirdImageUrlProductScreen;
   final String descriptionProductScreen;
-  final bool isFavoriteProductScreen;
+  bool isFavoriteProductScreen;
 
-  const ProductScreen(
+  ProductScreen(
       {super.key,
       required this.idProductScreen,
       required this.priceProductScreen,
@@ -73,6 +73,7 @@ class _ProductScreenState extends State<ProductScreen>
                       Container(
                         alignment: Alignment.topLeft,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,11 +99,17 @@ class _ProductScreenState extends State<ProductScreen>
                             IconButton(
                                 onPressed: () {
                                   widget.isFavoriteProductScreen =
-                                      widget.!isFavoriteProductScreen;
+                                      !widget.isFavoriteProductScreen;
+                                  setState(() {});
                                 },
                                 icon: widget.isFavoriteProductScreen
-                                    ? Icon(Icons.favorite)
-                                    : Icon(Icons.favorite_border))
+                                    ? const Icon(
+                                        Icons.favorite,
+                                        color: Colors.red,
+                                      )
+                                    : const Icon(
+                                        Icons.favorite_border,
+                                      ))
                           ],
                         ),
                       ),
