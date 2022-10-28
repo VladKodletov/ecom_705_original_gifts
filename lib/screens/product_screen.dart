@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -33,8 +35,24 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen>
     with SingleTickerProviderStateMixin {
+  Future addToCart() async {
+    final auth = FirebaseAuth.instance;
+    var currentUser = auth.currentUser;
+    CollectionReference collectionCart =
+        FirebaseFirestore.instance.collection('users_cart');
+    return collectionCart
+        .doc(currentUser!.email)
+        .collection('productsCart')
+        .doc()
+        .set({
+      'name': widget.titleProductScreen,
+      'price': widget.priceProductScreen,
+      'image': widget.firstImageUrlProductScreen,
+    });
+  }
+
   late final _tabController = TabController(length: 2, vsync: this);
-  Icon iconsFavorite = Icon(Icons.favorite);
+  Icon iconsFavorite = const Icon(Icons.favorite);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -215,7 +233,7 @@ class _ProductScreenState extends State<ProductScreen>
                   fixedSize: const Size.fromHeight(35),
                   backgroundColor: const Color(0xFF0ACF83),
                 ),
-                onPressed: () {},
+                onPressed: addToCart,
                 child: const Text(
                   'Add to cart',
                   style: TextStyle(fontSize: 18),

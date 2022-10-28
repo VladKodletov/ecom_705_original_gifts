@@ -17,7 +17,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final screensNavigation = [
     const MainScreen(),
     const CatalogScreen(),
-    const ShoppingCart(),
+    ShoppingCart(),
     ProfileScreen(),
   ];
   @override
