@@ -1,5 +1,9 @@
+import 'package:badges/badges.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'shopping_cart_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   final email = FirebaseAuth.instance.currentUser!.email.toString();
@@ -14,6 +18,29 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+  actions: [
+          StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('users_cart')
+                  .doc(FirebaseAuth.instance.currentUser!.email)
+                  .collection('productsCart')
+                  .snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                return Badge(
+                  position: BadgePosition.bottomEnd(bottom: 30, end: 0),
+                  badgeContent: Text((snapshot.data?.size ?? 0).toString()),
+                  child: IconButton(
+                    icon: const Icon(Icons.shopping_cart_outlined),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ShoppingCart()),
+                      );
+                    },
+                  ),
+                );
+              })
+        ],
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(

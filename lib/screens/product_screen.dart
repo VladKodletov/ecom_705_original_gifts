@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 import '../widgets/mini_products.dart';
+import 'shopping_cart_screen.dart';
 
 class ProductScreen extends StatefulWidget {
   final String idProductScreen;
@@ -57,11 +59,28 @@ class _ProductScreenState extends State<ProductScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.shopping_cart_outlined),
-            onPressed: () {},
-          )
+      actions: [
+          StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('users_cart')
+                  .doc(FirebaseAuth.instance.currentUser!.email)
+                  .collection('productsCart')
+                  .snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                return Badge(
+                  position: BadgePosition.bottomEnd(bottom: 30, end: 0),
+                  badgeContent: Text((snapshot.data?.size ?? 0).toString()),
+                  child: IconButton(
+                    icon: const Icon(Icons.shopping_cart_outlined),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ShoppingCart()),
+                      );
+                    },
+                  ),
+                );
+              })
         ],
         flexibleSpace: Container(
           decoration: const BoxDecoration(
