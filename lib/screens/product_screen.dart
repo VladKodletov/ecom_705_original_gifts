@@ -75,7 +75,7 @@ class _ProductScreenState extends State<ProductScreen>
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ShoppingCart()),
+                        MaterialPageRoute(builder: (context) => const ShoppingCart()),
                       );
                     },
                   ),

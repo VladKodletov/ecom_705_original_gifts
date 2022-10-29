@@ -18,7 +18,11 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-  actions: [
+        leading: IconButton(
+          icon: const Icon(Icons.logout),
+          onPressed: () => FirebaseAuth.instance.signOut(),
+        ),
+        actions: [
           StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection('users_cart')
@@ -34,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ShoppingCart()),
+                        MaterialPageRoute(builder: (context) => const ShoppingCart()),
                       );
                     },
                   ),

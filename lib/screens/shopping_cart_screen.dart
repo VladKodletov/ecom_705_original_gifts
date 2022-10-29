@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ShoppingCart extends StatefulWidget {
-  ShoppingCart({Key? key}) : super(key: key);
+  const ShoppingCart({Key? key}) : super(key: key);
 
   @override
   State<ShoppingCart> createState() => _ShoppingCartState();
@@ -88,7 +88,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                               .doc(snapshotDoc.id)
                               .delete();
                         },
-                        icon: Icon(Icons.remove_shopping_cart_outlined),
+                        icon: const Icon(Icons.remove_shopping_cart_outlined),
                       ));
                 },
               );
