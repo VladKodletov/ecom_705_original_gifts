@@ -10,7 +10,6 @@ class ProfileScreen extends StatelessWidget {
   final String imageProfile =
       'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg';
   final String nameProfile = 'Базилик Киберскотч';
-  // final String emailProfile = email;
 
   ProfileScreen({super.key});
 
@@ -38,7 +37,8 @@ class ProfileScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const ShoppingCart()),
+                        MaterialPageRoute(
+                            builder: (context) => const ShoppingCart()),
                       );
                     },
                   ),
@@ -70,10 +70,11 @@ class ProfileScreen extends StatelessWidget {
               child: Row(
                 children: [
                   CircleAvatar(
+                    radius: 40,
                     backgroundImage: NetworkImage(
                       imageProfile,
+                   
                     ),
-                    radius: 40,
                   ),
                   const SizedBox(
                     width: 20,

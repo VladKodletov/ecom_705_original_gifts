@@ -39,7 +39,9 @@ class _MainScreenState extends State<MainScreen>
                   .collection('productsCart')
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                String shopCartCount = (snapshot.data?.size ?? 0).toString();
                 return Badge(
+                  showBadge: shopCartCount == '0' ? false : true,
                   position: BadgePosition.bottomEnd(bottom: 30, end: 0),
                   badgeContent: Text((snapshot.data?.size ?? 0).toString()),
                   child: IconButton(
@@ -47,7 +49,8 @@ class _MainScreenState extends State<MainScreen>
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const ShoppingCart()),
+                        MaterialPageRoute(
+                            builder: (context) => const ShoppingCart()),
                       );
                     },
                   ),

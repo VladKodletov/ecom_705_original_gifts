@@ -23,7 +23,9 @@ class _ShoppingCartState extends State<ShoppingCart> {
                     .collection('productsCart')
                     .snapshots(),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                  String shopCartCount = (snapshot.data?.size ?? 0).toString();
                   return Badge(
+                    showBadge: shopCartCount == '0' ? false : true,
                     position: BadgePosition.bottomEnd(bottom: 30, end: 0),
                     badgeContent: Text((snapshot.data?.size ?? 0).toString()),
                     child: IconButton(
@@ -65,59 +67,77 @@ class _ShoppingCartState extends State<ShoppingCart> {
                 .collection('productsCart')
                 .snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              // Stream<DocumentSnapshot<Map<String, dynamic>>> snapShotGlobal =
+              //     FirebaseFirestore.instance
+              //         .collection('users_cart')
+              //         .doc(FirebaseAuth.instance.currentUser!.email)
+              //         .collection('productsCart')
+              //         .doc()
+              //         .snapshots();
+
               if (snapshot.hasError) {
                 return const Center(
                   child: Text('Ошибочка вышла'),
                 );
               }
-              return ListView.builder(
-                itemCount: snapshot.data?.size ?? 0,
-                itemBuilder: (_, index) {
-                  DocumentSnapshot snapshotDoc = snapshot.data!.docs[index];
-                  double priceToCart = snapshotDoc['price'];
-                  return ListTile(
-                      leading: Image.network(snapshotDoc['image']),
-                      title: Text(snapshotDoc['name']),
-                      subtitle: Text('$priceToCart рублей'),
-                      trailing: IconButton(
-                        onPressed: () {
-                          FirebaseFirestore.instance
-                              .collection('users_cart')
-                              .doc(FirebaseAuth.instance.currentUser!.email)
-                              .collection('productsCart')
-                              .doc(snapshotDoc.id)
-                              .delete();
-                        },
-                        icon: const Icon(Icons.remove_shopping_cart_outlined),
-                      ));
-                },
+              return Stack(
+                children: [
+                  ListView.builder(
+                    itemCount: snapshot.data?.size ?? 0,
+                    itemBuilder: (_, index) {
+                      DocumentSnapshot snapshotDoc = snapshot.data!.docs[index];
+                      double priceToCart = snapshotDoc['price'];
+                      return ListTile(
+                          leading: CircleAvatar(
+                              radius: 20,
+                              child: Image.network(snapshotDoc['image'])),
+                          title: Text(snapshotDoc['name']),
+                          subtitle: Text('$priceToCart рублей'),
+                          trailing: IconButton(
+                            onPressed: () {
+                              FirebaseFirestore.instance
+                                  .collection('users_cart')
+                                  .doc(FirebaseAuth.instance.currentUser!.email)
+                                  .collection('productsCart')
+                                  .doc(snapshotDoc.id)
+                                  .delete();
+                            },
+                            icon:
+                                const Icon(Icons.remove_shopping_cart_outlined),
+                          ));
+                    },
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // ElevatedButton(
+                      //   style: ElevatedButton.styleFrom(
+                      //     fixedSize: const Size.fromHeight(35),
+                      //     backgroundColor:
+                      //         const Color(0xFF0ACF83).withOpacity(0.5),
+                      //   ),
+                      //   onPressed: () {},
+                      //   child: const Text(
+                      //     'Continue shopping',
+                      //     style: TextStyle(fontSize: 18),
+                      //   ),
+                      // ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: const Size.fromHeight(35),
+                          backgroundColor: const Color(0xFF0ACF83),
+                        ),
+                        onPressed: () {},
+                        child: const Text(
+                          'Proceed to checkout',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               );
             }));
-    // const Center(
-    //   child: Text(
-    //     'Корзина',
-    //     style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-    //   ),
-
-    // FutureBuilder(builder: (context, snapshot) {
-    //    if (snapshot.hasError) {
-    //         return const Center(
-    //           child: Text('Ошибочка вышла'),
-    //         );
-    //       }
-    //       return ListView.builder(
-    //         itemCount: int.tryParse(FirebaseFirestore.instance.collection('users_cart').doc(FirebaseAuth.instance.currentUser!.email).collection('productsCart').snapshots().length.toString()),
-    //         itemBuilder: (_, index) {
-    //           DocumentSnapshot snapshotDoc = snapshot.data!.docs[index];
-    //           double priceToCart = snapshotDoc['price'];
-    //           return ListTile(
-    //             leading: Image.network(snapshotDoc['image']),
-    //             title: Text(snapshotDoc['name']),
-    //             subtitle: Text('$priceToCart'),
-    //           );
-    //         },
-    //       );
-    // },),
-    // );
   }
 }
