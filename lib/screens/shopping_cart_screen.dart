@@ -111,18 +111,20 @@ class _ShoppingCartState extends State<ShoppingCart> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      // ElevatedButton(
-                      //   style: ElevatedButton.styleFrom(
-                      //     fixedSize: const Size.fromHeight(35),
-                      //     backgroundColor:
-                      //         const Color(0xFF0ACF83).withOpacity(0.5),
-                      //   ),
-                      //   onPressed: () {},
-                      //   child: const Text(
-                      //     'Continue shopping',
-                      //     style: TextStyle(fontSize: 18),
-                      //   ),
-                      // ),
+                      //TODO нужна ли тут кнопка для продолжения покупок?
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: const Size.fromHeight(35),
+                          backgroundColor:
+                              const Color(0xFF0ACF83).withOpacity(0.5),
+                        ),
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/mainscreen'),
+                        child: const Text(
+                          'Continue shopping',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           fixedSize: const Size.fromHeight(35),

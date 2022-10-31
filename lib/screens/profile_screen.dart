@@ -1,9 +1,11 @@
+
+
+// import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:badges/badges.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'shopping_cart_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   final email = FirebaseAuth.instance.currentUser!.email.toString();
@@ -29,18 +31,14 @@ class ProfileScreen extends StatelessWidget {
                   .collection('productsCart')
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                String shopCartCount = (snapshot.data?.size ?? 0).toString();
                 return Badge(
+                  showBadge: shopCartCount == '0' ? false : true,
                   position: BadgePosition.bottomEnd(bottom: 30, end: 0),
                   badgeContent: Text((snapshot.data?.size ?? 0).toString()),
                   child: IconButton(
                     icon: const Icon(Icons.shopping_cart_outlined),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ShoppingCart()),
-                      );
-                    },
+                    onPressed: () {},
                   ),
                 );
               })
@@ -73,7 +71,6 @@ class ProfileScreen extends StatelessWidget {
                     radius: 40,
                     backgroundImage: NetworkImage(
                       imageProfile,
-                   
                     ),
                   ),
                   const SizedBox(
@@ -207,3 +204,5 @@ class _MyProfileWidget extends StatelessWidget {
     );
   }
 }
+
+
