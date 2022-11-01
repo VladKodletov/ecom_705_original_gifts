@@ -12,6 +12,7 @@ class SearchProductsBloc implements Bloc {
   late Stream<List<Product>?> productStream;
 
   SearchProductsBloc() {
+    
     productStream = _searchController.stream.asyncMap(
       (event) {},
     );
