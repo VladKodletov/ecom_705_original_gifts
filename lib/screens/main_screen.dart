@@ -73,9 +73,11 @@ class _MainScreenState extends State<MainScreen>
       body: Stack(
         children: [
           Container(
-            constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height,
-            ),
+            height: MediaQuery.of(context).size.height,
+            //TODO проверить решение ниже на исправление бага на моем телефоне!
+            // constraints: BoxConstraints(
+            //   maxHeight: MediaQuery.of(context).size.height,
+            // ),
             padding: const EdgeInsets.only(
               left: 12,
               top: 70,
@@ -186,7 +188,7 @@ class _MainScreenState extends State<MainScreen>
                   ),
                   const MiniOverviewProducts(),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                 ],
               ),
@@ -206,9 +208,10 @@ class _MainScreenState extends State<MainScreen>
               ),
             ),
           ),
-          const SizedBox(
-            height: 6,
-          )
+          // TODO this is deadcode?
+          // const SizedBox(
+          //   height: 6,
+          // )
         ],
       ),
     );
