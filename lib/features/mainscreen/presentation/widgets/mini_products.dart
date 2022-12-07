@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecom_705_original_gifts/models/product.dart';
+import 'package:ecom_705_original_gifts/core/data/models/product.dart';
 
 import 'package:flutter/material.dart';
 
-import '../screens/product_screen.dart';
+import '../../../product/presentation/product_screen.dart';
 
 class MiniOverviewProducts extends StatefulWidget {
   const MiniOverviewProducts({super.key});

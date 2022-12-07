@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../screens/main_screen.dart';
-import '../screens/profile_screen.dart';
-import '../screens/catalog_screen.dart';
-import '../screens/shopping_cart_screen.dart';
+import '../main_screen.dart';
+import '../../../profile/presentation/profile_screen.dart';
+import '../../../catalog/presentation/catalog_screen.dart';
+import '../../../shopping_cart/presentation/shopping_cart_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);

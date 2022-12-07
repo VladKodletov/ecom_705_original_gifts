@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/authent_screen.dart';
-import 'screens/reg_authent_screen.dart';
-import 'screens/restore_password_screen.dart';
-import 'widgets/bottom_nav_bar.dart';
+import 'features/authent/presentation/authent_screen.dart';
+import 'features/registration/presentation/reg_authent_screen.dart';
+import 'features/restore_password/presentation/restore_password_screen.dart';
+import 'features/mainscreen/presentation/widgets/bottom_nav_bar.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 

@@ -1,12 +1,12 @@
 import 'package:badges/badges.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecom_705_original_gifts/screens/shopping_cart_screen.dart';
+import 'package:ecom_705_original_gifts/features/shopping_cart/presentation/shopping_cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-import '../widgets/custom_scroll_view.dart';
-import '../widgets/mini_products.dart';
+import 'widgets/custom_scroll_view.dart';
+import 'widgets/mini_products.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -74,7 +74,7 @@ class _MainScreenState extends State<MainScreen>
         children: [
           Container(
             height: MediaQuery.of(context).size.height,
-            //TODO проверить решение ниже на исправление бага на моем телефоне!
+            //TODO проверить решение ниже на исправление бага на реальном устройстве!
             // constraints: BoxConstraints(
             //   maxHeight: MediaQuery.of(context).size.height,
             // ),
@@ -208,10 +208,6 @@ class _MainScreenState extends State<MainScreen>
               ),
             ),
           ),
-          // TODO this is deadcode?
-          // const SizedBox(
-          //   height: 6,
-          // )
         ],
       ),
     );

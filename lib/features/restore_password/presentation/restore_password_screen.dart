@@ -1,4 +1,4 @@
-import 'package:ecom_705_original_gifts/screens/reg_authent_screen.dart';
+import 'package:ecom_705_original_gifts/features/registration/presentation/reg_authent_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

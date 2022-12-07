@@ -111,7 +111,6 @@ class _ShoppingCartState extends State<ShoppingCart> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      //TODO нужна ли тут кнопка для продолжения покупок?
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           fixedSize: const Size.fromHeight(35),

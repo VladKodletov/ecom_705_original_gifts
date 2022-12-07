@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../main.dart';
-import '../widgets/bottom_nav_bar.dart';
-import 'reg_authent_screen.dart';
+import '../../../main.dart';
+import '../../mainscreen/presentation/widgets/bottom_nav_bar.dart';
+import '../../registration/presentation/reg_authent_screen.dart';
 
 class ScreenAuth extends StatefulWidget {
   const ScreenAuth({super.key});
