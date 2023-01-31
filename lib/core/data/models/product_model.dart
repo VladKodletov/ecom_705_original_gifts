@@ -1,5 +1,5 @@
-class Product {
-  Product(
+class ProductModel {
+  ProductModel(
       {required this.id,
       required this.title,
       required this.price,
@@ -10,7 +10,7 @@ class Product {
       this.description = '',
       this.isFavorite = false});
 
-  Product.fromJson(Map<String, Object?> json)
+  ProductModel.fromJson(Map<String, Object?> json)
       : this(
           id: json['id']! as String,
           title: json['title']! as String,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'under_category_card.dart';
 
-class MyCustomScrollView extends StatelessWidget {
+class MainscreenScrollView extends StatelessWidget {
   final String firstNameCard;
   final String secondNameCard;
   final String thirdNameCard;
@@ -10,7 +10,7 @@ class MyCustomScrollView extends StatelessWidget {
   final String secondSourcePicture;
   final String thirdSourcePicture;
 
-  const MyCustomScrollView(
+  const MainscreenScrollView(
       {super.key,
       required this.firstNameCard,
       required this.secondNameCard,

@@ -4,8 +4,8 @@ import 'package:ecom_705_original_gifts/features/registration/presentation/reg_a
 import 'package:ecom_705_original_gifts/features/restore_password/presentation/restore_password_screen.dart';
 
 final routes = {
-  '/': (context) => const ScreenAuth(),
-  '/reg_screen': (context) => const RegScreenAuth(),
+  '/': (context) => const AuthentScreen(),
+  '/reg_screen': (context) => const RegAuthentScreen(),
   '/restore_password': (context) => const ResetPassword(),
   '/mainscreen': (context) => const BottomNavBar(),
 };

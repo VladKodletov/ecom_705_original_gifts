@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-import 'widgets/custom_scroll_view.dart';
+import 'widgets/mainscreen_scroll_view.dart';
 import 'widgets/mini_products.dart';
 
 class MainScreen extends StatefulWidget {
@@ -50,7 +50,7 @@ class _MainScreenState extends State<MainScreen>
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ShoppingCart()),
+                            builder: (context) => const ShoppingCartScreen()),
                       );
                     },
                   ),
@@ -128,7 +128,7 @@ class _MainScreenState extends State<MainScreen>
                     child: TabBarView(
                       controller: _tabController,
                       children: const [
-                        MyCustomScrollView(
+                        MainscreenScrollView(
                           firstNameCard: 'Wood gift board',
                           firstSourcePicture: 'https://i.ibb.co/6ZbnbxG/2.jpg',
                           secondNameCard: 'Wood gift toys',
@@ -136,7 +136,7 @@ class _MainScreenState extends State<MainScreen>
                           thirdNameCard: 'Wood gift picture',
                           thirdSourcePicture: 'https://i.ibb.co/F0rBHxk/9.jpg',
                         ),
-                        MyCustomScrollView(
+                        MainscreenScrollView(
                           firstNameCard: 'Personal toys',
                           firstSourcePicture: 'https://i.ibb.co/2gdzgm7/5.jpg',
                           secondNameCard: 'Personal kitchen board',
@@ -144,7 +144,7 @@ class _MainScreenState extends State<MainScreen>
                           thirdNameCard: 'Personal picture',
                           thirdSourcePicture: 'https://i.ibb.co/F0rBHxk/9.jpg',
                         ),
-                        MyCustomScrollView(
+                        MainscreenScrollView(
                           firstNameCard: 'Jewelry picture',
                           firstSourcePicture: 'https://i.ibb.co/F0rBHxk/9.jpg',
                           secondNameCard: 'Jewelry toys',
@@ -152,7 +152,7 @@ class _MainScreenState extends State<MainScreen>
                           thirdNameCard: 'Jewelry rings',
                           thirdSourcePicture: 'https://i.ibb.co/6ZbnbxG/2.jpg',
                         ),
-                        MyCustomScrollView(
+                        MainscreenScrollView(
                           firstNameCard: 'Wood tea cup',
                           firstSourcePicture: 'https://i.ibb.co/2gdzgm7/5.jpg',
                           secondNameCard: 'Kitchen tea cup',
@@ -182,7 +182,7 @@ class _MainScreenState extends State<MainScreen>
                   const SizedBox(
                     height: 18,
                   ),
-                  const MiniOverviewProducts(),
+                  const MiniProducts(),
                   const SizedBox(
                     height: 10,
                   ),

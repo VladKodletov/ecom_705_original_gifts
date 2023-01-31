@@ -1,39 +1,39 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecom_705_original_gifts/core/data/models/product.dart';
-
 import 'package:flutter/material.dart';
 
-import '../../../product/presentation/product_screen.dart';
+import 'package:ecom_705_original_gifts/core/data/models/product_model.dart';
+import 'package:ecom_705_original_gifts/features/product/presentation/product_screen.dart';
 
-class MiniOverviewProducts extends StatefulWidget {
-  const MiniOverviewProducts({super.key});
+class MiniProducts extends StatefulWidget {
+  const MiniProducts({super.key});
 
   @override
-  State<MiniOverviewProducts> createState() => _MiniOverviewProductsState();
+  State<MiniProducts> createState() => _MiniProductsState();
 }
 
-class _MiniOverviewProductsState extends State<MiniOverviewProducts> {
-  final loadedProducts =
-      FirebaseFirestore.instance.collection('products').withConverter(
-            fromFirestore: (snapshot, _) => Product.fromJson(snapshot.data()!),
-            toFirestore: (user, _) => user.toJson(),
-          );
+class _MiniProductsState extends State<MiniProducts> {
+  final loadedProducts = FirebaseFirestore.instance
+      .collection('products')
+      .withConverter(
+        fromFirestore: (snapshot, _) => ProductModel.fromJson(snapshot.data()!),
+        toFirestore: (user, _) => user.toJson(),
+      );
 
   @override
   Widget build(BuildContext context) => StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection("products").snapshots(),
-      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        }
-        final userSnapshot = snapshot.data?.docs;
+        stream: FirebaseFirestore.instance.collection("products").snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          }
+          final userSnapshot = snapshot.data?.docs;
 
-        if (userSnapshot!.isEmpty) {
-          return const Text("Данные не загружены");
-        }
-        return SizedBox(
-          height: MediaQuery.of(context).size.height * 0.20,
-          child: ListView.builder(
+          if (userSnapshot!.isEmpty) {
+            return const Text("Don't have data");
+          }
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.20,
+            child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: userSnapshot.length,
               // ignore: avoid_types_as_parameter_names
@@ -45,7 +45,6 @@ class _MiniOverviewProductsState extends State<MiniOverviewProducts> {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(12),
                       onTap: () {
-                        //пример перехода по навигатору на конкретную страницу с пробросом значений для полей
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => ProductScreen(
                                   idProductScreen: userSnapshot[int]['id'],
@@ -103,7 +102,9 @@ class _MiniOverviewProductsState extends State<MiniOverviewProducts> {
                     ),
                   ),
                 );
-              }),
-        );
-      });
+              },
+            ),
+          );
+        },
+      );
 }

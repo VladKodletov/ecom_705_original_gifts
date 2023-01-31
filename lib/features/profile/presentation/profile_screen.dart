@@ -1,17 +1,16 @@
-
-
-// import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:badges/badges.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecom_705_original_gifts/features/profile/presentation/widgets/profile_category_widget.dart';
+import 'package:ecom_705_original_gifts/features/profile/presentation/widgets/profile_divider_widget.dart';
+import 'package:ecom_705_original_gifts/features/profile/presentation/widgets/profile_widget_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 
 class ProfileScreen extends StatelessWidget {
   final email = FirebaseAuth.instance.currentUser!.email.toString();
   final String imageProfile =
       'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg';
-  final String nameProfile = 'Базилик Киберскотч';
+  final String nameProfile = 'Anton Petrov';
 
   ProfileScreen({super.key});
 
@@ -100,109 +99,57 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-          _MyProfileWidget(),
-          const _ProfileCategoryWidget(
+          const ProfileDividerWidget(),
+          const ProfileCategoryWidget(
             categoryName: 'General',
           ),
-          _ProfileWidgetButton(
+          ProfileWidgetButton(
             nameButton: 'Edit profile',
             onPressed: () {},
           ),
-          _MyProfileWidget(),
-          _ProfileWidgetButton(
+          const ProfileDividerWidget(),
+          ProfileWidgetButton(
             nameButton: 'Notifications',
             onPressed: () {},
           ),
-          _MyProfileWidget(),
-          _ProfileWidgetButton(
+          const ProfileDividerWidget(),
+          ProfileWidgetButton(
             nameButton: 'Wishlist',
             onPressed: () {},
           ),
-          _MyProfileWidget(),
-          const _ProfileCategoryWidget(
+          const ProfileDividerWidget(),
+          const ProfileCategoryWidget(
             categoryName: 'Legal',
           ),
-          _ProfileWidgetButton(
+          ProfileWidgetButton(
             nameButton: 'Terms of Use',
             onPressed: () {},
           ),
-          _MyProfileWidget(),
-          _ProfileWidgetButton(
+          const ProfileDividerWidget(),
+          ProfileWidgetButton(
             nameButton: 'Privacy Policy',
             onPressed: () {},
           ),
-          _MyProfileWidget(),
-          const _ProfileCategoryWidget(
+          const ProfileDividerWidget(),
+          const ProfileCategoryWidget(
             categoryName: 'Personal',
           ),
-          _ProfileWidgetButton(
+          ProfileWidgetButton(
             nameButton: 'Report a bug',
             onPressed: () {},
           ),
-          _MyProfileWidget(),
-          _ProfileWidgetButton(
+          const ProfileDividerWidget(),
+          ProfileWidgetButton(
             nameButton: 'Logout',
             onPressed: () => FirebaseAuth.instance.signOut(),
           ),
-          _MyProfileWidget(),
+          const ProfileDividerWidget(),
         ],
       ),
     );
   }
 }
 
-class _ProfileCategoryWidget extends StatelessWidget {
-  final String categoryName;
 
-  const _ProfileCategoryWidget({required this.categoryName});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 8.0,
-        bottom: 0,
-        top: 12,
-      ),
-      child: Text(
-        categoryName,
-        style: const TextStyle(
-          color: Colors.black38,
-          fontSize: 12,
-        ),
-      ),
-    );
-  }
-}
-
-class _ProfileWidgetButton extends StatelessWidget {
-  final String nameButton;
-  final Function() onPressed;
-
-  const _ProfileWidgetButton(
-      {required this.nameButton, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      child: Text(
-        nameButton,
-        textAlign: TextAlign.left,
-        style: const TextStyle(color: Colors.black),
-      ),
-    );
-  }
-}
-
-class _MyProfileWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Divider(
-      color: Colors.black38,
-      height: 1,
-    );
-  }
-}
 
 

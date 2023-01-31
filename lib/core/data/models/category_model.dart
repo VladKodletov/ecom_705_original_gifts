@@ -1,9 +1,9 @@
-class Category {
+class CategoryModel {
   final String id;
   final List underCategoryName;
   final String titleCategory;
 
-  Category(
+  CategoryModel(
       {required this.id,
       required this.underCategoryName,
       required this.titleCategory});

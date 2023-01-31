@@ -3,7 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../shopping_cart/presentation/shopping_cart_screen.dart';
+import 'package:ecom_705_original_gifts/features/catalog/presentation/widgets/under_category_widget.dart';
+import 'package:ecom_705_original_gifts/features/shopping_cart/presentation/shopping_cart_screen.dart';
 
 class CatalogScreen extends StatelessWidget {
   const CatalogScreen({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class CatalogScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ShoppingCart()),
+                            builder: (context) => const ShoppingCartScreen()),
                       );
                     },
                   ),
@@ -70,7 +71,7 @@ class CatalogScreen extends StatelessWidget {
               const ExpansionTile(
                 title: Text('Personal gift'),
                 children: [
-                  _UnderCategory(
+                  UnderCategoryWidget(
                     nameUnderCategory: 'Personal picture',
                   ),
                   Padding(
@@ -78,10 +79,10 @@ class CatalogScreen extends StatelessWidget {
                     child: ExpansionTile(
                       title: Text('Personal jewelry'),
                       children: [
-                        _UnderCategory(
+                        UnderCategoryWidget(
                           nameUnderCategory: 'Personal ring',
                         ),
-                        _UnderCategory(
+                        UnderCategoryWidget(
                           nameUnderCategory: 'Personal earrings',
                         ),
                       ],
@@ -92,10 +93,10 @@ class CatalogScreen extends StatelessWidget {
               const ExpansionTile(
                 title: Text('Wood gift'),
                 children: [
-                  _UnderCategory(
+                  UnderCategoryWidget(
                     nameUnderCategory: 'Wood toys',
                   ),
-                  _UnderCategory(
+                  UnderCategoryWidget(
                     nameUnderCategory: 'Wood kitchen board',
                   ),
                 ],
@@ -107,23 +108,6 @@ class CatalogScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _UnderCategory extends StatelessWidget {
-  final String nameUnderCategory;
-
-  const _UnderCategory({required this.nameUnderCategory});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16.0),
-      child: ListTile(
-        title: Text(nameUnderCategory),
-        onTap: () {},
       ),
     );
   }

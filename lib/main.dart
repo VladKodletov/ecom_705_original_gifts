@@ -2,8 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecom_705_original_gifts/core/router/router.dart';
-
-import 'features/registration/presentation/reg_authent_screen.dart';
+import 'package:ecom_705_original_gifts/core/service/utils.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 

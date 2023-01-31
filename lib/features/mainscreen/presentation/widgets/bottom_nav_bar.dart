@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../main_screen.dart';
-import '../../../profile/presentation/profile_screen.dart';
-import '../../../catalog/presentation/catalog_screen.dart';
-import '../../../shopping_cart/presentation/shopping_cart_screen.dart';
+import 'package:ecom_705_original_gifts/features/catalog/presentation/catalog_screen.dart';
+import 'package:ecom_705_original_gifts/features/profile/presentation/profile_screen.dart';
+import 'package:ecom_705_original_gifts/features/shopping_cart/presentation/shopping_cart_screen.dart';
+import 'package:ecom_705_original_gifts/features/mainscreen/presentation/main_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final screensNavigation = [
     const MainScreen(),
     const CatalogScreen(),
-    const ShoppingCart(),
+    const ShoppingCartScreen(),
     ProfileScreen(),
   ];
   @override
@@ -44,7 +44,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   Icons.home_outlined,
                 ),
                 selectedIcon: Icon(Icons.home, size: 32),
-                label: 'Главная',
+                label: 'Main',
               ),
               NavigationDestination(
                 icon: Icon(
@@ -54,7 +54,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   Icons.format_indent_increase,
                   size: 32,
                 ),
-                label: 'Каталог',
+                label: 'Catalog',
               ),
               NavigationDestination(
                 icon: Icon(
@@ -64,7 +64,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   Icons.shopping_bag,
                   size: 32,
                 ),
-                label: 'Корзина',
+                label: 'Shop cart',
               ),
               NavigationDestination(
                 icon: Icon(
@@ -74,7 +74,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   Icons.account_circle,
                   size: 32,
                 ),
-                label: 'Профиль',
+                label: 'Profile',
               ),
             ]),
       ),

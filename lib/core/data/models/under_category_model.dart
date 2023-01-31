@@ -1,9 +1,9 @@
-class UnderCategory {
+class UnderCategoryModel {
   final String id;
   final String titleUnderCategory;
   final String underCategoryImageUrl;
 
-  UnderCategory(
+  UnderCategoryModel(
       {required this.id,
       required this.titleUnderCategory,
       required this.underCategoryImageUrl});
