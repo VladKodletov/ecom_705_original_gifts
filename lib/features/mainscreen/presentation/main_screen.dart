@@ -74,10 +74,6 @@ class _MainScreenState extends State<MainScreen>
         children: [
           Container(
             height: MediaQuery.of(context).size.height,
-            //TODO проверить решение ниже на исправление бага на реальном устройстве!
-            // constraints: BoxConstraints(
-            //   maxHeight: MediaQuery.of(context).size.height,
-            // ),
             padding: const EdgeInsets.only(
               left: 12,
               top: 70,

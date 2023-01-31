@@ -19,11 +19,6 @@ class _MiniOverviewProductsState extends State<MiniOverviewProducts> {
             toFirestore: (user, _) => user.toJson(),
           );
 
-  // @override
-  // void setState(VoidCallback fn) {
-  //   super.setState(fn);
-  // }
-
   @override
   Widget build(BuildContext context) => StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance.collection("products").snapshots(),
@@ -75,8 +70,6 @@ class _MiniOverviewProductsState extends State<MiniOverviewProducts> {
                       child: Container(
                         padding: const EdgeInsets.all(6),
                         width: MediaQuery.of(context).size.width * 0.42,
-                        //fix dead code bottom - DRY principle
-                        // height: MediaQuery.of(context).size.height * 0.20,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [

@@ -35,18 +35,6 @@ class _ShoppingCartState extends State<ShoppingCart> {
                   );
                 })
           ],
-          // TODO нужна ли тут кнопка очистки корзины?
-          // actions: [
-          //   TextButton(
-          //     style: ButtonStyle(
-          //         foregroundColor: MaterialStateProperty.all(Colors.white)),
-          //     onPressed: () => FirebaseFirestore.instance
-          //         .collection('users_cart')
-          //         .doc(FirebaseAuth.instance.currentUser!.email)
-          //         .delete(),
-          //     child: Text('Clear shopping cart'),
-          //   )
-          // ],
           flexibleSpace: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -67,14 +55,6 @@ class _ShoppingCartState extends State<ShoppingCart> {
                 .collection('productsCart')
                 .snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              // Stream<DocumentSnapshot<Map<String, dynamic>>> snapShotGlobal =
-              //     FirebaseFirestore.instance
-              //         .collection('users_cart')
-              //         .doc(FirebaseAuth.instance.currentUser!.email)
-              //         .collection('productsCart')
-              //         .doc()
-              //         .snapshots();
-
               if (snapshot.hasError) {
                 return const Center(
                   child: Text('Ошибочка вышла'),

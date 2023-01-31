@@ -1,18 +1,4 @@
 class Product {
-  final String id;
-  final String title;
-  final double price;
-  final double amount;
-  final String firstImageUrl;
-  final String secondImageUrl;
-  final String thirdImageUrl;
-  final String description;
-  final bool isFavorite;
-
-  //!!! добавить поля для отзывов(из рейтинга, текста, и электронной почты со 
-  //звездочками)!, подумать как организовать! либо отдельный класс/модель для отзывов, который
-  //который будет связываться с продуктами по их id?
-
   Product(
       {required this.id,
       required this.title,
@@ -36,6 +22,17 @@ class Product {
           description: json['description']! as String,
           isFavorite: json['isFavorite']! as bool,
         );
+
+  final double amount;
+  final String description;
+  final String firstImageUrl;
+  final String id;
+  final bool isFavorite;
+  final double price;
+  final String secondImageUrl;
+  final String thirdImageUrl;
+  final String title;
+
   Map<String, Object?> toJson() => {
         'id': id,
         'title': title,
