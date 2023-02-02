@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ProfileCategoryWidget extends StatelessWidget {
-  final String categoryName;
-
   const ProfileCategoryWidget({super.key, required this.categoryName});
+
+  final String categoryName;
 
   @override
   Widget build(BuildContext context) {

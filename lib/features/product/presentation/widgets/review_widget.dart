@@ -2,20 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 
 class ReviewWidget extends StatefulWidget {
-  final String nameReview;
-
-  final String dateReview;
-
-  final String rateReview;
-
-  final String textReview;
-
   const ReviewWidget(
       {super.key,
       required this.nameReview,
       required this.dateReview,
       required this.rateReview,
       required this.textReview});
+
+  final String dateReview;
+  final String nameReview;
+  final String rateReview;
+  final String textReview;
 
   @override
   State<ReviewWidget> createState() => _ReviewWidgetState();

@@ -4,15 +4,15 @@ import 'package:ecom_705_original_gifts/features/product/presentation/widgets/im
 import 'package:ecom_705_original_gifts/features/product/presentation/widgets/review_widget.dart';
 
 class TabOverview extends StatelessWidget {
-  final String imageFirst;
-  final String imageSecond;
-  final String imageThird;
-
   const TabOverview(
       {super.key,
       required this.imageFirst,
       required this.imageSecond,
       required this.imageThird});
+
+  final String imageFirst;
+  final String imageSecond;
+  final String imageThird;
 
   @override
   Widget build(BuildContext context) {

@@ -12,8 +12,8 @@ class AuthentInputForm extends StatefulWidget {
 }
 
 class _AuthentInputFormState extends State<AuthentInputForm> {
-  final passwordController = TextEditingController();
   final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   void dispose() {
@@ -23,17 +23,37 @@ class _AuthentInputFormState extends State<AuthentInputForm> {
     super.dispose();
   }
 
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  }
+
+  Future signIn() async {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      Utils.showSnackBar(e.message);
+    }
+
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
+  }
+
   void _forgotPassword() {
     Navigator.of(context).pushNamed('/restore_password');
   }
 
   void _register() {
     Navigator.of(context).pushNamed('/reg_screen');
-  }
-
-  @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
   }
 
   @override
@@ -126,25 +146,5 @@ class _AuthentInputFormState extends State<AuthentInputForm> {
         ),
       ],
     );
-  }
-
-  Future signIn() async {
-    showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (context) => const Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
-    } on FirebaseAuthException catch (e) {
-      Utils.showSnackBar(e.message);
-    }
-
-    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }

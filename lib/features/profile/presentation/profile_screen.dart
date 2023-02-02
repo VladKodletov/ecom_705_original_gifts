@@ -1,18 +1,20 @@
 import 'package:badges/badges.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecom_705_original_gifts/features/profile/presentation/widgets/profile_category_widget.dart';
-import 'package:ecom_705_original_gifts/features/profile/presentation/widgets/profile_divider_widget.dart';
-import 'package:ecom_705_original_gifts/features/profile/presentation/widgets/profile_widget_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'package:ecom_705_original_gifts/features/profile/presentation/widgets/profile_category_widget.dart';
+import 'package:ecom_705_original_gifts/features/profile/presentation/widgets/profile_divider_widget.dart';
+import 'package:ecom_705_original_gifts/features/profile/presentation/widgets/profile_widget_button.dart';
+
 class ProfileScreen extends StatelessWidget {
+  ProfileScreen({super.key});
+
   final email = FirebaseAuth.instance.currentUser!.email.toString();
   final String imageProfile =
       'https://www.rabstol.net/uploads/gallery/main/138/rabstol_net_benedict_cumberbatch_07.jpg';
-  final String nameProfile = 'Anton Petrov';
 
-  ProfileScreen({super.key});
+  final String nameProfile = 'Anton Petrov';
 
   @override
   Widget build(BuildContext context) {

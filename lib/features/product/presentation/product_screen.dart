@@ -11,16 +11,6 @@ import 'package:ecom_705_original_gifts/features/product/presentation/widgets/ta
 import 'package:ecom_705_original_gifts/features/shopping_cart/presentation/shopping_cart_screen.dart';
 
 class ProductScreen extends StatefulWidget {
-  final String idProductScreen;
-  final double priceProductScreen;
-  final String titleProductScreen;
-  final double amountProductScreen;
-  final String firstImageUrlProductScreen;
-  final String secondImageUrlProductScreen;
-  final String thirdImageUrlProductScreen;
-  final String descriptionProductScreen;
-  bool isFavoriteProductScreen;
-
   ProductScreen(
       {super.key,
       required this.idProductScreen,
@@ -33,12 +23,26 @@ class ProductScreen extends StatefulWidget {
       this.descriptionProductScreen = '',
       this.isFavoriteProductScreen = false});
 
+  final double amountProductScreen;
+  final String descriptionProductScreen;
+  final String firstImageUrlProductScreen;
+  final String idProductScreen;
+  bool isFavoriteProductScreen;
+  final double priceProductScreen;
+  final String secondImageUrlProductScreen;
+  final String thirdImageUrlProductScreen;
+  final String titleProductScreen;
+
   @override
   State<ProductScreen> createState() => _ProductScreenState();
 }
 
 class _ProductScreenState extends State<ProductScreen>
     with SingleTickerProviderStateMixin {
+  Icon iconsFavorite = const Icon(Icons.favorite);
+
+  late final _tabController = TabController(length: 2, vsync: this);
+
   Future addToCart() async {
     final auth = FirebaseAuth.instance;
     var currentUser = auth.currentUser;
@@ -55,8 +59,6 @@ class _ProductScreenState extends State<ProductScreen>
     });
   }
 
-  late final _tabController = TabController(length: 2, vsync: this);
-  Icon iconsFavorite = const Icon(Icons.favorite);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -18,7 +18,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen>
     with SingleTickerProviderStateMixin {
   late final _tabController = TabController(length: 4, vsync: this);
-  var email = FirebaseAuth.instance.currentUser!.email.toString();
+  final _email = FirebaseAuth.instance.currentUser!.email.toString();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +29,7 @@ class _MainScreenState extends State<MainScreen>
         ),
         centerTitle: true,
         title: Text(
-          'Signed in as $email',
+          'Signed in as $_email',
         ),
         actions: [
           StreamBuilder(

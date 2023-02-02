@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ImageCard extends StatelessWidget {
-  final String imagePath;
-
   const ImageCard({super.key, required this.imagePath});
+
+  final String imagePath;
 
   @override
   Widget build(BuildContext context) {

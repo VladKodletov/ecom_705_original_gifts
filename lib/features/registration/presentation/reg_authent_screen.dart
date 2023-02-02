@@ -1,6 +1,6 @@
-import 'package:ecom_705_original_gifts/features/registration/presentation/widgets/reg_header_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'package:ecom_705_original_gifts/features/registration/presentation/widgets/reg_header_widget.dart';
 
 class RegAuthentScreen extends StatefulWidget {
   const RegAuthentScreen({Key? key}) : super(key: key);
